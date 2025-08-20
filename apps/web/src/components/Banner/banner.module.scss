@@ -5,10 +5,16 @@
     position: relative;
     text-align: center;
     overflow: hidden;
+    max-width: size(1268);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 
     @media (max-width: 768px) {
         height: 400px;
+    }
+
+    @media (max-width: 1200px) {
+        max-width: 100vw;
+        left: 0;
     }
 
     @media (max-width: 480px) {
@@ -22,9 +28,12 @@
     gap: 1rem;
 
     button {
+        font-size: size(18);
         border-radius: size(30);
         min-height: 3.75rem;
         min-width: size(120);
+        opacity: 0;
+
     }
 }
 
@@ -52,8 +61,8 @@
         .carouselTitle,
         .carouselDescription,
         .carouselCta {
-            opacity: 0;
-            transform: translateY(50px);
+            opacity: 0 !important;
+            transform: translateY(50px) !important;
         }
     }
 
@@ -69,6 +78,12 @@
 
         .carouselCta {
             animation: slideUpFadeIn 0.8s ease-out 0.6s forwards;
+        }
+
+        .ctaBanner {
+            button {
+                animation: slideUpFadeIn 0.8s ease-out 0.6s forwards;
+            }
         }
     }
 }
@@ -170,13 +185,6 @@
     justify-content: center;
     transition: all 0.3s ease;
     z-index: 10;
-    opacity: 0.7;
-
-    &:hover {
-        background-color: rgba(255, 255, 255, 1);
-        opacity: 1;
-        transform: translateY(-50%) scale(1.1);
-    }
 
     @media (max-width: 768px) {
         width: 40px;
@@ -186,12 +194,33 @@
     }
 }
 
+.slideButton {
+    transition: all 0.3s ease;
+    background: $color-black;
+    color: $color-secondary;
+    opacity: .37;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
 .carouselButtonPrev {
-    left: 20px;
+    @extend .slideButton;
+    left: size(49);
+
+    @media (max-width: 768px) {
+        left: size(8);
+    }
 }
 
 .carouselButtonNext {
-    right: 20px;
+    @extend .slideButton;
+    right: size(40);
+
+    @media (max-width: 768px) {
+        right: size(8);
+    }
 }
 
 .carouselDots {
@@ -220,9 +249,12 @@
 }
 
 .carouselDotActive {
-    background-color: #fff;
+    background-color: $color-secondary;
     transform: scale(1.2);
     animation: pulse 1.5s infinite;
+    border-radius: size(100);
+    width: size(32);
+    height: size(10);
 }
 
 // Keyframes untuk animasi
@@ -249,12 +281,5 @@
 
     100% {
         box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    }
-}
-
-// Efek hover untuk seluruh carousel
-.carouselInner:hover {
-    .carouselButton {
-        opacity: 0.9;
     }
 }

@@ -1,3 +1,5 @@
+@import "../../lib/styles/index.scss";
+
 .container {
     max-width: 100%;
     margin: 0 auto;
@@ -9,52 +11,38 @@
 }
 
 .bannerHomeContainer {
-    width: 100vw !important;
-    min-width: 100vw !important;
-    width: 100vw !important;
-    margin-left: -120px;
+    width: $w-full !important;
+    min-width: $w-screen;
+    margin-left: size(-34);
 
     [class*='carouselTitle'] {
         font-size: 4rem;
+    }
+
+    [class*='ant-btn-default'] {
+        border: size(3) solid $color-secondary;
+        background: $color-black;
+        color: $color-white;
+    }
+
+    [class*='ant-btn'] {
+        min-height: size(60);
+        border-radius: size(100);
+
     }
 }
 
 .header {
     text-align: center;
-    margin-bottom: 3rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: size(6);
     position: relative;
-
-    &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 4px;
-        background-color: #0056b3; // RSPP blue
-    }
 }
 
 .title {
-    font-size: 2.5rem;
-    color: #0056b3; // RSPP blue
-    margin-bottom: 1rem;
+    color: $color-black; // RSPP blue
+    margin-bottom: size(40);
+    font-size: size(32);
     font-weight: 600;
-}
-
-.subtitle {
-    font-size: 1.2rem;
-    color: #555;
-    margin: 0 auto;
-}
-
-.productGrid {
-    display: grid;
-    gap: 1rem;
-    margin-top: 3rem;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
 @media (max-width: 768px) {

@@ -1,11 +1,9 @@
 "use client";
 import { useState, useEffect, useRef } from 'react';
 import { MdOutlineShoppingCart } from 'react-icons/md';
-import ButtonComponent from '@/components/Button';
+import SharedButton from '@/components/shared/SharedButton';
 import Link from 'next/link';
 import Image from 'next/image';
-
-
 
 import styles from './navbar.module.scss';
 
@@ -19,19 +17,16 @@ export default function Navbar() {
       const currentScrollY = window.scrollY;
       
       // Tentukan arah scroll
-      if (currentScrollY > lastScrollY.current && currentScrollY > 36) {
+      if (currentScrollY > lastScrollY.current && currentScrollY > 90) {
         setScrollDirection('down');
       } else if (currentScrollY < lastScrollY.current) {
         setScrollDirection('up');
       }
       
       lastScrollY.current = currentScrollY;
-      
-      // Ubah menjadi fixed setelah scroll 36px
-      setIsScrolled(currentScrollY > 36);
+      setIsScrolled(currentScrollY > 90);
     };
 
-    // Gunakan requestAnimationFrame untuk performa lebih smooth
     let ticking = false;
     
     const onScroll = () => {
@@ -46,7 +41,6 @@ export default function Navbar() {
 
     window.addEventListener('scroll', onScroll, { passive: true });
     
-    // Cleanup
     return () => {
       window.removeEventListener('scroll', onScroll);
     };
@@ -92,9 +86,9 @@ export default function Navbar() {
               <MdOutlineShoppingCart size={20}  />
               <span className={styles.cartCount}>0</span>
             </Link>
-            <ButtonComponent type="secondary">
+            <SharedButton type="default">
               Masuk
-            </ButtonComponent>
+            </SharedButton>
           </div>
         </div>
       </div>

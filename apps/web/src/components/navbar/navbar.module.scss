@@ -6,6 +6,12 @@
 
     // State ketika di-scroll
     &.navbarFixed {
+        &::after {
+            content: "";
+            display: block;
+            height: 90; // tinggi navbar supaya konten gak lompat
+        }
+
         .mainNav {
             position: fixed;
             top: 0;
@@ -15,6 +21,7 @@
             background: white;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
             transform: translateY(0);
+
         }
     }
 }
@@ -173,6 +180,7 @@
     align-items: center;
     gap: .4rem;
 }
+
 
 .cartButton {
     position: relative;

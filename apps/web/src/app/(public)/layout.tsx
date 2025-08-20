@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/navbar";
+import Footer from "@/components/Footer";
+
 import styles from "../layout.module.scss"
 import "../globals.scss";
 
@@ -29,10 +31,11 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Navbar />
           <div className={styles.page}>
-          <main className={styles.main}>
-            {children}
-          </main>
+            <main className={styles.main}>
+              {children}
+            </main>
           </div>
+          <Footer />
       </body>
     </html>
   );

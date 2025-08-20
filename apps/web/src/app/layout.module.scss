@@ -1,3 +1,5 @@
+@import "../lib/styles/index.scss";
+
 .page {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
@@ -7,7 +9,7 @@
   --button-secondary-hover: #f2f2f2;
 
   min-height: 100svh;
-  max-width: 1024px;
+  max-width: size(1200);
   margin: 0 auto;
 
   font-family: var(--font-geist-sans);

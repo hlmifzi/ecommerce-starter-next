@@ -1,7 +1,9 @@
 "use client"
 import { useState, useEffect } from 'react';
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
 import Image from 'next/image';
-import Button from "@/components/Button"
+import Button from "@/components/shared/SharedButton"
 import styles from './banner.module.scss';
 
 const Carousel = ({ items, autoPlay = true, interval = 5000 }:any) => {
@@ -68,7 +70,7 @@ const Carousel = ({ items, autoPlay = true, interval = 5000 }:any) => {
                       <Button type="primary">
                         {item.cta}
                       </Button>
-                      <Button type="secondary">
+                      <Button type="default">
                         {item.second_cta}
                       </Button>
                     </div>
@@ -85,7 +87,7 @@ const Carousel = ({ items, autoPlay = true, interval = 5000 }:any) => {
         onClick={goToPrevious}
         aria-label="Slide sebelumnya"
       >
-        &#10094;
+        <FaChevronLeft />
       </button>
       
       <button 
@@ -93,7 +95,7 @@ const Carousel = ({ items, autoPlay = true, interval = 5000 }:any) => {
         onClick={goToNext}
         aria-label="Slide berikutnya"
       >
-        &#10095;
+        <FaChevronRight />
       </button>
       
       <div className={styles.carouselDots}>

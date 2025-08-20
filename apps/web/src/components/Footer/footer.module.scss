@@ -1,0 +1,155 @@
+@import "../../lib/styles/index.scss";
+
+.footerSection {
+    @include flex(row, flex-start, center);
+    width: $w-screen;
+}
+
+.footerContainer {
+    @include flex(row, flex-start, space-between);
+    min-width: size(1124);
+    width: size(1124);
+    max-width: size(1124);
+    padding: size(40) 0;
+
+}
+
+.information {
+    @include flex(column, flex-start, center);
+    gap: size(30);
+    position: relative;
+    max-width: size(286);
+
+    p {
+        opacity: .7;
+    }
+
+    img {
+        position: relative !important;
+        max-width: size(139);
+        height: size(50);
+    }
+}
+
+.listMenuContainer {
+    @include flex(row, flex-start);
+    gap: size(50);
+}
+
+.listItem {
+    @extend .listMenuInner;
+}
+
+.flex {
+    @include flex(row, center, space-between);
+    gap: size(13);
+
+    a {
+        font-size: size(24);
+
+        &:first-child {
+            svg:hover {
+                color: $color-white;
+                background: linear-gradient(45deg,
+                        #feda75,
+                        #fa7e1e,
+                        #d62976,
+                        #962fbf,
+                        #4f5bd5) !important;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+
+        &:last-child {
+            svg:hover {
+                color: $color-danger;
+            }
+        }
+    }
+}
+
+.listMenuInner {
+    @include flex(column, flex-start, flex-start);
+    gap: size(10);
+
+    h3 {
+        font-size: size(16);
+        margin-bottom: size(30);
+    }
+
+    a {
+        color: $color-black;
+        opacity: .7;
+        text-decoration: none;
+        font-weight: 400;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 5px 0;
+
+        &:hover {
+            color: $color-primary;
+            opacity: 1;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #1a6fb0;
+            transition: width 0.3s ease;
+        }
+
+        &:hover::after {
+            width: 100%;
+        }
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .footerSection,
+    .footerContainer {
+        @include flex(column, flex-start, center);
+        padding: size(16);
+    }
+
+    .information {
+        gap: size(16);
+    }
+
+    .listMenuInner {
+        width: $w-screen;
+    }
+
+    .listMenuContainer {
+        display: inline;
+        column-count: 2;
+        gap: 16px;
+        margin-top: size(32);
+
+        h3,
+        a {
+            break-inside: avoid; // biar elemen ga kepotong
+            display: block;
+        }
+
+
+        h3 {
+            margin-bottom: size(6);
+
+            &:not(:first-child) {
+                margin-top: size(6);
+            }
+        }
+
+        a {
+            margin-bottom: size(0);
+        }
+    }
+
+}

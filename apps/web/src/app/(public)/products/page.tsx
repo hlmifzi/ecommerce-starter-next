@@ -1,5 +1,5 @@
 import { getProducts } from '@/services/api/product';
-import TrainingCard from '@/components/TrainingCard';
+import ProductCard from '@/components/ProductCard';
 import styles from './products.module.scss';
 
 export default async function HomePage() {
@@ -16,7 +16,7 @@ export default async function HomePage() {
       
       <div className={styles.productGrid}>
         {products?.map((product:any) => (
-          <TrainingCard 
+          <ProductCard 
             key={product?.id}
             product={product}
           />

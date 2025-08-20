@@ -1,0 +1,32 @@
+@import "../../../lib/styles/index.scss";
+
+.buttonContainer {
+    [class*='default'] {
+        border-radius: size(30);
+        background: $color-white;
+        border: 1px solid $color-secondary;
+        color: $color-primary;
+        font-weight: 600;
+        transition: all 0.4s ease-in-out;
+
+
+        &:hover {
+            background: $color-secondary !important;
+            color: $color-white !important;
+            border: none;
+        }
+    }
+
+    [class*='ant-btn-default'] {
+        border-radius: size(30);
+        background: $color-white;
+        border: 1px solid $color-secondary;
+        color: $color-primary;
+        font-weight: 600;
+
+        &:hover {
+            background: $color-secondary;
+            color: $color-white;
+        }
+    }
+}
