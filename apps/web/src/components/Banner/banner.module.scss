@@ -1,0 +1,275 @@
+.carouselInner {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 768px) {
+        height: 400px;
+    }
+
+    @media (max-width: 480px) {
+        height: 300px;
+    }
+}
+
+.ctaBanner {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.carouselContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carouselTrack {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carouselSlide {
+    min-width: 100%;
+    height: 600px;
+    position: relative;
+
+    // State awal untuk elemen yang akan dianimasikan
+    &:not(.active) {
+
+        .carouselTitle,
+        .carouselDescription,
+        .carouselCta {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+    }
+
+    // State aktif dengan animasi
+    &.active {
+        .carouselTitle {
+            animation: slideUpFadeIn 0.8s ease-out forwards;
+        }
+
+        .carouselDescription {
+            animation: slideUpFadeIn 0.8s ease-out 0.3s forwards;
+        }
+
+        .carouselCta {
+            animation: slideUpFadeIn 0.8s ease-out 0.6s forwards;
+        }
+    }
+}
+
+.carouselImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.carouselOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.2) 0%,
+            rgba(0, 0, 0, 0.7) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 40px;
+
+    @media (max-width: 768px) {
+        padding: 30px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 20px;
+    }
+}
+
+.carouselContent {
+    margin: auto auto;
+    flex-direction: column;
+    color: white;
+    max-width: 90%;
+
+    @media (max-width: 768px) {
+        max-width: 100%;
+    }
+}
+
+.carouselTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: none;
+
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+}
+
+.carouselDescription {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: none;
+
+    @media (max-width: 768px) {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+}
+
+.carouselCta {
+    background-color: #1a6fb0;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(50px);
+
+    &:hover {
+        background-color: #135a90;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 480px) {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+.carouselButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    color: #333;
+    font-size: 24px;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    opacity: 0.7;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 1);
+        opacity: 1;
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        padding: 10px;
+    }
+}
+
+.carouselButtonPrev {
+    left: 20px;
+}
+
+.carouselButtonNext {
+    right: 20px;
+}
+
+.carouselDots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.carouselDot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+        transform: scale(1.2);
+    }
+}
+
+.carouselDotActive {
+    background-color: #fff;
+    transform: scale(1.2);
+    animation: pulse 1.5s infinite;
+}
+
+// Keyframes untuk animasi
+@keyframes slideUpFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+// Efek hover untuk seluruh carousel
+.carouselInner:hover {
+    .carouselButton {
+        opacity: 0.9;
+    }
+}

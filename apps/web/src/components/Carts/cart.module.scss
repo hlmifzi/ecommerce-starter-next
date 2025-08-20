@@ -1,0 +1,227 @@
+// Variables
+$primary-color: #0D4D8B; // RSPP blue
+$secondary-color: #e63946; // For discounts/errors
+$text-color: #333;
+$light-gray: #f5f5f5;
+$border-radius: 8px;
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+$transition-speed: 0.3s;
+
+.cartContainer {
+    margin: 0 auto 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+}
+
+.cartTitle {
+    font-size: 1.2rem;
+    color: $primary-color;
+    margin-bottom: .5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid $light-gray;
+}
+
+.cartItems {
+    margin-bottom: .5rem;
+}
+
+.cartItem {
+    display: grid;
+    grid-template-columns: 3rem auto;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+    position: relative;
+
+    img {
+        max-width: 3rem;
+        max-height: 3rem;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.itemImage {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: $border-radius;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.itemDetails {
+    flex-grow: 1;
+}
+
+.itemName {
+    font-size: .8rem;
+    color: $text-color;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    max-width: 80%;
+    text-align: left;
+}
+
+.itemHospital {
+    font-size: 0.6rem;
+    color: #666;
+    margin-bottom: 0.8rem;
+    text-align: left;
+}
+
+.priceContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+.originalPrice {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.6rem;
+}
+
+.discountedPrice {
+    font-size: .8rem;
+    font-weight: 600;
+    color: $secondary-color;
+}
+
+.currentPrice {
+    font-size: .8rem;
+    font-weight: 600;
+    color: $text-color;
+}
+
+.quantityControl {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.quantityButton {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all $transition-speed;
+
+    &:hover {
+        background: $light-gray;
+    }
+
+    svg {
+        font-size: 0.5rem;
+        color: $text-color;
+    }
+}
+
+.quantity {
+    min-width: 30px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.removeButton {
+    position: absolute;
+    top: 1rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    transition: color $transition-speed;
+
+    &:hover {
+        color: $secondary-color;
+    }
+
+    svg {
+        font-size: 1rem;
+    }
+}
+
+.cartSummary {
+    border-top: 2px solid $light-gray;
+    padding-top: 1.5rem;
+}
+
+.summaryRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+
+    &:last-child {
+        margin-top: 1.2rem;
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+}
+
+.totalPrice {
+    color: $primary-color;
+    font-size: 1.3rem;
+}
+
+.checkoutButton {
+    width: 100%;
+    padding: 1rem;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: $border-radius;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all $transition-speed;
+    margin-top: 1.5rem;
+
+    &:hover {
+        background-color: darken($primary-color, 10%);
+    }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+    .cartItem {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .itemImage {
+        width: 100%;
+        height: 180px;
+    }
+
+    .quantityControl {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .cartContainer {
+        padding: 1rem;
+    }
+
+    .cartTitle {
+        font-size: 1.5rem;
+    }
+}

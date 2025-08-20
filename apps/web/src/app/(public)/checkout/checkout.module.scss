@@ -1,0 +1,183 @@
+// Variables
+$primary-color: #0D4D8B; // RSPP blue
+$secondary-color: #e63946; // For errors
+$text-color: #333;
+$light-gray: #f5f5f5;
+$border-radius: 8px;
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+$transition-speed: 0.3s;
+
+// Container
+.container {
+    display: grid;
+    grid-template-columns: auto 300px;
+    gap: 1rem;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+// Header
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.title {
+    font-size: 2rem;
+    color: $primary-color;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1rem;
+}
+
+// Form
+.form {
+    background: white;
+    padding: 2rem;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+}
+
+.formGroup {
+    margin-bottom: 1.5rem;
+}
+
+.label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: $text-color;
+    font-size: 0.95rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: $border-radius;
+    font-size: 1rem;
+    transition: all $transition-speed;
+
+    &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+    }
+
+    &::placeholder {
+        color: #999;
+    }
+}
+
+.error {
+    display: block;
+    color: $secondary-color;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+}
+
+// Submit button
+.submitButton {
+    width: 100%;
+    padding: 1rem;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: $border-radius;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all $transition-speed;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    &:hover {
+        background-color: darken($primary-color, 10%);
+        transform: translateY(-1px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+// Payment methods (additional section)
+.paymentMethods {
+    margin-top: 2rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+}
+
+.paymentTitle {
+    font-size: 1.2rem;
+    color: $primary-color;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.paymentOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.paymentOption {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: all $transition-speed;
+
+    &:hover {
+        border-color: $primary-color;
+        background: rgba($primary-color, 0.03);
+    }
+
+    input[type="radio"] {
+        margin-right: 1rem;
+    }
+
+    img {
+        height: 50px;
+        margin-left: auto;
+    }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+    .container {
+        padding: 0;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .form {
+        padding: 1.5rem;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .form {
+        padding: 1.25rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+}
