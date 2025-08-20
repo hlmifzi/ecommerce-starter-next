@@ -1,7 +1,8 @@
 import { getProducts } from '@/services/api/product';
-import ProductCard from '@/components/ProductCard';
+import ProductCarousel from '@/components/ProductCarousel';
 import styles from './home.module.scss';
 import Carousel from '@/components/Banner/banner';
+import SharedButton from '@/components/shared/SharedButton';
 
  const carouselItems = [
     {
@@ -33,7 +34,7 @@ export default async function HomePage() {
   return (
     <div className={styles.container}>
       <section className={styles.bannerHomeContainer}>
-        <Carousel items={carouselItems} autoPlay={false} interval={5000} />
+        <Carousel items={carouselItems} autoPlay={true} interval={5000} />
       </section>
       <section className={styles.popularProduct}>
         <div className={styles.header}>
@@ -41,9 +42,12 @@ export default async function HomePage() {
         </div>
         
         <div className={styles.productGrid}>
-          <ProductCard 
+          <ProductCarousel 
             products={products}
           />
+          <SharedButton className={styles.btnAll} type='primary'>
+            Lihat Semua Kelas Profesional
+          </SharedButton>
         </div>
       </section>
     </div>

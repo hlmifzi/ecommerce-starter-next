@@ -28,10 +28,10 @@
     gap: 1rem;
 
     button {
-        font-size: size(18);
-        border-radius: size(30);
-        min-height: 3.75rem;
-        min-width: size(120);
+        font-size: size(18) !important;
+        border-radius: size(30) !important;
+        min-height: 3.75rem !important;
+        min-width: size(120) !important;
         opacity: 0;
 
     }

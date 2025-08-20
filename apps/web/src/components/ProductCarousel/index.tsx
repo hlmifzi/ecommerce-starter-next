@@ -2,11 +2,12 @@
 import { useRef, useState, useEffect } from 'react';
 import { Product } from '@/types/product';
 import Link from 'next/link';
-import styles from './ProductCard.module.scss';
+import styles from './ProductCarousel.module.scss';
 import Image from 'next/image';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import SharedButton from '../shared/SharedButton';
 
-export default function ProductCard({ products }: any) {
+export default function ProductCarousel({ products }: any) {
   const productsContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -71,14 +72,15 @@ export default function ProductCard({ products }: any) {
 
   return (
     <div className={styles.productGrid}>
-      <button 
+      <SharedButton
+        type='default' 
         className={`${styles.productNavButton} ${styles.productNavButtonLeft} ${!canScrollLeft ? styles.hidden : ''}`}
         onClick={() => scrollTabs('left')}
         disabled={!canScrollLeft}
         aria-label="Scroll products left"
       >
         <FaChevronLeft />
-      </button>
+      </SharedButton>
       
       <div 
         ref={productsContainerRef}
@@ -111,8 +113,10 @@ export default function ProductCard({ products }: any) {
                     Rp {(product?.discounted_price || product?.price).toLocaleString()}
                   </span>
                 </div>
-                <Link href={`/checkout/`} className={styles.button}>
-                  Beli Sekarang
+                <Link href={`/checkout/`}>
+                  <SharedButton type='primary'>
+                    Daftar Sekarang
+                  </SharedButton>
                 </Link>
               </div>
             </div>
@@ -120,14 +124,15 @@ export default function ProductCard({ products }: any) {
         ))}
       </div>
       
-      <button 
+      <SharedButton
+        type='default'  
         className={`${styles.productNavButton} ${styles.productNavButtonRight} ${!canScrollRight ? styles.hidden : ''}`}
         onClick={() => scrollTabs('right')}
         disabled={!canScrollRight}
         aria-label="Scroll products right"
       >
         <FaChevronRight />
-      </button>
+      </SharedButton>
     </div>
   );
 }

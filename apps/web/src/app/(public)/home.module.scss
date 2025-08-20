@@ -45,6 +45,15 @@
     font-weight: 600;
 }
 
+.btnAll {
+    display: block;
+    min-height: size(55);
+    height: size(55);
+    min-width: size(300);
+    margin: size(0) auto;
+    max-width: size(300);
+}
+
 @media (max-width: 768px) {
 
     .bannerHomeContainer {

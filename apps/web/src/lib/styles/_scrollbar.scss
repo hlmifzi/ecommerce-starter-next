@@ -27,6 +27,7 @@
   scrollbar-width: thin;
   scrollbar-color: #fff #fff;
 
+
   &::-webkit-scrollbar {
     height: 8px;
   }
@@ -42,6 +43,6 @@
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: #fff;
+    background: #fff !important;
   }
 }
