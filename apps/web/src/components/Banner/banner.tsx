@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Button from "@/components/Button"
 import styles from './banner.module.scss';
 
 const Carousel = ({ items, autoPlay = true, interval = 5000 }:any) => {
@@ -64,12 +65,12 @@ const Carousel = ({ items, autoPlay = true, interval = 5000 }:any) => {
                   <p className={styles.carouselDescription}>{item.description}</p>
                   {item.cta && (
                     <div className={styles.ctaBanner}>
-                      <button className={styles.carouselCta}>
+                      <Button type="primary">
                         {item.cta}
-                      </button>
-                      <button className={styles.carouselCta}>
+                      </Button>
+                      <Button type="secondary">
                         {item.second_cta}
-                      </button>
+                      </Button>
                     </div>
                   )}
                 </div>

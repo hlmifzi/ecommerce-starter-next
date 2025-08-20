@@ -1,4 +1,3 @@
-// next.config.js
 module.exports = {
   images: {
     remotePatterns: [
@@ -9,7 +8,6 @@ module.exports = {
         pathname: '/uploads/**',
       },
     ],
-    // Atau untuk pengaturan sederhana (Next.js 12+):
     domains: ['localhost'],
   },
 }

@@ -1,3 +1,6 @@
+@import "../../lib/styles/index.scss";
+
+
 .carouselInner {
     position: relative;
     text-align: center;
@@ -17,6 +20,12 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
+
+    button {
+        border-radius: size(30);
+        min-height: 3.75rem;
+        min-width: size(120);
+    }
 }
 
 .carouselContainer {
@@ -100,7 +109,8 @@
     max-width: 90%;
 
     @media (max-width: 768px) {
-        max-width: 100%;
+        margin: 4rem auto auto;
+        max-width: 80%;
     }
 }
 
@@ -139,31 +149,6 @@
     @media (max-width: 480px) {
         font-size: 1rem;
         margin-bottom: 15px;
-    }
-}
-
-.carouselCta {
-    background-color: #1a6fb0;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(50px);
-
-    &:hover {
-        background-color: #135a90;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    @media (max-width: 480px) {
-        padding: 10px 20px;
-        font-size: 0.9rem;
     }
 }
 

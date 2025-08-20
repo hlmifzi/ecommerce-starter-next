@@ -1,0 +1,133 @@
+.scrollbar {
+  $scrollbar_color: #f7f7f7;
+  $scrollbar_color_hover: #eee;
+  $scrollbar_color_white: #fff;
+
+  &_main {
+    &::-webkit-scrollbar {
+      width: $size-8;
+      height: $size-8;
+    }
+
+    &::-webkit-scrollbar-corner {
+      width: $size-8;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: $scrollbar_color;
+      border-radius: $size-4;
+      cursor: pointer;
+
+      &:hover {
+        background: $scrollbar_color_hover;
+      }
+    }
+
+    // * for mozilla
+    &::-moz-scrollbar {
+      width: $size-6;
+      height: $size-6;
+    }
+
+    &::-moz-scrollbar-corner {
+      width: $size-6;
+    }
+
+    /* Track */
+    &::-moz-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Handle */
+    &::-moz-scrollbar-thumb {
+      background: $scrollbar_color;
+      border-radius: $size-4;
+      cursor: pointer;
+    }
+
+    /* Handle on hover */
+    &::-moz-scrollbar-thumb:hover {
+      background: $scrollbar_color_hover;
+    }
+  }
+
+  &_secondary {
+    &::-webkit-scrollbar {
+      width: $size-8;
+      height: $size-8;
+    }
+
+    &::-webkit-scrollbar-corner {
+      width: $size-8;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: $color-border-neutral;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: $color-neutral-disabled-alt;
+      border-radius: $size-4;
+      cursor: pointer;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    // * for mozilla
+    &::-moz-scrollbar {
+      width: $size-6;
+      height: $size-6;
+    }
+
+    &::-moz-scrollbar-corner {
+      width: $size-6;
+    }
+
+    /* Track */
+    &::-moz-scrollbar-track {
+      background: $color-border-neutral;
+    }
+
+    /* Handle */
+    &::-moz-scrollbar-thumb {
+      background: $color-neutral-disabled-alt;
+      border-radius: $size-4;
+      cursor: pointer;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &_whiteTrack {
+    &::-webkit-scrollbar-track {
+      background: $scrollbar_color_white;
+    }
+
+    &::-moz-scrollbar-track {
+      background: $scrollbar_color_white;
+    }
+  }
+  &_none {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &::-moz-scrollbar {
+      display: none;
+    }
+  }
+}

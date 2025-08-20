@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "antd": "^5.27.1",
     "gsap": "^3.13.0",
     "midtrans-client": "^1.4.3",
     "next": "15.4.6",

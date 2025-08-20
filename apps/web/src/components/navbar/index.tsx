@@ -1,8 +1,12 @@
 "use client";
 import { useState, useEffect, useRef } from 'react';
+import { MdOutlineShoppingCart } from 'react-icons/md';
+import ButtonComponent from '@/components/Button';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MdOutlineShoppingCart } from 'react-icons/md';
+
+
+
 import styles from './navbar.module.scss';
 
 export default function Navbar() {
@@ -15,7 +19,7 @@ export default function Navbar() {
       const currentScrollY = window.scrollY;
       
       // Tentukan arah scroll
-      if (currentScrollY > lastScrollY.current && currentScrollY > 70) {
+      if (currentScrollY > lastScrollY.current && currentScrollY > 36) {
         setScrollDirection('down');
       } else if (currentScrollY < lastScrollY.current) {
         setScrollDirection('up');
@@ -50,7 +54,7 @@ export default function Navbar() {
 
   return (
     <nav className={`${styles.navbar} ${isScrolled ? styles.navbarFixed : ''}`}>
-      <div className={styles.topBar}>
+      {/* <div className={styles.topBar}>
         <div className={styles.topBarContainer}>
           <div className={styles.contactInfo}>
             <span>☎️ 150442</span>
@@ -60,7 +64,7 @@ export default function Navbar() {
             <Link href="/login">Login / Register</Link>
           </div>
         </div>
-      </div>
+      </div> */}
       
       <div className={styles.mainNav}>
         <div className={styles.mainNavContainer}>
@@ -88,6 +92,9 @@ export default function Navbar() {
               <MdOutlineShoppingCart size={20}  />
               <span className={styles.cartCount}>0</span>
             </Link>
+            <ButtonComponent type="secondary">
+              Masuk
+            </ButtonComponent>
           </div>
         </div>
       </div>

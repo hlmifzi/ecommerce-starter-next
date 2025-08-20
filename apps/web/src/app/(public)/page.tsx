@@ -8,22 +8,22 @@ import Carousel from '@/components/Banner/banner';
       image: '/rspp-building.jpg',
       title: 'RSPP Learning & Training Center',
       description: 'Mengedepankan prinsip continuous improvement atau peningkatan berkelanjutan dalam setiap program yang diselenggarakan, guna memastikan bahwa seluruh kegiatan relevan dengan perkembangan teknologi medis terkini serta kebutuhan layanan kesehatan masyarakat.',
-      cta: 'Lihat Sekarang',
-      second_cta: 'Daftar'
+      cta: 'Masuk',
+      second_cta: 'Registrasi'
     },
     {
       image: '/rspp-building.jpg',
       title: 'Layanan Gawat Darurat 24 Jam',
       description: 'Tim medis kami siap melayani Anda 24 jam sehari, 7 hari seminggu.',
-      cta: 'Hubungi Kami',
-      second_cta: 'Daftar'
+      cta: 'Masuk',
+      second_cta: 'Registrasi'
     },
     {
       image: '/rspp-building.jpg',
       title: 'Medical Check Up',
       description: 'Lakukan pemeriksaan kesehatan rutin untuk menjaga kualitas hidup Anda.',
-      cta: 'Daftar Sekarang',
-      second_cta: 'Lihat Sekarang'
+      cta: 'Masuk',
+      second_cta: 'Registrasi'
     }
   ];
 
@@ -33,7 +33,7 @@ export default async function HomePage() {
   return (
     <div className={styles.container}>
       <section className={styles.bannerHomeContainer}>
-        <Carousel items={carouselItems} autoPlay={true} interval={5000} />
+        <Carousel items={carouselItems} autoPlay={false} interval={5000} />
       </section>
       <section className={styles.popularProduct}>
         <div className={styles.header}>
