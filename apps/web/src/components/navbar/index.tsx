@@ -75,9 +75,10 @@ export default function Navbar() {
           
           <div className={styles.navLinks}>
             <Link href="/" className={styles.navLink}>Beranda</Link>
-            <Link href="/products" className={styles.navLink}>Program Pelatihan</Link>
+            <Link href="/trainings" className={styles.navLink}>Program Pelatihan</Link>
             <Link href="/categories" className={styles.navLink}>Struktur Organisasi</Link>
             <Link href="/about" className={styles.navLink}>Tentang Kami</Link>
+            <Link href="/about" className={styles.navLink}>Visi Misi</Link>
             <Link href="/contact" className={styles.navLink}>Artikel</Link>
           </div>
           

@@ -67,6 +67,12 @@
         padding-top: 0;
     }
 
+    .btnAll {
+        width: calc($w-screen);
+        min-width: calc($w-screen - size(52));
+        max-width: calc($w-screen - size(52));
+    }
+
     .bannerHomeContainer {
         margin-left: -1rem;
         font-size: .5rem;

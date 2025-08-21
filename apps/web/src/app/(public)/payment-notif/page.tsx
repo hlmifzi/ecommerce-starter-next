@@ -105,7 +105,7 @@ useEffect(() => {
 
         {/* Action Buttons */}
         <div className={`${styles.actionButtons} animated-item`}>
-          <Link className={styles.secondaryButton} href="/products">
+          <Link className={styles.secondaryButton} href="/trainings">
                 Belanja Lagi
           </Link>
         </div>

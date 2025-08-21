@@ -1,0 +1,12 @@
+@import "../../../lib/styles/index.scss";
+
+.badgeContainer {
+    [class*='ant-badge-count'] {
+        @include flex(row, center, center);
+        min-height: size(21) !important;
+        padding: 0 size(10) !important;
+        font-weight: 500 !important;
+        box-shadow: none !important;
+        border-radius: size(5) !important;
+    }
+}
