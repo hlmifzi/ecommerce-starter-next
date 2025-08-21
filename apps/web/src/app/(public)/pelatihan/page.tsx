@@ -1,6 +1,7 @@
 import { getProducts } from '@/services/api/product';
-import ProductCarousel from '@/components/ProductCarousel';
-import styles from './products.module.scss';
+import ProductsList from '../../../components/ProductsList';
+
+import styles from './training.module.scss';
 
 export default async function HomePage() {
   const products = await getProducts();
@@ -14,14 +15,7 @@ export default async function HomePage() {
         </p>
       </div>
       
-      <div className={styles.productGrid}>
-        {products?.map((product:any) => (
-          <ProductCarousel 
-            key={product?.id}
-            product={product}
-          />
-        ))}
-      </div>
+        <ProductsList products={products}/>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import SharedButton from '../shared/SharedButton';
 
 import styles from './productCard.module.scss';
 import BadgeProduct from '../BadgeProduct';
+import { formatDate } from '@/lib/function/formatDate';
 
 const ProductCard = ({product}:any) => {
 
@@ -15,7 +16,7 @@ const ProductCard = ({product}:any) => {
             <BadgeProduct type={product?.type} />
         </div>
         <Link 
-            href={`/training/${product?.slug}`} 
+            href={`/pelatihan/${product?.slug}`} 
             key={product.id} 
             className={styles.productLink}
         >
@@ -48,8 +49,8 @@ const ProductCard = ({product}:any) => {
                     </span>
                 </div>
                 <div className={styles.dateRegisterdContainer}>
-                    <p>Sabtu, 13 Mei 2025</p>
-                    <p>10 Terdaftar</p>
+                    <p>{formatDate(product?.scheduled_date)}</p>
+                    <p>{product?.registered_qty} Terdaftar</p>
                 </div>
                 <Link href={`/login/`}>
                     <SharedButton type='primary'>

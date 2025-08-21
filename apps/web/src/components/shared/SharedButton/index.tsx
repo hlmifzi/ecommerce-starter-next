@@ -3,27 +3,30 @@ import styles from "./button.module.scss"
 
 export default function SharedButton({
     type = "primary",
+    color= "",
     text = "text",
     children,
     className,
     onClick,
-    disabled
+    disabled = false
 }: {
   type: "primary" | "text" | "link" | "dashed" | "default",
   text?: string
   children?: any
   className?: string
   onClick?: any;
+  color?: "success" | string,
   disabled?:boolean
 }) {
   return (
     <div className={styles.buttonContainer}>
       <Button 
         onClick={onClick} 
-        className={`${className} 
-        ${type}`} 
-        type={type}>
-          {children || text}
+        disabled={disabled}
+        className={`${className} ${color} ${type}`} 
+        type={type}
+      >
+        {children || text}
       </Button>
     </div>
   );

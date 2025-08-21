@@ -10,9 +10,9 @@
         transition: all 0.4s ease-in-out;
 
         &:hover {
-            background: $color-secondary !important;
-            color: $color-white !important;
-            border: 1px solid $color-secondary !important;
+            background: $color-secondary;
+            color: $color-white;
+            border: 1px solid $color-secondary;
         }
     }
 
@@ -29,8 +29,25 @@
 
         &:hover {
             background: $color-primary !important;
-            transform: translateY(-4px);
-            box-shadow: 0 4px 12px $box-shadow;
+            transform: translateY(-1px);
+            box-shadow: $box-shadow;
+        }
+    }
+
+    [class*='success'] {
+        background: $color-secondary;
+        border: 1px solid $color-secondary;
+        color: $color-white;
+        border-radius: size(5);
+        min-height: size(35);
+        font-weight: 600;
+        width: $w-full;
+        transition: all 0.4s ease-in-out;
+
+        &:hover {
+            background: $color-secondary !important;
+            transform: translateY(-1px);
+            box-shadow: $box-shadow;
         }
     }
 }

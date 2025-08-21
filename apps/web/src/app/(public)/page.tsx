@@ -1,8 +1,10 @@
+import Link from 'next/link';
 import { getProducts } from '@/services/api/product';
 import ProductCarousel from '@/components/ProductCarousel';
-import styles from './home.module.scss';
 import Carousel from '@/components/Banner/banner';
 import SharedButton from '@/components/shared/SharedButton';
+
+import styles from './home.module.scss';
 
  const carouselItems = [
     {
@@ -45,9 +47,11 @@ export default async function HomePage() {
           <ProductCarousel 
             products={products}
           />
-          <SharedButton className={styles.btnAll} type='primary'>
-            Lihat Semua Kelas Profesional
-          </SharedButton>
+          <Link href="/pelatihan">
+            <SharedButton className={styles.btnAll} type='primary'>
+              Lihat Semua Kelas Profesional
+            </SharedButton>
+          </Link>
         </div>
       </section>
     </div>

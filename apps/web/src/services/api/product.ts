@@ -19,7 +19,8 @@ export async function getProducts() {
         "registrationOpen": "2025-08-19T07:14:50.787Z",
         "registrationClosed": "2025-08-19T07:14:50.787Z",
         "registrationClosedStatus": "warning",
-        "scheduledDate": "2025-08-19T07:14:50.787Z",
+        "registered_qty": 29,
+        "scheduled_date": "2025-08-19T07:14:50.787Z",
         "createdAt": "2025-08-18T13:25:12.808Z",
         "updatedAt": "2025-08-18T13:28:36.545Z",
         "publishedAt": "2025-08-18T13:28:36.578Z",
@@ -113,7 +114,8 @@ export async function getProducts() {
         "registrationOpen": "2025-08-19T07:14:50.787Z",
         "registrationClosed": "2025-08-19T07:14:50.787Z",
         "registrationClosedStatus": "warning",
-        "scheduledDate": "2025-08-19T07:14:50.787Z",
+        "registered_qty": 29,
+        "scheduled_date": "2025-08-19T07:14:50.787Z",
         "createdAt": "2025-08-19T07:14:27.363Z",
         "updatedAt": "2025-08-19T07:14:50.754Z",
         "publishedAt": "2025-08-19T07:14:50.787Z",
@@ -183,7 +185,8 @@ export async function getProducts() {
         "registrationOpen": "2025-08-19T07:14:50.787Z",
         "registrationClosed": "2025-08-19T07:14:50.787Z",
         "registrationClosedStatus": "warning",
-        "scheduledDate": "2025-08-19T07:14:50.787Z",
+        "registered_qty": 29,
+        "scheduled_date": "2025-08-19T07:14:50.787Z",
         "createdAt": "2025-08-19T07:14:27.363Z",
         "updatedAt": "2025-08-19T07:14:50.754Z",
         "publishedAt": "2025-08-19T07:14:50.787Z",
@@ -253,7 +256,8 @@ export async function getProducts() {
         "registrationOpen": "2025-08-19T07:14:50.787Z",
         "registrationClosed": "2025-08-19T07:14:50.787Z",
         "registrationClosedStatus": "warning",
-        "scheduledDate": "2025-08-19T07:14:50.787Z",
+        "registered_qty": 29,
+        "scheduled_date": "2025-08-19T07:14:50.787Z",
         "createdAt": "2025-08-19T07:14:27.363Z",
         "updatedAt": "2025-08-19T07:14:50.754Z",
         "publishedAt": "2025-08-19T07:14:50.787Z",
@@ -323,7 +327,8 @@ export async function getProducts() {
         "registrationOpen": "2025-08-19T07:14:50.787Z",
         "registrationClosed": "2025-08-19T07:14:50.787Z",
         "registrationClosedStatus": "warning",
-        "scheduledDate": "2025-08-19T07:14:50.787Z",
+        "registered_qty": 29,
+        "scheduled_date": "2025-08-19T07:14:50.787Z",
         "createdAt": "2025-08-19T07:14:27.363Z",
         "updatedAt": "2025-08-19T07:14:50.754Z",
         "publishedAt": "2025-08-19T07:14:50.787Z",
@@ -393,7 +398,8 @@ export async function getProducts() {
         "registrationOpen": "2025-08-19T07:14:50.787Z",
         "registrationClosed": "2025-08-19T07:14:50.787Z",
         "registrationClosedStatus": "warning",
-        "scheduledDate": "2025-08-19T07:14:50.787Z",
+        "registered_qty": 29,
+        "scheduled_date": "2025-08-19T07:14:50.787Z",
         "createdAt": "2025-08-19T07:14:27.363Z",
         "updatedAt": "2025-08-19T07:14:50.754Z",
         "publishedAt": "2025-08-19T07:14:50.787Z",
@@ -463,7 +469,8 @@ export async function getProducts() {
         "registrationOpen": "2025-08-19T07:14:50.787Z",
         "registrationClosed": "2025-08-19T07:14:50.787Z",
         "registrationClosedStatus": "warning",
-        "scheduledDate": "2025-08-19T07:14:50.787Z",
+        "registered_qty": 29,
+        "scheduled_date": "2025-08-19T07:14:50.787Z",
         "createdAt": "2025-08-19T07:14:27.363Z",
         "updatedAt": "2025-08-19T07:14:50.754Z",
         "publishedAt": "2025-08-19T07:14:50.787Z",
@@ -533,7 +540,8 @@ export async function getProducts() {
         "registrationOpen": "2025-08-19T07:14:50.787Z",
         "registrationClosed": "2025-08-19T07:14:50.787Z",
         "registrationClosedStatus": "warning",
-        "scheduledDate": "2025-08-19T07:14:50.787Z",
+        "registered_qty": 29,
+        "scheduled_date": "2025-08-19T07:14:50.787Z",
         "createdAt": "2025-08-19T07:14:27.363Z",
         "updatedAt": "2025-08-19T07:14:50.754Z",
         "publishedAt": "2025-08-19T07:14:50.787Z",
@@ -603,7 +611,8 @@ export async function getProducts() {
         "registrationOpen": "2025-08-19T07:14:50.787Z",
         "registrationClosed": "2025-08-19T07:14:50.787Z",
         "registrationClosedStatus": "warning",
-        "scheduledDate": "2025-08-19T07:14:50.787Z",
+        "registered_qty": 29,
+        "scheduled_date": "2025-08-19T07:14:50.787Z",
         "createdAt": "2025-08-19T07:14:27.363Z",
         "updatedAt": "2025-08-19T07:14:50.754Z",
         "publishedAt": "2025-08-19T07:14:50.787Z",
@@ -688,31 +697,100 @@ export async function getProducts() {
 }
 
 export async function getProductBySlug(slug: string) {
-    return {
-      id: 1,
-      title: "Training Vaksin Minginitis & ICV",
-      slug: "training-kesehatan-dasar",
-      description: "Pelatihan dasar untuk tenaga kesehatan",
+    return  {
+        "id": 8,
+        "documentId": "iawr5ih4hgnlfe1b5iv0o47y",
+        "slug": "12",
+        "type": "training",
+        "status": "open",
+        "title": "Workshop Mitra Bestari Tenaga Ahli Kesehatan premium sangaat",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent maximus tristique enim. Nam finibus nunc et nibh pharetra venenatis. Phasellus tincidunt tortor in lorem consectetur, nec ullamcorper ipsum pretium. Aliquam aliquet nec leo in tristique. Donec vel nulla iaculis, malesuada velit pretium, tristique nisi. Proin ullamcorper sapien sit amet leo mollis, id consectetur magna tempus. Aenean tincidunt volutpat tortor. Sed sit amet auctor ante, eget pretium sapien. Suspendisse sapien dolor, accumsan quis odio quis, posuere blandit leo. Cras bibendum consequat massa sed pretium.",
+        "stock": "99999",
         "price": 900000,
-      discounted_price: null,
-      duration: "3 Hari",
-      cover_image: {
-        url: "/vaksin.png"
-      },
-      hospital: {
-        name: "RSPP",
-        logo: {
-          url: "/logo-rspp.png"
-        }
-      },
-      "registrationOpen": "2025-08-19T07:14:50.787Z",
+        "discounted_price": null,
+        "additional_info": "vaksin miigitis murah",
+        "registrationOpen": "2025-08-19T07:14:50.787Z",
         "registrationClosed": "2025-08-19T07:14:50.787Z",
         "registrationClosedStatus": "warning",
-        "scheduledDate": "2025-08-19T07:14:50.787Z",
-      additional_info: [
-        { label: "Peserta", value: "Max 20 orang" },
-        { label: "Fasilitas", value: "Sertifikat ICV, Modul, Makan Siang" }
-      ]
+        "registered_qty": 29,
+        "scheduled_date": "2025-08-19T07:14:50.787Z",
+        "createdAt": "2025-08-18T13:25:12.808Z",
+        "updatedAt": "2025-08-18T13:28:36.545Z",
+        "publishedAt": "2025-08-18T13:28:36.578Z",
+        "hospital_name": "RSPP PERTAMINA",
+        "hospital_address": null,
+        "image": [
+            {
+                "id": 3,
+                "documentId": "xgcgqtco4fhj02bv030exy4x",
+                "name": "img_240720241721786835QFPZI.jpg",
+                "alternativeText": null,
+                "caption": null,
+                "width": 1024,
+                "height": 1280,
+                "formats": {
+                    "large": {
+                        "ext": ".jpg",
+                        "url": "/uploads/large_img_240720241721786835_QFPZI_7578171759.jpg",
+                        "hash": "large_img_240720241721786835_QFPZI_7578171759",
+                        "mime": "image/jpeg",
+                        "name": "large_img_240720241721786835QFPZI.jpg",
+                        "path": null,
+                        "size": 107.31,
+                        "width": 800,
+                        "height": 1000,
+                        "sizeInBytes": 107313
+                    },
+                    "small": {
+                        "ext": ".jpg",
+                        "url": "/uploads/small_img_240720241721786835_QFPZI_7578171759.jpg",
+                        "hash": "small_img_240720241721786835_QFPZI_7578171759",
+                        "mime": "image/jpeg",
+                        "name": "small_img_240720241721786835QFPZI.jpg",
+                        "path": null,
+                        "size": 39.36,
+                        "width": 400,
+                        "height": 500,
+                        "sizeInBytes": 39359
+                    },
+                    "medium": {
+                        "ext": ".jpg",
+                        "url": "/uploads/medium_img_240720241721786835_QFPZI_7578171759.jpg",
+                        "hash": "medium_img_240720241721786835_QFPZI_7578171759",
+                        "mime": "image/jpeg",
+                        "name": "medium_img_240720241721786835QFPZI.jpg",
+                        "path": null,
+                        "size": 72.05,
+                        "width": 600,
+                        "height": 750,
+                        "sizeInBytes": 72045
+                    },
+                    "thumbnail": {
+                        "ext": ".jpg",
+                        "url": "/uploads/thumbnail_img_240720241721786835_QFPZI_7578171759.jpg",
+                        "hash": "thumbnail_img_240720241721786835_QFPZI_7578171759",
+                        "mime": "image/jpeg",
+                        "name": "thumbnail_img_240720241721786835QFPZI.jpg",
+                        "path": null,
+                        "size": 6.12,
+                        "width": 125,
+                        "height": 156,
+                        "sizeInBytes": 6122
+                    }
+                },
+                "hash": "img_240720241721786835_QFPZI_7578171759",
+                "ext": ".jpg",
+                "mime": "image/jpeg",
+                "size": 150.37,
+                "url": "/vaksin.png",
+                "previewUrl": null,
+                "provider": "local",
+                "provider_metadata": null,
+                "createdAt": "2025-08-18T13:28:15.635Z",
+                "updatedAt": "2025-08-18T13:28:15.635Z",
+                "publishedAt": "2025-08-18T13:28:15.636Z"
+            }
+        ]
     }
   const res = await fetch(
     `${STRAPI_API_URL}/api/products?filters[slug][$eq]=${slug}&populate=*`

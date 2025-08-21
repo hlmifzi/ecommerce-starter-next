@@ -1,0 +1,13 @@
+@mixin grid($cols, $gap-col: null, $gap-row: null) {
+    display: grid;
+    grid-template-columns: repeat($cols, 1fr);
+    grid-gap: $gap-col;
+
+    @if $gap-col !=null {
+        column-gap: size($gap-col);
+    }
+
+    @if $gap-row !=null {
+        row-gap: size($gap-row);
+    }
+}
