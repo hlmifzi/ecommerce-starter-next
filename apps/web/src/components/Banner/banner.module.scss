@@ -5,7 +5,8 @@
     position: relative;
     text-align: center;
     overflow: hidden;
-    max-width: size(1268);
+    max-width: size(1270);
+    margin-left: size(-36);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 
     @media (max-width: 768px) {
