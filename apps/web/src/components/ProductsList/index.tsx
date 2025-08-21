@@ -7,9 +7,7 @@ export default function ProductsList({ products }: any) {
   return (
     <div className={styles.productGrid}>
       {products?.map((product:any, index: number) => (
-        <>
           <ProductCard key={index} product={product} />
-        </>
       ))}
     </div>
   );

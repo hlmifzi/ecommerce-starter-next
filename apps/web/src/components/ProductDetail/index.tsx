@@ -43,7 +43,7 @@ const ProductDetail = ({
             <SharedButton type='primary'>
               + Keranjang
             </SharedButton>
-            <Link href={"/pembayaran"}>
+            <Link href={"/masuk"}>
               <SharedButton type='primary' color='success'>
                 Beli Pelatihan
               </SharedButton>

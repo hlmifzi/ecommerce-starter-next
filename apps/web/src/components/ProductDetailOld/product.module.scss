@@ -1,6 +1,6 @@
 // Variables
 $primary-color: #0D4D8B; // RSPP blue
-$secondary-color: #e63946; // For discount/CTA
+$color-secondary: #e63946; // For discount/CTA
 $text-color: #333;
 $light-gray: #f5f5f5;
 $border-radius: 8px;
@@ -125,11 +125,11 @@ $transition-speed: 0.3s;
 .currentPrice {
     font-size: 1.8rem;
     font-weight: 700;
-    color: $secondary-color;
+    color: $color-secondary;
 }
 
 .discountBadge {
-    background-color: $secondary-color;
+    background-color: $color-secondary;
     color: white;
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
@@ -266,7 +266,7 @@ $transition-speed: 0.3s;
         position: absolute;
         top: -5px;
         right: -5px;
-        background-color: $secondary-color;
+        background-color: $color-secondary;
         color: white;
         width: 20px;
         height: 20px;

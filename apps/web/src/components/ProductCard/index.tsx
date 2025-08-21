@@ -52,7 +52,7 @@ const ProductCard = ({product}:any) => {
                     <p>{formatDate(product?.scheduled_date)}</p>
                     <p>{product?.registered_qty} Terdaftar</p>
                 </div>
-                <Link href={`/login/`}>
+                <Link href={`/masuk/`}>
                     <SharedButton type='primary'>
                         Daftar Sekarang
                     </SharedButton>

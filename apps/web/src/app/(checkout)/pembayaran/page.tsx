@@ -1,12 +1,13 @@
 'use client';
 
+import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
-import { FaLock, FaArrowRight } from 'react-icons/fa';
-import Cart from '@/components/Carts';
-import styles from './checkout.module.scss';
+import { FaArrowRight } from 'react-icons/fa';
+import OrderSummaryBox from '@/components/OrderSummaryBox';
 // import midtransClient from 'midtrans-client';
+
+import styles from './checkout.module.scss';
 
 type FormData = {
   name: string;
@@ -109,62 +110,28 @@ export default function CheckoutPage() {
   return (
     <div className={styles.container}>
       <div>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <div className={styles.header}>
-          <h1 className={styles.title}>Pendaftaran Training</h1>
-          <p className={styles.subtitle}>Lengkapi data diri Anda untuk melanjutkan pembayaran</p>
+          <h1 className={styles.title}>Informasi Pembeli</h1>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <div className={styles.formGroup}>
             <label className={styles.label}>Nama Lengkap</label>
-            <input
-              {...register('name', { required: 'Nama lengkap wajib diisi' })}
-              className={styles.input}
-              placeholder="Masukkan nama lengkap Anda"
-            />
-            {errors.name && (
-              <span className={styles.error}>{errors.name.message}</span>
-            )}
+            <p>helmi fauzi</p>
           </div>
           
           <div className={styles.formGroup}>
             <label className={styles.label}>Nomor WhatsApp</label>
-            <input
-              {...register('phone', { 
-                required: 'Nomor WhatsApp wajib diisi',
-                pattern: {
-                  value: /^[0-9]+$/,
-                  message: 'Harus berupa angka'
-                },
-                minLength: {
-                  value: 10,
-                  message: 'Nomor terlalu pendek'
-                }
-              })}
-              className={styles.input}
-              placeholder="Contoh: 081234567890"
-            />
-            {errors.phone && (
-              <span className={styles.error}>{errors.phone.message}</span>
-            )}
+            <p>0819 0920 0921</p>
           </div>
           
           <div className={styles.formGroup}>
             <label className={styles.label}>Email</label>
-            <input
-              {...register('email', { 
-                required: 'Email wajib diisi',
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: 'Email tidak valid'
-                }
-              })}
-              className={styles.input}
-              placeholder="Contoh: email@domain.com"
-              type="email"
-            />
-            {errors.email && (
-              <span className={styles.error}>{errors.email.message}</span>
-            )}
+            <p>helmi.fauzi@ihc.id</p>
+          </div>
+
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Profesi</label>
+            <p>Dokter Ahli Penyakit Dalam</p>
           </div>
           
           <div className={styles.paymentMethods}>
@@ -195,30 +162,21 @@ export default function CheckoutPage() {
               </label>
             </div>
           </div>
-          
-          <div className={styles.formGroup}>
-            <button 
-              type="submit" 
-              className={styles.submitButton}
-              disabled={isSubmitting}
-              onClick={() => router.push(`/payment-notif`)}
-            >
-              <FaLock style={{ fontSize: '0.9rem' }} />
-              {isSubmitting ? 'Memproses...' : 'Lanjutkan Pembayaran'}
-              <FaArrowRight style={{ fontSize: '0.9rem' }} />
-            </button>
-          </div>
-          
-          <div className={styles.securityNote}>
-            <FaLock style={{ marginRight: '0.5rem', color: '#666', fontSize: '0.8rem' }} />
-            <span style={{ fontSize: '0.8rem', color: '#666' }}>
-              Data Anda aman dan terlindungi
-            </span>
-          </div>
        </form>
       </div>
       <div>
-        <Cart />
+        <OrderSummaryBox 
+          withCartDetail
+          withPaymentButton={{
+            text: (
+              <div className={styles.buttonPay}>
+                {isSubmitting ? 'Memproses...' : (<>
+                  <p>Bayar</p><FaArrowRight/>
+                </>)}
+              </div>
+            )
+          }} 
+        />
       </div>
     </div>
   );

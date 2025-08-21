@@ -1,0 +1,42 @@
+@import "../../../lib/styles/index.scss";
+
+.container {
+    margin: auto;
+    width: size(504);
+    max-width: calc(100vw - size(16));
+    margin-top: size(32);
+
+    h1 {
+        text-align: center;
+        font-size: size(32);
+        color: $color-black;
+        margin-bottom: size(23);
+    }
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: size(23);
+
+    label {
+        font-size: size(16);
+        color: $color-black;
+    }
+
+    [class*='ant-input-group-addon'] {
+        background: #fff !important;
+    }
+}
+
+.registerText {
+    text-align: right;
+}
+
+.registerCTA {
+    color: $color-secondary;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

@@ -9,7 +9,7 @@ export default async function HomePage() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1 className={styles.title}>Training Kesehatan Profesional</h1>
+        <h1 className={styles.title}>Pelatihan Kesehatan Profesional</h1>
         <p className={styles.subtitle}>
           Tingkatkan kompetensi tenaga kesehatan dengan pelatihan berkualitas dari rumah sakit terpercaya
         </p>

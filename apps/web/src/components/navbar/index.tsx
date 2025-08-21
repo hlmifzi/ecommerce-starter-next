@@ -83,13 +83,15 @@ export default function Navbar() {
           </div>
           
           <div className={styles.actions}>
-            <Link href="/cart" className={styles.cartButton} aria-label="Cart">
+            <Link href="/keranjang" className={styles.cartButton} aria-label="Cart">
               <MdOutlineShoppingCart size={20}  />
               <span className={styles.cartCount}>0</span>
             </Link>
-            <SharedButton type="default">
-              Masuk
-            </SharedButton>
+            <Link href={"/masuk"}>
+              <SharedButton type="default">
+                Masuk
+              </SharedButton>
+            </Link>
           </div>
         </div>
       </div>

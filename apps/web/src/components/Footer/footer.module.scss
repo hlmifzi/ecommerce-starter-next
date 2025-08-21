@@ -5,6 +5,13 @@
     width: $w-screen;
 }
 
+.copyRight {
+    color: $color-black-soft;
+    font-size: size(14);
+    text-align: right;
+    margin-top: -1rem
+}
+
 .footerContainer {
     @include flex(row, flex-start, space-between);
     min-width: size(1124);
@@ -109,13 +116,48 @@
     }
 }
 
+.kemenkesCertified {
+    font-weight: $bold;
+    font-size: size(12);
+    color: $color-black;
+
+    p {
+        margin-top: size(8);
+    }
+
+    button {
+        padding: 0;
+        color: $color-primary !important;
+
+        &:hover {
+            transition: transform 0.5s;
+            transform: translateY(-2px);
+        }
+
+        &:after {
+            content: "";
+            width: size(16);
+            height: size(8);
+            margin-top: size(2);
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8" viewBox="0 0 16 8" fill="none"><path d="M12.01 3H0V5H12.01V8L16 4L12.01 0V3Z" fill="%230D4D8B"/></svg>');
+        }
+    }
+}
+
 
 @media (max-width: 768px) {
+
+
 
     .footerSection,
     .footerContainer {
         @include flex(column, flex-start, center);
         padding: size(16);
+    }
+
+    .footerContainer {
+        padding: size(0);
+        padding-bottom: size(420);
     }
 
     .information {
@@ -127,10 +169,11 @@
     }
 
     .listMenuContainer {
-        display: inline;
+        display: block;
         column-count: 2;
         gap: 16px;
         margin-top: size(32);
+        max-width: 100vw;
 
         h3,
         a {

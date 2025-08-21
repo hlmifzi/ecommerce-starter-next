@@ -1,0 +1,31 @@
+@import "../../../lib/styles/index.scss";
+
+.container {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.inner {
+    @include grid(2);
+    grid-template-columns: auto 31%;
+    grid-gap: size(16);
+
+    &>div {
+        width: $w-full;
+        height: fit-content;
+        max-height: fit-content;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        [class*='orderSummaryContainer'] {
+            @include position(fixed, auto, 0, 0, 0);
+            z-index: 10;
+        }
+    }
+
+    .inner {
+        @include grid(1);
+    }
+}

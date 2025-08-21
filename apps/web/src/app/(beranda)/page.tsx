@@ -40,7 +40,7 @@ export default async function HomePage() {
       </section>
       <section className={styles.popularProduct}>
         <div className={styles.header}>
-          <h1 className={styles.title}>Pelatihan Terdekat</h1>
+          <h1 className={styles.title}>Pelatihan Kesehatan Profesional Terdekat</h1>
         </div>
         
         <div className={styles.productGrid}>

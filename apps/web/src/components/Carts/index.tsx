@@ -1,16 +1,12 @@
 'use client';
 
-import { FaTimes, FaPlus, FaMinus } from 'react-icons/fa';
-import styles from './cart.module.scss';
-import Link from 'next/link';
+import { FaTrash } from 'react-icons/fa';
 import Image from 'next/image';
 
+import styles from './cart.module.scss';
+
 const Cart = ({
-  withPaymentButton = false,
-  title= "Keranjang Belanja"
-}) => {
-  // Sample cart data (replace with your actual data)
-  const cartItems = [
+  cartItems =  [
     {
       id: 1,
       name: "Training Kesehatan Dasar",
@@ -28,78 +24,48 @@ const Cart = ({
       quantity: 2,
       hospital: "authorized: RS pusat pertamina (RSPP)"
     }
-  ];
+  ],
+  title= "Keranjang Belanja"
+}) => {
 
-  const subtotal = cartItems.reduce((sum, item) => {
-    return sum + (item?.discountedPrice || item.price) * item.quantity;
-  }, 0);
 
   return (
-    <div className={styles.cartContainer}>
-      <h2 className={styles.cartTitle}>{title}</h2>
-      
-      <div className={styles.cartItems}>
-        {cartItems.map((item) => (
-          <div key={item.id} className={styles.cartItem}>
-            <div className={styles.itemImage}>
-              <Image width={50} height={50} src={item.image} alt={item.name} />
-            </div>
-            
-            <div className={styles.itemDetails}>
-              <h3 className={styles.itemName}>{item.name}</h3>
-              <p className={styles.itemHospital}>{item.hospital}</p>
-              
-              <div className={styles.priceContainer}>
-                {item?.discountedPrice ? (
-                  <>
-                    <span className={styles.originalPrice}>Rp {item.price.toLocaleString('id-ID')}</span>
-                    <span className={styles.discountedPrice}>Rp {item?.discountedPrice.toLocaleString('id-ID')}</span>
-                  </>
-                ) : (
-                  <span className={styles.currentPrice}>Rp {item.price.toLocaleString('id-ID')}</span>
-                )}
-              </div>
-              
-              <div className={styles.quantityControl}>
-                <button className={styles.quantityButton}>
-                  <FaMinus />
-                </button>
-                <span className={styles.quantity}>{item.quantity}</span>
-                <button className={styles.quantityButton}>
-                  <FaPlus />
+    <>
+      <div className={styles.cartContainer}>
+        <div>
+          <h2 className={styles.cartTitle}>{title}</h2>   
+          <div className={styles.cartItems}>
+            {cartItems.map((item) => (
+              <div key={item.id} className={styles.cartItem}>
+                <div className={styles.itemImage}>
+                  <Image width={50} height={50} src={item.image} alt={item.name} />
+                </div>
+                
+                <div className={styles.itemDetails}>
+                  <h3 className={styles.itemName}>{item.name}</h3>
+                  <p className={styles.itemHospital}>{item.hospital}</p>
+                  
+                  <div className={styles.priceContainer}>
+                    {item?.discountedPrice ? (
+                      <>
+                        <span className={styles.originalPrice}>Rp {item.price.toLocaleString('id-ID')}</span>
+                        <span className={styles.discountedPrice}>Rp {item?.discountedPrice.toLocaleString('id-ID')}</span>
+                      </>
+                    ) : (
+                      <span className={styles.currentPrice}>Rp {item.price.toLocaleString('id-ID')}</span>
+                    )}
+                  </div>
+                </div>
+                
+                <button className={styles.removeButton}>
+                  <FaTrash />
                 </button>
               </div>
-            </div>
-            
-            <button className={styles.removeButton}>
-              <FaTimes />
-            </button>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
-      
-      <div className={styles.cartSummary}>
-        <div className={styles.summaryRow}>
-          <span>Subtotal</span>
-          <span>Rp {subtotal.toLocaleString('id-ID')}</span>
-        </div>
-        <div className={styles.summaryRow}>
-          <span>Biaya Admin</span>
-          <span>Rp 5.000</span>
-        </div>
-        <div className={styles.summaryRow}>
-          <span>Total</span>
-          <span className={styles.totalPrice}>Rp {(subtotal + 5000).toLocaleString('id-ID')}</span>
-        </div>
-        {withPaymentButton && (
-          <Link href="/checkout">
-            <button className={styles.checkoutButton}>
-              Checkout Sekarang
-            </button>
-          </Link>
-        )}
-      </div>
-    </div>
+    </>
   );
 };
 

@@ -1,0 +1,93 @@
+@import "../../../lib/styles/index.scss";
+
+.container {
+    margin: auto;
+    width: size(935);
+    max-width: calc(100vw - size(16));
+    margin-top: size(32);
+
+    h1 {
+        text-align: center;
+        font-size: size(32);
+        color: $color-black;
+        margin-bottom: size(23);
+    }
+}
+
+.formContainer {
+    @include grid(2);
+    grid-gap: size(23);
+
+    label {
+        font-size: size(16);
+        color: $color-black;
+    }
+
+    [class*='ant-input-group-addon'] {
+        background: #fff !important;
+    }
+}
+
+
+.inputLeftRegister {
+    display: flex;
+    flex-direction: column;
+    gap: size(10);
+}
+
+.inputRightRegister {
+    @extend .inputLeftRegister;
+}
+
+.privacyPolicyContainer {
+    @include flex(row, center, space-between);
+    margin-top: size(19);
+
+    p {
+        font-size: size(14);
+    }
+}
+
+.checkboxPrivay {
+    margin-right: size(8);
+}
+
+.registerText {
+    text-align: right;
+    font-size: size(14);
+}
+
+.registerCTA {
+    color: $color-secondary;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.registerSubmitForm {
+    button {
+        min-height: size(60);
+        height: size(60);
+        max-height: size(60);
+    }
+}
+
+.actionButton {
+    margin: 0 auto;
+    width: size(600);
+    max-width: calc($w-screen - size(16));
+    margin-top: size(29);
+}
+
+@media (max-width: 768px) {
+    .formContainer {
+        @include grid(1);
+        grid-gap: size(16);
+    }
+
+    .privacyPolicyContainer {
+        @include flex(column, flex-start, auto);
+        margin-bottom: size(16);
+    }
+}
