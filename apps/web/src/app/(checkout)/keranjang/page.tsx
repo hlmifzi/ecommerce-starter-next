@@ -1,5 +1,3 @@
-'use client';
-
 import Cart from '@/components/Carts';
 import { getProducts } from '@/services/api/product';
 import OrderSummaryBox from '@/components/OrderSummaryBox';

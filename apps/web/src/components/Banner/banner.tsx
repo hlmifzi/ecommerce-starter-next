@@ -1,4 +1,5 @@
 "use client"
+import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Image from 'next/image';
@@ -88,12 +89,16 @@ const Carousel = ({ items, autoPlay = true, interval = 5000 }: any) => {
                   <p className={styles.carouselDescription}>{item.description}</p>
                   {item.cta && (
                     <div className={styles.ctaBanner}>
-                      <SharedButton type="primary">
-                        {item.cta}
-                      </SharedButton>
-                      <SharedButton type="tertiary">
-                        {item.second_cta}
-                      </SharedButton>
+                      <Link href="/masuk">
+                        <SharedButton type="primary">
+                          {item.cta}
+                        </SharedButton>
+                      </Link>
+                      <Link href="/daftar">
+                        <SharedButton type="tertiary" className={styles.tertiaryCustom}>
+                          {item.second_cta}
+                        </SharedButton>
+                      </Link>
                     </div>
                   )}
                 </div>

@@ -13,7 +13,7 @@ export async function getProducts() {
         "title": "Workshop Mitra Bestari Tenaga Ahli Kesehatan premium sangaat",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent maximus tristique enim. Nam finibus nunc et nibh pharetra venenatis. Phasellus tincidunt tortor in lorem consectetur, nec ullamcorper ipsum pretium. Aliquam aliquet nec leo in tristique. Donec vel nulla iaculis, malesuada velit pretium, tristique nisi. Proin ullamcorper sapien sit amet leo mollis, id consectetur magna tempus. Aenean tincidunt volutpat tortor. Sed sit amet auctor ante, eget pretium sapien. Suspendisse sapien dolor, accumsan quis odio quis, posuere blandit leo. Cras bibendum consequat massa sed pretium.",
         "stock": "99999",
-        "price": 900000,
+        "price": 0,
         "discounted_price": null,
         "additional_info": "vaksin miigitis murah",
         "registrationOpen": "2025-08-19T07:14:50.787Z",

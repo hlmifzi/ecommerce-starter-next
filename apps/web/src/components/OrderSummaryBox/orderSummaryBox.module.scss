@@ -19,6 +19,10 @@
     padding-top: size(16);
 }
 
+.actionDialog {
+    width: $w-full;
+}
+
 .summaryRow {
     display: flex;
     justify-content: space-between;
@@ -59,7 +63,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: all $transition-speed;
-    margin-top: 1.5rem;
+    margin-top: size(16) !important;
 
     &:hover {
         background-color: darken($color-primary, 10%);
@@ -72,7 +76,7 @@
     grid-template-columns: size(100) auto;
     gap: 1rem;
     padding: 1rem 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid $color-border-neutral;
     position: relative;
     cursor: pointer;
 
@@ -187,6 +191,19 @@
         color: $color-black-soft;
         margin-bottom: size(-4);
         margin-right: size(4);
+    }
+}
+
+.midtransDummyContainer {
+    position: relative;
+    width: $w-full;
+    height: 400px;
+
+}
+
+.midtransModalContainer {
+    [class*="MuiDialogContent-root css-kw13he-MuiDialogContent-root"] {
+        padding: 0 0 !important;
     }
 }
 

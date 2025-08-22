@@ -1,0 +1,11 @@
+@import '../../../lib/styles/index.scss';
+
+.tabsContainer {
+    [class*="Mui-selected"] {
+        color: $color-primary !important;
+    }
+
+    [class*="MuiButtonBase-root MuiTab-root"] {
+        text-transform: capitalize;
+    }
+}

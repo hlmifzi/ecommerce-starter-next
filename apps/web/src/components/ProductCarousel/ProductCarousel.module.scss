@@ -9,7 +9,6 @@
     flex-wrap: nowrap;
     overflow: auto;
     padding: size(16) size(0) size(6);
-    margin-left: size(-10);
 
     [class*='card'] {
         min-width: size(270);
@@ -35,7 +34,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10;
+    z-index: 2;
     cursor: pointer;
     background: $color-secondary !important;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
@@ -45,11 +44,6 @@
         color: $color-white;
     }
 
-    &:hover {
-        background: $color-primary !important;
-        border: size(1) solid $color-primary !important;
-    }
-
     &:disabled {
         opacity: 0;
         pointer-events: none;
@@ -57,11 +51,11 @@
 }
 
 .productNavButtonLeft {
-    left: size(8);
+    left: size(0);
 }
 
 .productNavButtonRight {
-    right: size(8);
+    right: size(0);
 }
 
 .hidden {

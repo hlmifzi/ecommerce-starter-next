@@ -1,11 +1,10 @@
 "use client"
 
-import { ThemeProvider } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import styles from "./button.module.scss"
 
 
-type ButtonType =  "text" | "primary" | "secondary" | "tertiary"
+type ButtonType =  "text" | "primary" | "secondary" | "tertiary" | "Quaternary"
 type variantType =  "text" | "contained" | "outlined"
 type SharedButtonType = {
   text?: string
@@ -35,6 +34,8 @@ export default function SharedButton({
       case "secondary":
         return "contained"
       case "tertiary":
+        return "outlined"
+      case "Quaternary":
         return "outlined"
     }
   }

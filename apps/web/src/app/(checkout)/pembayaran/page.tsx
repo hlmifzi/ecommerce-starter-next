@@ -110,10 +110,11 @@ export default function CheckoutPage() {
   return (
     <div className={styles.container}>
       <div>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <div className={styles.header}>
-          <h1 className={styles.title}>Informasi Pembeli</h1>
-        </div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.buyerInformationContainer}> 
+          <div className={styles.header}>
+            <h1 className={styles.title}>Informasi Pembeli</h1>
+          </div>
           <div className={styles.formGroup}>
             <label className={styles.label}>Nama Lengkap</label>
             <p>helmi fauzi</p>
@@ -133,6 +134,7 @@ export default function CheckoutPage() {
             <label className={styles.label}>Profesi</label>
             <p>Dokter Ahli Penyakit Dalam</p>
           </div>
+        </div>
           
           <div className={styles.paymentMethods}>
             <h3 className={styles.paymentTitle}>Metode Pembayaran</h3>

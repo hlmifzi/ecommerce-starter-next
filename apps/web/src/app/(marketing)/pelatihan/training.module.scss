@@ -1,3 +1,5 @@
+@import "../../../lib/styles/index.scss";
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -47,7 +49,8 @@
 // Responsive adjustments
 @media (max-width: 768px) {
     .container {
-        padding: 1.5rem;
+        padding: size(8);
+
     }
 
     .title {
@@ -60,7 +63,6 @@
 
     .productGrid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 1.5rem;
     }
 }
 

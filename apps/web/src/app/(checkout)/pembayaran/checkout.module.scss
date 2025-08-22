@@ -1,15 +1,12 @@
 @import "../../../lib/styles/index.scss";
 
-// Container
 .container {
-    display: grid;
+    @include grid(2, 32);
     grid-template-columns: auto 40%;
-    gap: 1rem;
     margin: 2rem auto;
     width: 100%;
 }
 
-// Header
 .header {
     text-align: left;
     margin-bottom: size(16);
@@ -39,13 +36,6 @@
     font-size: 1rem;
 }
 
-// Form
-.form {
-    background: white;
-    padding: 2rem;
-    border-radius: $border-radius;
-    box-shadow: $box-shadow;
-}
 
 .formGroup {
     margin-bottom: size(8);
@@ -124,6 +114,11 @@
     padding: 1.5rem;
     border-radius: $border-radius;
     box-shadow: $box-shadow;
+}
+
+.buyerInformationContainer {
+    @extend .paymentMethods;
+    margin-top: 0;
 }
 
 .paymentTitle {

@@ -28,6 +28,7 @@ type DialogProps = {
   title?: string;
   open?: boolean;
   handleDialog?:any;
+  classNameContainer?:any;
   children?: ReactNode;
   action?: ReactNode; // tombol atau komponen lain
 }
@@ -39,6 +40,7 @@ export default function AlertDialogSlide({
     action,
     open = false,
     handleDialog,
+    classNameContainer
 }: DialogProps) {
   
   return (
@@ -48,6 +50,7 @@ export default function AlertDialogSlide({
         slots={{
           transition: Transition,
         }}
+        className={classNameContainer}
         keepMounted
         onClose={handleDialog}
         aria-describedby="alert-dialog-slide-description"

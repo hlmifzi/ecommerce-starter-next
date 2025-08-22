@@ -2,20 +2,21 @@
 
 import { useState } from "react"
 import dynamic from "next/dynamic";
+import { usePathname, useRouter } from "next/navigation";
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaLock, FaChevronDown, FaChevronUp, FaTrash } from 'react-icons/fa';
 
 import SharedButton from "@/components/shared/SharedButton";
+
 const SharedModal = dynamic(() => import("@/components/shared/SharedModal"), {
   ssr: false, // kalau modal hanya untuk client
-  loading: () => <p>Loading...</p>, // optional
 });
 
 import styles from './orderSummaryBox.module.scss';
 
 type orderSummaryBoxType ={ 
-  withPaymentButton: {
+  withPaymentButton?: {
     text: any
   }
   cartItems?: any;
@@ -23,9 +24,7 @@ type orderSummaryBoxType ={
 }
 
 const OrderSummaryBox = ({
-  withPaymentButton = {
-    text: "Beli (2) Pelatihan"
-  },
+  withPaymentButton,
   withCartDetail = false,
   cartItems =  [
     {
@@ -47,13 +46,20 @@ const OrderSummaryBox = ({
     }
   ],
 } : orderSummaryBoxType) => {
-const [openPayment, setOpenPayment] = useState(false);
+  const [openPayment, setOpenPayment] = useState(false);
+  const [isOpenDetail, setIsOpenDetail] = useState(true)
 
+  const pathname = usePathname()
+  const router = useRouter()
+  
   const handlePaymentDialog = () => {
-    setOpenPayment(prev => !prev);
+    if(pathname === "/keranjang") {
+      router.push("pembayaran")
+    } else {
+      setOpenPayment(true);
+    }
   };
 
-  const [isOpenDetail, setIsOpenDetail] = useState(true)
   const subtotal = cartItems.reduce((sum:any, item:any) => {
     return sum + (item?.discountedPrice || item.price) * item.quantity;
   }, 0);
@@ -63,7 +69,7 @@ const [openPayment, setOpenPayment] = useState(false);
         {withCartDetail && (
           <>
             <div className={styles.orderDetailCollapse} onClick={() => setIsOpenDetail((prev:any)=>!prev)}>
-              <h2>Ringkasan Pesanan</h2>
+              <h2>Ringkasan Pemesanan</h2>
               {isOpenDetail ? <FaChevronUp /> : <FaChevronDown />}
             </div>
             {isOpenDetail && (
@@ -90,10 +96,11 @@ const [openPayment, setOpenPayment] = useState(false);
                           )}
                         </div>
                       </div>
-                      
-                      <button className={styles.removeButton}>
-                        <FaTrash />
-                      </button>
+                      {pathname !== "/status-pembayaran" &&
+                        <button className={styles.removeButton}>
+                          <FaTrash />
+                        </button>
+                      }
                     </div>
                   </Link>
                 ))}
@@ -108,7 +115,11 @@ const [openPayment, setOpenPayment] = useState(false);
           </div>
           {withPaymentButton && (
             <>
-              <SharedButton type="primary" onClick={handlePaymentDialog} className={styles.checkoutButton}>
+              <SharedButton 
+                type="primary" 
+                onClick={handlePaymentDialog} 
+                className={styles.checkoutButton}
+              >
                 {withPaymentButton?.text}
               </SharedButton>
                <div className={styles.securityNote}>
@@ -123,8 +134,27 @@ const [openPayment, setOpenPayment] = useState(false);
 
         <SharedModal 
           open={openPayment}
+          classNameContainer={styles.midtransModalContainer}
           handleDialog={handlePaymentDialog}
+          title={"Pembayaran Online Midtrans"}
+          action={
+            <div className={styles.actionDialog}>
+              <Link href={"/status-pembayaran"}>
+                <SharedButton type="primary">
+                  Selesai Pembayaran
+                </SharedButton>
+              </Link>
+            </div>
+          }
         >
+          <div className={styles.midtransDummyContainer}>
+            <Image 
+              src="/payment/midtrans-dummy.png" 
+              fill 
+              alt="midtrans"
+              style={{ objectFit: "contain" }} // bisa "cover", "fill", dll
+            />
+          </div>
 
         </SharedModal>
     </div>

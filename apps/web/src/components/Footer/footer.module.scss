@@ -12,6 +12,12 @@
     margin-top: -1rem
 }
 
+.midtransDummyContainer {
+    width: 400px;
+    height: 200px;
+}
+
+
 .footerContainer {
     @include flex(row, flex-start, space-between);
     min-width: size(1124);
@@ -127,7 +133,7 @@
 
     button {
         padding: 0;
-        color: $color-primary !important;
+        margin-left: size(-5);
 
         &:hover {
             transition: transform 0.5s;
@@ -138,7 +144,7 @@
             content: "";
             width: size(16);
             height: size(8);
-            margin-top: size(2);
+            margin-left: size(4);
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8" viewBox="0 0 16 8" fill="none"><path d="M12.01 3H0V5H12.01V8L16 4L12.01 0V3Z" fill="%230D4D8B"/></svg>');
         }
     }

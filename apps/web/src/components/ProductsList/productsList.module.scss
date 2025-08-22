@@ -13,6 +13,7 @@
 @media (max-width: 768px) {
     .productGrid {
         @include grid(2);
-        gap: 1rem;
+        grid-gap: size(8);
+        gap: size(8);
     }
 }

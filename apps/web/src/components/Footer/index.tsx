@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { FaInstagram, FaFacebook, FaYoutube   } from "react-icons/fa";
-import SharedButton from "../shared/SharedButton";
+import CertifiedKemenkes from "../CertifiedKemenkes";
 
 import styles from "./footer.module.scss"
 
@@ -81,6 +81,7 @@ const menuLists = [
 ]
 
 const Footer = () => {
+
   return (
     <>
       <footer>
@@ -100,13 +101,7 @@ const Footer = () => {
                     {list?.menus?.map(((menu:any, index: number) => (
                       <div key={index}>
                       {menu?.imgUrl ? (
-                        <div className={styles.kemenkesCertified}>
-                          <Image src={menu?.imgUrl} width={101} height={46} alt="verified-kemenkes"/>
-                          <p>21 Agustus 2020</p>
-                          <SharedButton variant="text">
-                            Detail
-                          </SharedButton>
-                        </div>
+                        <CertifiedKemenkes menu={menu}/>
                       )
                       : (
                         <Link key={index} href={menu.url}>
