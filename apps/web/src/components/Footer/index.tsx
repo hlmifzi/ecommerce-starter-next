@@ -103,7 +103,7 @@ const Footer = () => {
                         <div className={styles.kemenkesCertified}>
                           <Image src={menu?.imgUrl} width={101} height={46} alt="verified-kemenkes"/>
                           <p>21 Agustus 2020</p>
-                          <SharedButton type="link">
+                          <SharedButton variant="text">
                             Detail
                           </SharedButton>
                         </div>

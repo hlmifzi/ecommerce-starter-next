@@ -48,17 +48,6 @@ export default function Navbar() {
 
   return (
     <nav className={`${styles.navbar} ${isScrolled ? styles.navbarFixed : ''}`}>
-      {/* <div className={styles.topBar}>
-        <div className={styles.topBarContainer}>
-          <div className={styles.contactInfo}>
-            <span>☎️ 150442</span>
-            <span>✉️ info@rspp-ecommerce.com</span>
-          </div>
-          <div className={styles.authLinks}>
-            <Link href="/login">Login / Register</Link>
-          </div>
-        </div>
-      </div> */}
       
       <div className={styles.mainNav}>
         <div className={styles.mainNavContainer}>
@@ -88,7 +77,7 @@ export default function Navbar() {
               <span className={styles.cartCount}>0</span>
             </Link>
             <Link href={"/masuk"}>
-              <SharedButton type="default">
+              <SharedButton type="tertiary">
                 Masuk
               </SharedButton>
             </Link>

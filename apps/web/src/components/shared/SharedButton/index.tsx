@@ -1,30 +1,51 @@
-import { Button } from "antd";
+"use client"
+
+import { ThemeProvider } from "@mui/material/styles";
+import Button from "@mui/material/Button";
 import styles from "./button.module.scss"
 
-export default function SharedButton({
-    type = "primary",
-    color= "",
-    text = "text",
-    children,
-    className,
-    onClick,
-    disabled = false
-}: {
-  type: "primary" | "text" | "link" | "dashed" | "default",
+
+type ButtonType =  "text" | "primary" | "secondary" | "tertiary"
+type variantType =  "text" | "contained" | "outlined"
+type SharedButtonType = {
   text?: string
   children?: any
-  className?: string
   onClick?: any;
-  color?: "success" | string,
-  disabled?:boolean
-}) {
+  disabled?: boolean
+  type?: ButtonType
+  className?: string
+  onclick?: any
+}
+
+export default function SharedButton({
+  children, 
+  disabled = false, 
+  type = "primary",
+  text = "text",
+  className,
+  onClick
+}: SharedButtonType) {
+
+  const getVariant = (type: ButtonType): variantType => {
+    switch (type) {
+      case "text":
+        return "text"
+      case "primary":
+        return "contained"
+      case "secondary":
+        return "contained"
+      case "tertiary":
+        return "outlined"
+    }
+  }
+
   return (
     <div className={styles.buttonContainer}>
       <Button 
         onClick={onClick} 
+        className={`shared-button-${type} ${className}`} 
+        variant={getVariant(type)} 
         disabled={disabled}
-        className={`${className} ${color} ${type}`} 
-        type={type}
       >
         {children || text}
       </Button>

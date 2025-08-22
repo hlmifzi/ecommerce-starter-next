@@ -9,6 +9,7 @@
     flex-wrap: nowrap;
     overflow: auto;
     padding: size(16) size(0) size(6);
+    margin-left: size(-10);
 
     [class*='card'] {
         min-width: size(270);
@@ -21,21 +22,23 @@
 // Tombol navigasi
 .productNavButton {
     box-shadow: $box-shadow;
-    position: absolute;
+    position: absolute !important;
     top: 45%;
     transform: translateY(-50%);
     background: white;
     border: 1px solid #e1e1e1;
-    border-radius: 50%;
-    width: size(40);
-    height: size(40);
+    border-radius: 50% !important;
+    width: size(40) !important;
+    min-width: size(40) !important;
+    max-width: size(40) !important;
+    height: size(40) !important;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 10;
     cursor: pointer;
     background: $color-secondary !important;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
     transition: background-color 0.2s;
 
     svg {

@@ -1,7 +1,12 @@
 @import "../../../lib/styles/index.scss";
 
 .buttonContainer {
-    [class*='default'] {
+    [class*='MuiButton-root'] {
+        font-weight: $medium !important;
+        text-transform: capitalize;
+    }
+
+    [class*='shared-button-tertiary'] {
         border-radius: size(30);
         background: $color-white;
         border: 1px solid $color-secondary;
@@ -16,7 +21,7 @@
         }
     }
 
-    [class*='ant-btn-color-primary'] {
+    [class*='shared-button-primary'] {
         background: $color-primary;
         border: 1px solid $color-primary;
         color: $color-white;
@@ -29,23 +34,6 @@
 
         &:hover {
             background: $color-primary !important;
-            transform: translateY(-1px);
-            box-shadow: $box-shadow;
-        }
-    }
-
-    [class*='success'] {
-        background: $color-secondary;
-        border: 1px solid $color-secondary;
-        color: $color-white;
-        border-radius: size(5);
-        min-height: size(35);
-        font-weight: 600;
-        width: $w-full;
-        transition: all 0.4s ease-in-out;
-
-        &:hover {
-            background: $color-secondary !important;
             transform: translateY(-1px);
             box-shadow: $box-shadow;
         }

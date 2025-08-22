@@ -72,7 +72,7 @@ export default function ProductCarousel({ products }: any) {
   return (
     <div className={styles.productGrid}>
       <SharedButton
-        type='default' 
+        type='secondary' 
         className={`${styles.productNavButton} ${styles.productNavButtonLeft} ${!canScrollLeft ? styles.hidden : ''}`}
         onClick={() => scrollTabs('left')}
         disabled={!canScrollLeft}
@@ -91,7 +91,7 @@ export default function ProductCarousel({ products }: any) {
       </div>
       
       <SharedButton
-        type='default'  
+        type='secondary'  
         className={`${styles.productNavButton} ${styles.productNavButtonRight} ${!canScrollRight ? styles.hidden : ''}`}
         onClick={() => scrollTabs('right')}
         disabled={!canScrollRight}

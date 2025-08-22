@@ -46,11 +46,11 @@
 }
 
 .btnAll {
-    display: block;
+    display: block !important;
     min-height: size(55);
     height: size(55);
     min-width: size(300);
-    margin: size(0) auto;
+    margin: size(0) auto !important;
     max-width: size(300);
 }
 

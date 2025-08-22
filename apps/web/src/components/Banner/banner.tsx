@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Image from 'next/image';
-import Button from "@/components/shared/SharedButton"
+import SharedButton from "@/components/shared/SharedButton"
 import styles from './banner.module.scss';
 
 const Carousel = ({ items, autoPlay = true, interval = 5000 }: any) => {
@@ -88,12 +88,12 @@ const Carousel = ({ items, autoPlay = true, interval = 5000 }: any) => {
                   <p className={styles.carouselDescription}>{item.description}</p>
                   {item.cta && (
                     <div className={styles.ctaBanner}>
-                      <Button type="primary">
+                      <SharedButton type="primary">
                         {item.cta}
-                      </Button>
-                      <Button type="default">
+                      </SharedButton>
+                      <SharedButton type="tertiary">
                         {item.second_cta}
-                      </Button>
+                      </SharedButton>
                     </div>
                   )}
                 </div>

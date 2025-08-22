@@ -1,9 +1,16 @@
 "use client"
 
 import { useState } from "react"
+import dynamic from "next/dynamic";
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaLock, FaChevronDown, FaChevronUp, FaTrash } from 'react-icons/fa';
+
+import SharedButton from "@/components/shared/SharedButton";
+const SharedModal = dynamic(() => import("@/components/shared/SharedModal"), {
+  ssr: false, // kalau modal hanya untuk client
+  loading: () => <p>Loading...</p>, // optional
+});
 
 import styles from './orderSummaryBox.module.scss';
 
@@ -40,6 +47,11 @@ const OrderSummaryBox = ({
     }
   ],
 } : orderSummaryBoxType) => {
+const [openPayment, setOpenPayment] = useState(false);
+
+  const handlePaymentDialog = () => {
+    setOpenPayment(prev => !prev);
+  };
 
   const [isOpenDetail, setIsOpenDetail] = useState(true)
   const subtotal = cartItems.reduce((sum:any, item:any) => {
@@ -56,8 +68,8 @@ const OrderSummaryBox = ({
             </div>
             {isOpenDetail && (
               <div className={styles.cartItems}>
-                {cartItems.map((item:any) => (
-                  <Link href={"/pelatihan/1212"}>
+                {cartItems.map((item:any, index: number) => (
+                  <Link key={index} href={"/pelatihan/1212"}>
                     <div key={item.id} className={styles.cartItem}>
                       <div className={styles.itemImage}>
                         <Image width={60} height={0} src={item.image} alt={item.name} />
@@ -96,11 +108,9 @@ const OrderSummaryBox = ({
           </div>
           {withPaymentButton && (
             <>
-              <Link href="/masuk">
-                <button className={styles.checkoutButton}>
-                  {withPaymentButton?.text}
-                </button>
-              </Link>
+              <SharedButton type="primary" onClick={handlePaymentDialog} className={styles.checkoutButton}>
+                {withPaymentButton?.text}
+              </SharedButton>
                <div className={styles.securityNote}>
                   <FaLock/>
                   <span>
@@ -110,6 +120,13 @@ const OrderSummaryBox = ({
             </>
           )}
         </div>
+
+        <SharedModal 
+          open={openPayment}
+          handleDialog={handlePaymentDialog}
+        >
+
+        </SharedModal>
     </div>
   )
 }
