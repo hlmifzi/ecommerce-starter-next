@@ -18,7 +18,10 @@ export default async function CheckoutPage() {
           text: "Beli Pelatihan"
          }} />
       </div>
-      <ProductCarousel products={products} />
+      <div>
+         <h2>Rekomendasi Pelatihan Lainnya</h2>
+        <ProductCarousel products={products} />
+      </div>
     </div>
   );
 }
