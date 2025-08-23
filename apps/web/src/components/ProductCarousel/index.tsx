@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import { useRef, useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import ProductCard from "../ProductCard"
@@ -88,6 +89,11 @@ export default function ProductCarousel({ products }: any) {
         {products?.map((product:any, index: number) => (
           <ProductCard key={index} product={product} />
         ))}
+          <Link className={styles.linkToAll} href="/pelatihan">
+            <SharedButton  type='primary'>
+              Lihat Semua
+            </SharedButton>
+          </Link>
       </div>
       
       <SharedButton

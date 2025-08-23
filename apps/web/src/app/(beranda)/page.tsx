@@ -1,13 +1,13 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getProducts } from '@/services/api/product';
 import ProductCarousel from '@/components/ProductCarousel';
 import Carousel from '@/components/Banner/banner';
 import SharedButton from '@/components/shared/SharedButton';
 import ScheduleTable from '@/components/shared/ScheduleTable';
-
-import styles from './home.module.scss';
-import Image from 'next/image';
 import DocumentationCarousel from '@/components/DocumentationCarousel';
+import ArticleCarousel from "@/components/ArticleCarousel"
+import styles from './home.module.scss';
 
 const visiMisiMock ={
   visi: "Menjadi pusat unggulan dalam penyelenggaraan pelatihan kesehatan yang berkualitas  tinggi, mendorong inovasi, dan menghasilkan tenaga profesional yang siap menghadapi  tantangan dunia kesehatan global.",
@@ -30,7 +30,7 @@ const visiMisiMock ={
     },
     {
       image: '/rspp-building.jpg',
-      title: 'Scale Up skill Anda Sekarang',
+      title: 'Tingkatkan Kompetensi Anda Sekarang',
       description: 'Tingkatkan kompetensi tenaga kesehatan dengan pelatihan berkualitas dari rumah sakit terpercaya.',
       cta: 'Masuk',
       second_cta: 'Registrasi'
@@ -113,17 +113,61 @@ const visiMisiMock ={
   }
 ];
 
+const articleData = [
+  {
+    id: 2,
+    slug: 'manfaat-meditasi-untuk-kesehatan-mental',
+    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&h=300&fit=crop',
+    title: 'Manfaat Meditasi untuk Kesehatan Mental dan Fisik',
+    description: 'Meditasi tidak hanya baik untuk kesehatan mental tetapi juga memberikan dampak positif bagi kesehatan fisik. Temukan berbagai manfaatnya dalam artikel ini.',
+    date: '12 November 2023',
+    views: 892,
+    content: 'Konten lengkap artikel...'
+  },
+  {
+    id: 3,
+    slug: 'tips-diet-sehat-untuk-pemula',
+    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&h=300&fit=crop',
+    title: '10 Tips Diet Sehat untuk Pemula yang Berkelanjutan',
+    description: 'Memulai diet sehat bisa menjadi tantangan. Berikut adalah 10 tips praktis untuk pemula yang ingin menjalani diet sehat secara berkelanjutan.',
+    date: '8 November 2023',
+    views: 1567,
+    content: 'Konten lengkap artikel...'
+  },
+  {
+    id: 4,
+    slug: 'olahraga-rumah-tanpa-alat',
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop',
+    title: '7 Olahraga Efektif yang Bisa Dilakukan di Rumah Tanpa Alat',
+    description: 'Tidak punya waktu ke gym? Simak 7 olahraga efektif yang bisa dilakukan di rumah tanpa perlu alat khusus.',
+    date: '5 November 2023',
+    views: 2043,
+    content: 'Konten lengkap artikel...'
+  },
+  {
+    id: 3,
+    slug: 'tips-diet-sehat-untuk-pemula',
+    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&h=300&fit=crop',
+    title: '10 Tips Diet Sehat untuk Pemula yang Berkelanjutan',
+    description: 'Memulai diet sehat bisa menjadi tantangan. Berikut adalah 10 tips praktis untuk pemula yang ingin menjalani diet sehat secara berkelanjutan.',
+    date: '8 November 2023',
+    views: 1567,
+    content: 'Konten lengkap artikel...'
+  },
+];
+
+
 export default async function HomePage() {
   const products = await getProducts();
 
   return (
     <div className={styles.container}>
-      <section className={styles.bannerHomeContainer}>
+      <section id="beranda" className={styles.bannerHomeContainer} >
         <Carousel items={carouselItems} autoPlay={true} interval={5000} />
       </section>
-      <section className={styles.popularProduct}>
+      <section id="pelatihan" className={styles.popularProduct}>
         <div className={styles.header}>
-          <h1 className={styles.title}>Pelatihan Kesehatan Profesional Terdekat</h1>
+          <h1 className={styles.title}>Pelatihan Kesehatan Terdekat</h1>
         </div>
         <div className={styles.productGrid}>
           <ProductCarousel 
@@ -131,31 +175,31 @@ export default async function HomePage() {
           />
           <Link href="/pelatihan">
             <SharedButton className={styles.btnAll} type='primary'>
-              Lihat Semua Kelas Profesional
+              Lihat Semua Kelas
             </SharedButton>
           </Link>
         </div>
       </section>
 
-      <section className={styles.scheduleDateSection}>
+      <section id="jadwal-pelatihan" className={styles.scheduleDateSection}>
         <ScheduleTable />
       </section>
 
-      <section className={styles.ourTeam}>
-          <h2 className={styles.title}>Tim Kami</h2>
-          <Image src="/home/out-team.png" width={800} height={500} alt="our team" />
+      <section id="struktur organisasi" className={styles.ourTeam}>
+        <h2 className={styles.title}>Tim Kami</h2>
+        <Image src="/home/out-team.png" width={800} height={500} className={styles.ourTeamImage} alt="our team" />
       </section>
 
-      <section className={styles.aboutUs}>
-        <h2 className={styles.title}>Tentang Kami</h2>
+      <section id="tentang-kami" className={styles.aboutUs}>
+        <h2>Tentang Kami</h2>
         <div className={styles.aboutUsContainer}>
-          <Image src="/logo-rspp.svg" width={500} height={200} alt="our team" />
-          <article>
+          <Image src="/logo-rspp.svg" className={styles.aboutUsImage} width={500} height={200} alt="our team" />
+          <article className={styles.aboutUsArticle}>
             RSPP Learning and Training Center merupakan sebuah unit strategis yang didirikan oleh Rumah Sakit Pusat Pertamina (RSPP) untuk mendukung pengembangan kompetensi sumber daya manusia di bidang kesehatan. Dengan semakin kompleksnya kebutuhan layanan kesehatan di era modern, keberadaan RSPP Learning and Training Center menjadi sangat krusial dalam memastikan tenaga kesehatan yang bekerja di RSPP memiliki kualitas unggul dan mampu bersaing secara global. Selain itu, RSPP Learning and Training Center dirancang untuk menjadi pusat pembelajaran yang tidak hanya memberikan pelatihan teknis, tetapi juga menanamkan nilai-nilai profesionalisme, integritas, dan inovasi. Melalui pendekatan ini, RSPP Learning and Training Center bertujuan untuk mencetak tenaga kesehatan yang mampu menjawab tantangan industri kesehatan yang terus berkembang.
           </article>
         </div>
       </section>
-      <section className={styles.visiMisiSection}>
+      <section id="visi-misi" className={styles.visiMisiSection}>
         <div className={styles.visiMisiContainer}>
           <h2 className={styles.title}>Visi</h2>
           <article>
@@ -176,21 +220,17 @@ export default async function HomePage() {
           </article>
         </div>
       </section>
-      <section className={styles.documentationSection}>
+      <section id="dokumentasi" className={styles.documentationSection}>
         <div className={styles.documentation}>
           <h2 className={styles.title}>Dokumentasi Kegiatan</h2>
-            <DocumentationCarousel documentations={documentationData} />
+          <DocumentationCarousel documentations={documentationData} />
         </div>
       </section>
 
-      <section className={styles.articleSection}>
-        <div className={styles.documentation}>
-          <h2 className={styles.titleArticle}>ARTIKEL</h2>
-          <article>
-            <p>Kumpulan berita terkini mengenai perkembangan RSPP</p>
-              
-          </article>
-        </div>
+      <section id="artikel" className={styles.articleSection}>
+          <h2 className={styles.titleArticle}>Artikel Terbaru</h2>
+          <p>Kumpulan berita terkini mengenai perkembangan RSPP</p>
+          <ArticleCarousel articles={articleData} />
       </section>
     </div>
   );

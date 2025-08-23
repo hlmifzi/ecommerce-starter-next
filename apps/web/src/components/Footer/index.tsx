@@ -90,7 +90,7 @@ const Footer = () => {
             <div className={styles.information}>
                 <Image src={'/logo-rspp.svg'} fill alt="logo-tarining-kesehatan-rspp"/>
                 <p>Jl. Kyai Maja No. 43, Kebayoran Baru Jakarta Selatan 12120</p>
-                <p>Call Center IHC : 150442</p>
+                <p>Layanan Pelanggan IHC : 150442</p>
                 <p>Email : rspusatpertamina@ihc.id</p>
             </div>
             <div className={styles.listMenuContainer}>
@@ -118,7 +118,9 @@ const Footer = () => {
             </div>
           </div>
         </section>
-        <p className={styles.copyRight}>&copy; 2025 LNTC Rumah Sakit Pusat Pertamina. All rights reserved.</p>
+        <div className={styles.copyRight}>
+          <p>&copy; 2025 LNTC Rumah Sakit Pusat Pertamina. All rights reserved.</p>
+        </div>
       </footer>
     </>
   )

@@ -4,8 +4,7 @@
 
 .scheduleContainer {
     max-width: 1200px;
-    padding-top: size(32);
-    border-top: $half solid $color-border-neutral;
+    padding-top: size(32) 0;
     opacity: 0;
     animation: containerFadeIn 0.8s ease-out forwards;
     margin-top: size(40) 0;
@@ -344,7 +343,8 @@
 // Responsive design
 @media (max-width: 768px) {
     .scheduleContainer {
-        padding: 16px;
+        padding: size(40) size(16) !important;
+        max-width: $w-screen;
     }
 
     .title {
@@ -371,6 +371,8 @@
     }
 
     .navigation {
+        margin-bottom: 0;
+
         .period {
             min-width: 120px;
             font-size: 14px;
@@ -385,51 +387,6 @@
         .activityCell,
         .dateCell {
             animation-duration: 0.4s !important;
-        }
-    }
-}
-
-@media (max-width: 480px) {
-    .scheduleContainer {
-        padding: 12px;
-        border-radius: 16px;
-    }
-
-    .title {
-        font-size: 18px;
-        margin-bottom: 16px;
-    }
-
-    .navigation {
-        margin-bottom: 16px;
-        gap: 12px;
-
-        button {
-            padding: 6px;
-
-            svg {
-                font-size: 16px;
-            }
-        }
-
-        .period {
-            min-width: 100px;
-            font-size: 12px;
-        }
-    }
-
-    .scheduleTable {
-
-        th,
-        td {
-            padding: 6px 8px;
-            font-size: 12px;
-        }
-
-        .dateBox {
-            padding: 3px 5px;
-            font-size: 10px;
-            min-width: 35px;
         }
     }
 }

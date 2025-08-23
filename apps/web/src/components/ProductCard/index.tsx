@@ -1,19 +1,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+
 import SharedButton from '@/components/shared/SharedButton';
 import BadgeProduct from '@/components/BadgeProduct';
 import { formatDate } from '@/lib/function/formatDate';
+import { MdOutlineShoppingCart } from 'react-icons/md';
+
 import styles from './productCard.module.scss';
 
 const ProductCard = ({product}:any) => {
     const router = useRouter()
     let price = product?.discounted_price || product?.price
-
-    const handleCardClick = () => {
-        router.push(`/masuk}`);
-    }
-
+    
     return (
     <div className={styles.productCardContainer}>
         <div className={styles.badgeProduct}>
@@ -29,13 +28,13 @@ const ProductCard = ({product}:any) => {
                     <BadgeProduct type={product?.status} />
                 </div>
                 <div className={styles.imageContainer}>
-                <Image 
-                    src={`${product?.image?.[0]?.url}`} 
-                    alt={product?.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 700px"
-                    className={styles.productImage}
-                />
+                    <Image 
+                        src={`${product?.image?.[0]?.url}`} 
+                        alt={product?.title}
+                        fill
+                        sizes={"(max-width: 768px) 100vw, 600px"}
+                        className={styles.productImage}
+                    />
                 </div>
                 <div className={styles.content}>
                 <h2 className={styles.title}>{product?.title}</h2>
@@ -56,9 +55,18 @@ const ProductCard = ({product}:any) => {
                     <p>{formatDate(product?.scheduled_date)}</p>
                     <p>{product?.registered_qty} Terdaftar</p>
                 </div>
-                <SharedButton onClick={handleCardClick} type='primary'>
-                    Daftar Sekarang
-                </SharedButton>
+                <div className={styles.btnAction}>
+                    <Link href={"/masuk"}>
+                        <SharedButton type='primary'>
+                            Daftar Sekarang
+                        </SharedButton>
+                    </Link>
+                    <Link href={"/masuk"}>
+                        <SharedButton type='secondary'>
+                            <MdOutlineShoppingCart size={20}  />
+                        </SharedButton>
+                    </Link>
+                </div>
                 </div>
             </div>
         </Link>

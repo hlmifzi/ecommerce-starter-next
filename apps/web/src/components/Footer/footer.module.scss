@@ -8,8 +8,8 @@
 .copyRight {
     color: $color-black-soft;
     font-size: size(14);
-    text-align: right;
-    margin-top: -1rem
+    text-align: center;
+    padding-bottom: size(16);
 }
 
 .midtransDummyContainer {
@@ -165,7 +165,6 @@
 
     .footerContainer {
         padding: size(0);
-        padding-bottom: size(420);
     }
 
     .information {

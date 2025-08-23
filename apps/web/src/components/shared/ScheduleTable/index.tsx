@@ -112,7 +112,7 @@ const ScheduleTable = () => {
                 </td>
                 {displayedMonths.map((month, colIndex) => {
                   const monthIndex = months.indexOf(month);
-                  const scheduleItem = training.schedule.find(item => item.month === monthIndex);
+                  const scheduleItem = training.schedule.find((item:any) => item.month === monthIndex);
                   
                   return (
                     <td 

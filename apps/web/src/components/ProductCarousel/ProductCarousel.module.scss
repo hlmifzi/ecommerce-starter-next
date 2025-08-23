@@ -18,6 +18,12 @@
     }
 }
 
+.linkToAll {
+    @include flex(row, center, center);
+    height: $w-full;
+    height: $w-full;
+}
+
 // Tombol navigasi
 .productNavButton {
     box-shadow: $box-shadow;
@@ -70,9 +76,14 @@
 
 /* Responsive design */
 @media (max-width: 768px) {
+
+    .productGrid {
+        width: $w-screen;
+        margin-left: size(-8);
+    }
+
     .productNavButton {
-        width: 36px;
-        height: 36px;
+        display: none !important;
     }
 
     .productNavButtonLeft {

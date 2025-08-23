@@ -5,7 +5,6 @@ import SharedButton from '@/components/shared/SharedButton';
 import Link from 'next/link';
 import Image from 'next/image';
 
-
 import styles from './navbar.module.scss';
 
 export default function Navbar() {
@@ -76,10 +75,12 @@ export default function Navbar() {
           <div className={styles.navLinks}>
             <Link href="/" className={styles.navLink}>Beranda</Link>
             <Link href="/pelatihan" className={styles.navLink}>Program Pelatihan</Link>
-            <Link href="/categories" className={styles.navLink}>Struktur Organisasi</Link>
-            <Link href="/about" className={styles.navLink}>Tentang Kami</Link>
-            <Link href="/about" className={styles.navLink}>Visi Misi</Link>
-            <Link href="/contact" className={styles.navLink}>Artikel</Link>
+            <Link href="/jadwal-pelatihan" className={styles.navLink}>Jadwal</Link>
+            <Link href="/struktur-organisasi" className={styles.navLink}>Struktur Organisasi</Link>
+            <Link href="/tentang-kami" className={styles.navLink}>Tentang Kami</Link>
+            <Link href="/visi-misi" className={styles.navLink}>Visi Misi</Link>
+            <Link href="/dokumentasi" className={styles.navLink}>Dokumentasi</Link>
+            <Link href="/artikel" className={styles.navLink}>Artikel</Link>
           </div>
           
           <div className={styles.actions}>

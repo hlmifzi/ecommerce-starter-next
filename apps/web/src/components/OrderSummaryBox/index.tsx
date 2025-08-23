@@ -47,7 +47,7 @@ const OrderSummaryBox = ({
   ],
 } : orderSummaryBoxType) => {
   const [openPayment, setOpenPayment] = useState(false);
-  const [isOpenDetail, setIsOpenDetail] = useState(true)
+  const [isOpenDetail, setIsOpenDetail] = useState(false)
 
   const pathname = usePathname()
   const router = useRouter()

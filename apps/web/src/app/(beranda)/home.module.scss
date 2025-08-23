@@ -1,13 +1,25 @@
 @import "../../lib/styles/index.scss";
 
 .container {
-    max-width: 100%;
+    max-width: calc(100% + size(16));
     margin: 0 auto;
     min-height: 100vh;
+    margin-left: size(-8);
 }
 
 .popularProduct {
     padding: 3rem 0 0;
+}
+
+.scheduleDateSection {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(13, 77, 139, 0.1) 100%);
+    padding: size(40) size(120);
+    min-width: $w-screen;
+    width: $w-screen;
+    max-width: calc($w-screen - size(32));
+    margin-left: size(-65);
+    border-top: $half solid $color-border-neutral;
+    margin-top: size(40);
 }
 
 .bannerHomeContainer {
@@ -17,18 +29,6 @@
 
     [class*='carouselTitle'] {
         font-size: 4rem;
-    }
-
-    [class*='ant-btn-default'] {
-        border: size(3) solid $color-secondary;
-        background: $color-black;
-        color: $color-white;
-    }
-
-    [class*='ant-btn'] {
-        min-height: size(60);
-        border-radius: size(100);
-
     }
 }
 
@@ -54,67 +54,12 @@
     max-width: size(300);
 }
 
-@media (max-width: 768px) {
-
-    .bannerHomeContainer {
-        margin-left: -1rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        padding: 1rem;
-        padding-top: 0;
-    }
-
-    .btnAll {
-        width: calc($w-screen);
-        min-width: calc($w-screen - size(52));
-        max-width: calc($w-screen - size(52));
-    }
-
-    .bannerHomeContainer {
-        margin-left: -1rem;
-        font-size: .5rem;
-
-        [class*='carouselTitle'] {
-            font-size: 1rem;
-        }
-    }
-
-    .title {
-        font-size: 2rem;
-    }
-
-    .subtitle {
-        font-size: 1rem;
-    }
-
-    .productGrid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 1.5rem;
-    }
-}
-
-.aboutUs {
-    @extend .scheduleDateSection;
-    text-align: center;
-    background: $color-border-neutral-white !important;
-    padding: size(40) size(120) size(40) size(120) !important;
-
-    h2,
-    article {
-        color: $color-black-soft !important;
-        color: $color-white;
-    }
-}
-
 .visiMisiSection {
     @extend .scheduleDateSection;
     text-align: center;
     background: linear-gradient(180deg, rgba(13, 77, 139, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%) !important;
-    padding: size(40) size(120) size(40) size(120) !important;
-    margin-top: 0 !important;
+    margin-top: 0;
+    padding: size(40) auto;
 
     ul {
         list-style: none;
@@ -129,29 +74,101 @@
     }
 }
 
-.misiTitle {
-    margin: size(40) 0;
+
+.aboutUs {
+    background: $color-border-neutral-white;
+    width: $w-screen;
+    margin-left: size(-68);
+    padding: size(40);
+
+
+    @media (max-width: 768px) {
+        margin-left: size(-16);
+        padding: size(16);
+    }
+
+    h2 {
+        font-size: size(32);
+        color: $color-black-soft;
+        text-align: center;
+        margin-bottom: size(40);
+    }
+}
+
+.aboutUsArticle {
+    color: $color-black-soft;
+
+    @media (max-width: 768px) {
+        text-align: center;
+        max-width: calc($w-screen - size(32));
+    }
 }
 
 .aboutUsContainer {
     @include grid(2, 16);
-    align-items: center;
-    grid-template-columns: size(500) auto;
 
-    article {
-        text-align: center;
+    h2 {
+        width: $w-full;
+        text-align: center
+    }
+
+    @media (max-width: 768px) {
+        @include grid(1);
     }
 }
 
-.scheduleDateSection {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(13, 77, 139, 0.1) 100%);
-    margin-top: size(40);
-    padding: 0 size(120) size(40) size(120);
-    min-width: 1300px;
-    width: 1300px;
-    max-width: 1300px;
-    margin-left: size(-65);
+.aboutUsImage {
+    @media (max-width: 768px) {
+        width: calc($w-screen - size(32));
+        max-width: calc($w-screen - size(32));
+        margin-bottom: size(40);
+    }
 }
+
+.ourTeamImage {
+    @media (max-width: 768px) {
+        width: calc($w-screen - size(32));
+        max-width: calc($w-screen - size(32));
+        height: auto;
+        margin-bottom: size(40);
+    }
+}
+
+.misiTitle {
+    margin: size(40) 0;
+    font-weight: $medium;
+}
+
+.sectionTitle {
+    text-align: center;
+    font-size: size(28);
+    font-weight: $bold;
+    color: $color-black-soft;
+    margin-bottom: size(30);
+
+    @media (max-width: 768px) {
+        font-size: size(24);
+        margin-bottom: size(20);
+    }
+}
+
+.articleGrid {
+    display: flex;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: size(24);
+    padding: size(16) 0;
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: size(16);
+    }
+
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+
 
 .section {
     text-align: center;
@@ -164,6 +181,21 @@
 
 .articleSection {
     @extend .section;
+
+    background-color: $color-primary;
+    padding: size(40) size(120);
+    width: $w-screen;
+    margin-left: size(-68);
+
+    @media (max-width: 768px) {
+        margin-left: size(-16);
+        padding: size(40) size(0);
+    }
+
+    >h2,
+    >p {
+        color: $color-white;
+    }
 }
 
 .titleArticle {
@@ -189,8 +221,51 @@
 }
 
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+        padding-top: 0;
+    }
+
+    .visiMisiContainer {
+        max-width: $w-screen;
+        padding: size(40) size(16);
+    }
+
+    .scheduleDateSection {
+        padding: 0;
+        margin-left: size(-16);
+    }
+
+    .visiMisiSection {
+        @extend .scheduleDateSection;
+    }
+
+    .btnAll {
+        width: calc($w-screen);
+        min-width: calc($w-screen - size(52));
+        max-width: calc($w-screen - size(52));
+    }
+
+    .bannerHomeContainer {
+        margin-left: -1rem;
+        font-size: .5rem;
+
+        [class*='carouselTitle'] {
+            font-size: 1rem;
+        }
+    }
+
+    .title {
+        font-size: size(20);
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
     .productGrid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
     }
 }
