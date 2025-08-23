@@ -68,8 +68,12 @@
 }
 
 .itemHospital {
-    font-size: 0.6rem;
+    font-size: size(10);
     color: $color-border-neutral;
-    margin-bottom: 0.8rem;
+    margin-bottom: size(12);
     text-align: left;
+}
+
+.payNow {
+    margin-top: size(20);
 }

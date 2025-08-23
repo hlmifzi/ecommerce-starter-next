@@ -43,7 +43,7 @@ const menuLists = [
         url: "/kebijakan-privasi",
       },
       {
-        text: "Pengembalian Dana",
+        text: "Kebijakan Pengembalian",
         url: "/pengembalian-dana",
       },
     ]

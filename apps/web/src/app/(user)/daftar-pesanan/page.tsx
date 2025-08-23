@@ -7,6 +7,7 @@ import Image from 'next/image';
 
 import styles from './order.module.scss';
 import SharedBadge from '@/components/shared/SharedBadge';
+import SharedButton from '@/components/shared/SharedButton';
 
 const statusOrderMenu = [
   {
@@ -74,6 +75,7 @@ export default function OrderStatusPage() {
             </div>
             <div>
               {MOCK_ORDERS?.map(item => {
+                const isPaid = item?.price !== "Gratis"
                 return (
                   <div key={item.id} className={styles.cartItem}>
                     <div className={styles.itemImage}>
@@ -91,7 +93,12 @@ export default function OrderStatusPage() {
                             <span className={styles.discountedPrice}>Rp {item?.discountedPrice.toLocaleString('id-ID')}</span>
                           </>
                         ) : (
-                          <span className={styles.currentPrice}>{item?.price !== "Gratis" ? "Rp" : ""} {item.price.toLocaleString('id-ID')}</span>
+                          <div>
+                            <span className={styles.currentPrice}>{isPaid ? "Rp" : ""} {item.price.toLocaleString('id-ID')}</span>
+                            {isPaid && (
+                              <SharedButton className={styles.payNow} type='primary' text='Bayar Sekarang' />
+                            )}
+                          </div>
                         )}
                       </div>
                     </div>

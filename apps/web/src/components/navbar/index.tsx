@@ -1,15 +1,17 @@
 "use client";
 import { useState, useEffect, useRef } from 'react';
-import { MdOutlineShoppingCart } from 'react-icons/md';
+import { MdOutlineShoppingCart, MdOutlineClose } from 'react-icons/md';
 import SharedButton from '@/components/shared/SharedButton';
 import Link from 'next/link';
 import Image from 'next/image';
+
 
 import styles from './navbar.module.scss';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollDirection, setScrollDirection] = useState('up');
+  const [showInfo, setShowInfo] = useState(true);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -48,7 +50,16 @@ export default function Navbar() {
 
   return (
     <nav className={`${styles.navbar} ${isScrolled ? styles.navbarFixed : ''}`}>
-      
+      {showInfo && (
+        <div className={styles.topBar}>
+          <div className={styles.topBarContainer}>
+            <p>Diskon 50% Untuk 100 pembeli pertama training vaksin minigitis</p>
+            <div className={styles.authLinks}>
+              <MdOutlineClose onClick={()=> setShowInfo(false)} color='#fff' />
+            </div>
+          </div>
+        </div>
+      )}
       <div className={styles.mainNav}>
         <div className={styles.mainNavContainer}>
           <Link href="/" className={styles.logo}>

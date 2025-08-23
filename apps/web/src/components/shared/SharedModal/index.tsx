@@ -6,14 +6,15 @@ import {
     Ref,
     ReactNode
 } from 'react';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
+import { MdOutlineClose } from "react-icons/md";
+
+import styles from "./sharedModal.module.scss"
 
 const Transition = forwardRef(function Transition(
   props: TransitionProps & {
@@ -25,7 +26,7 @@ const Transition = forwardRef(function Transition(
 });
 
 type DialogProps = {
-  title?: string;
+  title?: ReactNode;
   open?: boolean;
   handleDialog?:any;
   classNameContainer?:any;
@@ -34,7 +35,7 @@ type DialogProps = {
 }
 
 
-export default function AlertDialogSlide({
+export default function SharedModal({
     title,
     children,
     action,
@@ -50,12 +51,17 @@ export default function AlertDialogSlide({
         slots={{
           transition: Transition,
         }}
-        className={classNameContainer}
+        className={`${styles.dialogContainer} ${classNameContainer}`}
         keepMounted
         onClose={handleDialog}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>{title}</DialogTitle>
+        <div className={styles.dialogHeader}>
+          <DialogTitle>
+            {title}
+          </DialogTitle>
+          <MdOutlineClose onClick={handleDialog} />
+        </div>
         <DialogContent>
             {children}
         </DialogContent>

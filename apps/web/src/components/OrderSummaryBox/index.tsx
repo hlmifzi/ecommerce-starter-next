@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import dynamic from "next/dynamic";
 import { usePathname, useRouter } from "next/navigation";
 import Link from 'next/link';
@@ -52,13 +52,16 @@ const OrderSummaryBox = ({
   const pathname = usePathname()
   const router = useRouter()
   
-  const handlePaymentDialog = () => {
-    if(pathname === "/keranjang") {
-      router.push("pembayaran")
-    } else {
-      setOpenPayment(true);
-    }
-  };
+  const handlePaymentDialog = useCallback(
+    () => {
+      if(pathname === "/keranjang") {
+        router.push("pembayaran")
+      } else {
+        setOpenPayment(prev => !prev);
+      }
+    },
+    [pathname],
+  );
 
   const subtotal = cartItems.reduce((sum:any, item:any) => {
     return sum + (item?.discountedPrice || item.price) * item.quantity;
@@ -84,7 +87,6 @@ const OrderSummaryBox = ({
                       <div className={styles.itemDetails}>
                         <h3 className={styles.itemName}>{item.name}</h3>
                         <p className={styles.itemHospital}>{item.hospital}</p>
-                        
                         <div className={styles.priceContainer}>
                           {item?.discountedPrice ? (
                             <>
@@ -152,7 +154,7 @@ const OrderSummaryBox = ({
               src="/payment/midtrans-dummy.png" 
               fill 
               alt="midtrans"
-              style={{ objectFit: "contain" }} // bisa "cover", "fill", dll
+              style={{ objectFit: "contain" }}
             />
           </div>
 

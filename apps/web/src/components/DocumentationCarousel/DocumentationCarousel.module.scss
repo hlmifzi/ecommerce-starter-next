@@ -1,31 +1,36 @@
 @import '../../lib/styles/index.scss';
 
-
-.productGrid {
-    @extend .scrollbar_product_carousel;
+.carouselContainer {
     position: relative;
+}
+
+.carousel {
+    @extend .scrollbar_product_carousel;
     display: flex;
-    gap: 1rem;
-    flex-wrap: nowrap;
+    gap: size(20);
     overflow: auto;
     padding: size(16) size(0) size(6);
+    scroll-behavior: smooth;
+}
 
-    [class*='card'] {
-        min-width: size(270);
-        max-width: size(270);
-        width: size(270);
-        height: fit-content;
+.documentationGroup {
+    display: flex;
+    gap: size(20);
+    min-width: 100%;
+    flex-shrink: 0;
+
+    // For larger screens, show 3 cards in a group
+    @media (min-width: 769px) {
+        min-width: calc(100% / 3 * 2); // Show 2 groups at a time on desktop
     }
 }
 
-// Tombol navigasi
-.productNavButton {
+// Navigation buttons
+.navButton {
     box-shadow: $box-shadow;
     position: absolute !important;
     top: 45%;
     transform: translateY(-50%);
-    background: white;
-    border: 1px solid #e1e1e1;
     border-radius: 50% !important;
     width: size(40) !important;
     min-width: size(40) !important;
@@ -38,7 +43,7 @@
     cursor: pointer;
     background: $color-secondary !important;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
-    transition: background-color 0.2s;
+    transition: opacity 0.3s;
 
     svg {
         color: $color-white;
@@ -50,36 +55,37 @@
     }
 }
 
-.productNavButtonLeft {
-    left: size(0);
+.navButtonLeft {
+    left: size(-20);
 }
 
-.productNavButtonRight {
-    right: size(0);
+.navButtonRight {
+    right: size(-20);
 }
 
 .hidden {
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
 }
 
-.productImage {
-    object-fit: cover;
-}
-
-/* Responsive design */
+// Responsive design
 @media (max-width: 768px) {
-    .productNavButton {
-        width: 36px;
-        height: 36px;
+    .documentationGroup {
+        flex-direction: column;
+        gap: size(16);
+        min-width: 100%;
     }
 
-    .productNavButtonLeft {
-        left: size(2);
+    .navButton {
+        width: size(36) !important;
+        height: size(36) !important;
     }
 
-    .productNavButtonRight {
-        right: size(2);
+    .navButtonLeft {
+        left: size(-10);
+    }
+
+    .navButtonRight {
+        right: size(-10);
     }
 }

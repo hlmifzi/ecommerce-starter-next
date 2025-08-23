@@ -1,14 +1,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import SharedButton from '../shared/SharedButton';
-
-import styles from './productCard.module.scss';
-import BadgeProduct from '../BadgeProduct';
+import { useRouter } from 'next/navigation';
+import SharedButton from '@/components/shared/SharedButton';
+import BadgeProduct from '@/components/BadgeProduct';
 import { formatDate } from '@/lib/function/formatDate';
+import styles from './productCard.module.scss';
 
 const ProductCard = ({product}:any) => {
-
+    const router = useRouter()
     let price = product?.discounted_price || product?.price
+
+    const handleCardClick = () => {
+        router.push(`/masuk}`);
+    }
 
     return (
     <div className={styles.productCardContainer}>
@@ -52,11 +56,9 @@ const ProductCard = ({product}:any) => {
                     <p>{formatDate(product?.scheduled_date)}</p>
                     <p>{product?.registered_qty} Terdaftar</p>
                 </div>
-                <Link href={`/masuk/`}>
-                    <SharedButton type='primary'>
-                        Daftar Sekarang
-                    </SharedButton>
-                </Link>
+                <SharedButton onClick={handleCardClick} type='primary'>
+                    Daftar Sekarang
+                </SharedButton>
                 </div>
             </div>
         </Link>

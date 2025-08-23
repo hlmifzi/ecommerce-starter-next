@@ -33,12 +33,19 @@
         border-radius: size(30) !important;
         min-height: 3.75rem !important;
         min-width: size(120) !important;
-        opacity: 0;
+        opacity: .8 !important;
+
+        &:hover {
+            opacity: 1 !important;
+            transform: scale(1.02) !important;
+            box-shadow: $box-shadow !important;
+        }
     }
 
     [class*='shared-button-tertiary'] {
         background: $color-black !important;
         color: #fff !important;
+
     }
 }
 
@@ -203,7 +210,7 @@
     transition: all 0.3s ease;
     background: $color-black;
     color: $color-secondary;
-    opacity: .37;
+    opacity: .5;
 
     &:hover {
         opacity: 1;
@@ -213,6 +220,11 @@
 .carouselButtonPrev {
     @extend .slideButton;
     left: size(49);
+
+    &:hover {
+        opacity: 1 !important;
+        box-shadow: $box-shadow !important;
+    }
 
     @media (max-width: 768px) {
         left: size(8);

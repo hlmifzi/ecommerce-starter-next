@@ -57,8 +57,10 @@
     @include flex(row, center, space-between);
     gap: size(13);
 
-    a {
-        font-size: size(24);
+    &>div {
+        a {
+            font-size: size(24);
+        }
 
         &:first-child {
             svg:hover {
@@ -76,7 +78,7 @@
 
         &:last-child {
             svg:hover {
-                color: $color-danger;
+                color: $color-danger ;
             }
         }
     }

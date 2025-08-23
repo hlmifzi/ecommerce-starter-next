@@ -1,0 +1,191 @@
+@import '../../lib/styles/index.scss';
+
+.documentationCard {
+    position: relative;
+    border-radius: size(8);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: fit-content;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: $box-shadow;
+
+        .documentationImage {
+            transform: scale(1.05);
+        }
+    }
+}
+
+.documentationLink {
+    display: block;
+    height: 100%;
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.documentationImage {
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.content {
+    padding: size(12);
+    background: white;
+}
+
+.date {
+    color: $text-soft-gray;
+    font-size: size(12);
+    margin-bottom: size(4);
+}
+
+.title {
+    font-size: size(16);
+    font-weight: $semiBold;
+    color: $color-black-soft;
+    margin-bottom: size(4);
+    line-height: 1.3;
+}
+
+.location {
+    color: $text-soft-gray;
+    font-size: size(12);
+}
+
+// Styles for large card
+.largeCard {
+    .imageContainer {
+        height: 280px;
+    }
+
+    .title {
+        font-size: size(18);
+    }
+
+    .content {
+        padding: size(16);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .documentationCard {
+        .imageContainer {
+            height: 180px;
+        }
+    }
+
+    .largeCard {
+        .imageContainer {
+            height: 220px;
+        }
+    }
+}
+
+// Modal Styles
+.modalContainer {
+
+    .MuiDialog-paper {
+        max-width: 90vw;
+        width: 90vw;
+        min-width: 90vw;
+        border-radius: size(12);
+        overflow: hidden;
+    }
+
+    [clasS*='MuiDialogContent-root'] {
+        padding: 0 !important;
+    }
+}
+
+.modalContent {
+    position: relative;
+    display: flex;
+    flex-direction: column !important;
+    padding: 0 size(16) !important;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
+}
+
+.modalImageContainer {
+    width: 500px;
+    height: 300px;
+    max-width: calc($w-screen - size(16));
+}
+
+.modalImage {
+    object-fit: cover;
+}
+
+.modalTextContent {
+    padding: size(16);
+    width: 100%;
+
+    @media (min-width: 768px) {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.modalDate {
+    color: $text-soft-gray;
+    font-size: size(14);
+    margin-bottom: size(8);
+    font-weight: $medium;
+}
+
+.modalTitle {
+    font-size: size(24);
+    font-weight: $bold;
+    color: $color-black-soft;
+    line-height: 1.3;
+    padding: 0 !important;
+}
+
+.modalLocation {
+    color: $text-soft-gray;
+    font-size: size(16);
+    margin: size(16) 0;
+    z-index: 2;
+}
+
+.modalDescription {
+    color: $color-black-soft;
+    font-size: size(16);
+    line-height: 1.6;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+    .imageContainer {
+        height: 180px;
+    }
+
+    .content {
+        padding: size(10);
+    }
+
+    .title {
+        font-size: size(14);
+    }
+
+    .modalTitle {
+        font-size: size(20);
+    }
+
+    .modalLocation,
+    .modalDescription {
+        font-size: size(14);
+    }
+}

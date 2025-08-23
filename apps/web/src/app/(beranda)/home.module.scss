@@ -96,6 +96,99 @@
     }
 }
 
+.aboutUs {
+    @extend .scheduleDateSection;
+    text-align: center;
+    background: $color-border-neutral-white !important;
+    padding: size(40) size(120) size(40) size(120) !important;
+
+    h2,
+    article {
+        color: $color-black-soft !important;
+        color: $color-white;
+    }
+}
+
+.visiMisiSection {
+    @extend .scheduleDateSection;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(13, 77, 139, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%) !important;
+    padding: size(40) size(120) size(40) size(120) !important;
+    margin-top: 0 !important;
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+
+        li {
+            @include flex(row, flex-start, flex-start);
+            list-style: none;
+            text-align: left;
+            gap: size(8);
+        }
+    }
+}
+
+.misiTitle {
+    margin: size(40) 0;
+}
+
+.aboutUsContainer {
+    @include grid(2, 16);
+    align-items: center;
+    grid-template-columns: size(500) auto;
+
+    article {
+        text-align: center;
+    }
+}
+
+.scheduleDateSection {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(13, 77, 139, 0.1) 100%);
+    margin-top: size(40);
+    padding: 0 size(120) size(40) size(120);
+    min-width: 1300px;
+    width: 1300px;
+    max-width: 1300px;
+    margin-left: size(-65);
+}
+
+.section {
+    text-align: center;
+    padding: size(40) 0;
+}
+
+.documentationSection {
+    @extend .section;
+}
+
+.articleSection {
+    @extend .section;
+}
+
+.titleArticle {
+    font-size: size(32);
+    margin-bottom: 0;
+}
+
+.ourTeam {
+    padding: size(40) 0;
+    text-align: center;
+}
+
+.btnSkeleton {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    .MuiSkeleton-root {
+        width: 250px;
+        height: 40px;
+        border-radius: 20px;
+    }
+}
+
+
 @media (max-width: 480px) {
     .productGrid {
         grid-template-columns: 1fr;

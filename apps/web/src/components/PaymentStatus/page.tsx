@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { FaCalendarDay , FaCheck, FaShoppingBag, FaUser } from 'react-icons/fa';
+import { FaCalendarDay , FaCheck, FaEnvelope , FaShoppingBag, FaUser } from 'react-icons/fa';
 import { MdPayment } from 'react-icons/md';
 import Link from 'next/link';
 import ProductCarousel from '@/components/ProductCarousel';
@@ -97,11 +97,17 @@ export default function PaymenStatus({products}:any) {
               
 
               <div className={styles.detailItem}>
+                <FaEnvelope  className={styles.detailIcon} />
+                <div>
+                  <span className={styles.detailLabel}>Email</span>
+                  <span className={styles.detailValue}>JohnDoe@gmail.com</span>
+                </div>
                 <FaUser className={styles.detailIcon} />
                 <div>
                   <span className={styles.detailLabel}>Name Pemesan</span>
                   <span className={styles.detailValue}>John Doe</span>
                 </div>
+                
               </div>
               <div className={styles.detailItem}>
                 <FaCalendarDay  className={styles.detailIcon} />

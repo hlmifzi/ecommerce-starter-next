@@ -8,6 +8,6 @@ module.exports = {
         pathname: '/uploads/**',
       },
     ],
-    domains: ['localhost'],
+    domains: ['localhost', 'images.unsplash.com'],
   },
 }

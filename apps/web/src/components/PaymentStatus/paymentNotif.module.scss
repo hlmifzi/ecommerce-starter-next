@@ -15,7 +15,7 @@
 
 .notificationCard {
     background: white;
-    padding: 2rem 1rem;
+    padding: 1rem 1rem;
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -33,7 +33,7 @@
 
 .containerPaymentStatus {
     @include grid(2, 232);
-    margin-top: size(52);
+    margin-top: size(16);
 }
 
 .checkmarkBackground {
@@ -79,7 +79,6 @@
 .message {
     color: $text-soft-gray;
     font-size: 1.1rem;
-    margin-bottom: 2rem;
     line-height: 1.6;
     text-align: center;
 }

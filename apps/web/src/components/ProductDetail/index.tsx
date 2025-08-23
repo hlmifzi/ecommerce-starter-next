@@ -40,11 +40,11 @@ const ProductDetail = ({
         <Card className={styles.boxContainer}>
           <h3>Anda akan mendapatkan</h3>
           <div className={styles.btnAction}>
-            <SharedButton type='primary'>
+            <SharedButton type='secondary'>
               + Keranjang
             </SharedButton>
             <Link href={"/masuk"}>
-              <SharedButton type='primary' color='success'>
+              <SharedButton type='primary'>
                 Beli Pelatihan
               </SharedButton>
             </Link>

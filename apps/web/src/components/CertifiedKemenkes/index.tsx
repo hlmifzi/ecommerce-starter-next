@@ -32,19 +32,13 @@ const CertifiedKemenkes = ({ menu } : any) => {
           open={openCertified}
           classNameContainer={styles.midtransModalContainer}
           handleDialog={handleOpenCertified}
-          action={
-            <div className={styles.actionDialog}>
-              <SharedButton onClick={handleOpenCertified} type="primary">
-                Tutup
-              </SharedButton>
-            </div>
-          }
         >
           <div className={styles.midtransDummyContainer}>
             <Image 
               src="/footer/certified-image.png" 
               alt="midtrans"
-              fill
+              width={390}
+              height={200}
             />
           </div>
         </SharedModal>
