@@ -1,0 +1,17 @@
+@import "../../lib/styles/index.scss";
+
+.midtransModalContainer {
+    [class*="MuiDialogContent-root css-kw13he-MuiDialogContent-root"] {
+        padding: 0 0 !important;
+    }
+}
+
+.actionDialog {
+    width: $w-full;
+}
+
+.midtransDummyContainer {
+    position: relative;
+    width: $w-full;
+    height: 400px;
+}

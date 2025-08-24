@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useAuthStore } from '@/lib/hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { FaArrowRight } from 'react-icons/fa';
@@ -25,6 +26,8 @@ type CartItem = {
 };
 
 export default function CheckoutPage() {
+  const isLogin = useAuthStore((state:any) => state.isLogin)
+  
   const router = useRouter();
   
   const {
@@ -110,61 +113,60 @@ export default function CheckoutPage() {
   return (
     <div className={styles.container}>
       <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className={styles.buyerInformationContainer}> 
-          <div className={styles.header}>
-            <h1 className={styles.title}>Informasi Pembeli</h1>
-          </div>
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Nama Lengkap</label>
-            <p>helmi fauzi</p>
-          </div>
-          
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Nomor WhatsApp</label>
-            <p>0819 0920 0921</p>
-          </div>
-          
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Email</label>
-            <p>helmi.fauzi@ihc.id</p>
-          </div>
+        {isLogin && (
+          <div className={styles.buyerInformationContainer}> 
+            <div className={styles.header}>
+              <h1 className={styles.title}>Informasi Pembeli</h1>
+            </div>
+            <div className={styles.formGroup}>
+              <label className={styles.label}>Nama Lengkap</label>
+              <p>helmi fauzi</p>
+            </div>
+            
+            <div className={styles.formGroup}>
+              <label className={styles.label}>Nomor WhatsApp</label>
+              <p>0819 0920 0921</p>
+            </div>
+            
+            <div className={styles.formGroup}>
+              <label className={styles.label}>Email</label>
+              <p>helmi.fauzi@ihc.id</p>
+            </div>
 
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Profesi</label>
-            <p>Dokter Ahli Penyakit Dalam</p>
-          </div>
-        </div>
-          
-          <div className={styles.paymentMethods}>
-            <h3 className={styles.paymentTitle}>Metode Pembayaran</h3>
-            <div className={styles.paymentOptions}>
-              <label className={styles.paymentOption} style={{
-                borderColor: selectedPayment === 'midtrans' ? styles.primaryColor : '#eee'
-              }}>
-                <input
-                  type="radio"
-                  value="midtrans"
-                  {...register('paymentMethod')}
-                />
-                <span>Pembayaran Online</span>
-                <Image width={50} height={50} src="/payment-methods/midtrans.png" alt="Midtrans" />
-              </label>
-              
-              <label className={styles.paymentOption} style={{
-                borderColor: selectedPayment === 'transfer' ? styles.primaryColor : '#eee'
-              }}>
-                <input
-                  type="radio"
-                  value="transfer"
-                  {...register('paymentMethod')}
-                />
-                <span>Transfer Bank</span>
-                <Image width={50} height={50} src="/payment-methods/bank-transfer.png" alt="Bank Transfer" />
-              </label>
+            <div className={styles.formGroup}>
+              <label className={styles.label}>Profesi</label>
+              <p>Dokter Ahli Penyakit Dalam</p>
             </div>
           </div>
-       </form>
+        )}   
+        <div className={styles.paymentMethods}>
+          <h3 className={styles.paymentTitle}>Metode Pembayaran</h3>
+          <div className={styles.paymentOptions}>
+            <label className={styles.paymentOption} style={{
+              borderColor: selectedPayment === 'midtrans' ? styles.primaryColor : '#eee'
+            }}>
+              <input
+                type="radio"
+                value="midtrans"
+                {...register('paymentMethod')}
+              />
+              <span>Pembayaran Online</span>
+              <Image width={50} height={50} src="/payment-methods/midtrans.png" alt="Midtrans" />
+            </label>
+            
+            <label className={styles.paymentOption} style={{
+              borderColor: selectedPayment === 'transfer' ? styles.primaryColor : '#eee'
+            }}>
+              <input
+                type="radio"
+                value="transfer"
+                {...register('paymentMethod')}
+              />
+              <span>Transfer Bank</span>
+              <Image width={50} height={50} src="/payment-methods/bank-transfer.png" alt="Bank Transfer" />
+            </label>
+          </div>
+        </div>
       </div>
       <div>
         <OrderSummaryBox 

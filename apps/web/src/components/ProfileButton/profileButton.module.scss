@@ -1,0 +1,156 @@
+@import "../../lib/styles/index.scss";
+
+.profileContainer {
+    @include flex(row, center, center);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid $color-secondary;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-color: $color-secondary;
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+.profileImage {
+    width: size(16);
+    height: size(16);
+    object-fit: cover;
+    color: $color-primary;
+}
+
+// Variasi ukuran
+.small {
+    width: 32px;
+    height: 32px;
+    border-width: 1.5px;
+}
+
+.medium {
+    width: 40px;
+    height: 40px;
+}
+
+.large {
+    width: 56px;
+    height: 56px;
+    border-width: 3px;
+}
+
+// Variasi warna border
+.primary {
+    border-color: #3b82f6; // blue-500
+}
+
+.success {
+    border-color: #10b981; // green-500
+}
+
+.warning {
+    border-color: #f59e0b; // amber-500
+}
+
+.error {
+    border-color: #ef4444; // red-500
+}
+
+// State loading
+.loading {
+    @extend .profileContainer;
+    background-color: #f3f4f6; // gray-100
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+    }
+}
+
+.popoverContainer {
+
+    [class*='MuiPopover-paper'] {
+        width: size(281) !important;
+        max-width: size(281) !important;
+        margin-left: size(-50);
+        margin-top: size(3);
+    }
+}
+
+.profileInformationContainer {
+    @include grid(2, 29);
+    grid-template-columns: size(40) auto;
+    padding-bottom: size(16);
+    border-bottom: size(1) solid $color-border-neutral;
+
+    h2 {
+        color: $color-black-soft;
+        font-size: size(24);
+    }
+
+    p {
+        color: $text-soft-gray;
+        font-size: size(16);
+        margin-top: size(6);
+    }
+
+    [class*='profileContainer'] {
+        width: size(60);
+        height: size(60);
+    }
+}
+
+.popoverContent {
+    padding: size(15);
+
+    ul {
+        list-style: none;
+    }
+}
+
+.containerMenu {
+    ul {
+        margin-top: size(4);
+    }
+
+    li {
+        @include flex(row, center, flex-start);
+        min-height: size(44);
+        padding: size(0) size(10);
+        cursor: pointer;
+        border-radius: size(4);
+    }
+
+}
+
+.itemMenu {
+    &:hover {
+        color: $color-primary;
+    }
+
+}
+
+.logout {
+    color: $color-danger;
+
+    &:hover {
+        background: $color-white;
+        color: $color-danger;
+        opacity: .5;
+    }
+}

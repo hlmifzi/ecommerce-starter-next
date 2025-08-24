@@ -19,9 +19,6 @@
     padding-top: size(16);
 }
 
-.actionDialog {
-    width: $w-full;
-}
 
 .summaryRow {
     display: flex;
@@ -199,14 +196,8 @@
     position: relative;
     width: $w-full;
     height: 400px;
-
 }
 
-.midtransModalContainer {
-    [class*="MuiDialogContent-root css-kw13he-MuiDialogContent-root"] {
-        padding: 0 0 !important;
-    }
-}
 
 // Responsive styles
 @media (max-width: 768px) {

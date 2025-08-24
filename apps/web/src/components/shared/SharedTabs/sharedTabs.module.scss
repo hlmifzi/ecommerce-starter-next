@@ -8,4 +8,8 @@
     [class*="MuiButtonBase-root MuiTab-root"] {
         text-transform: capitalize;
     }
+
+    [class*="MuiTabs-scroller"] {
+        overflow: auto;
+    }
 }

@@ -125,7 +125,7 @@ const Login = () => {
           </p>
         </div>
         <div className={styles.actionButton}>
-          <Link href="/pembayaran" className={styles.registerSubmitForm}>
+          <Link href="/masuk" className={styles.registerSubmitForm}>
             <SharedButton type="secondary" text="Registrasi" />
           </Link>
         </div>

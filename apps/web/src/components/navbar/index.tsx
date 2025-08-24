@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import styles from './navbar.module.scss';
+import ProfileButton from '../ProfileButton';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -88,11 +89,7 @@ export default function Navbar() {
               <MdOutlineShoppingCart size={20}  />
               <span className={styles.cartCount}>0</span>
             </Link>
-            <Link href={"/masuk"}>
-              <SharedButton type="tertiary">
-                Masuk
-              </SharedButton>
-            </Link>
+           <ProfileButton />
           </div>
         </div>
       </div>

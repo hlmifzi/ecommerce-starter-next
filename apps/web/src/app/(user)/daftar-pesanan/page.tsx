@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from "react"
 import SharedTabs from '@/components/shared/SharedTabs';
 import Card from '@/components/Card';
 import Image from 'next/image';
@@ -8,6 +8,7 @@ import Image from 'next/image';
 import styles from './order.module.scss';
 import SharedBadge from '@/components/shared/SharedBadge';
 import SharedButton from '@/components/shared/SharedButton';
+import MidtransModal from '@/components/MidtransModal';
 
 const statusOrderMenu = [
   {
@@ -48,10 +49,15 @@ const MOCK_ORDERS = [
 
 export default function OrderStatusPage() {
   const [statusOrder, setStatusOrder] = useState(0);
+	const [openPayment, setOpenPayment] = useState(false);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setStatusOrder(newValue);
   };
+
+  const handlePaymentDialog = () => {
+    setOpenPayment((prev:boolean) => !prev)
+  }
 
   return (
     <div className={styles.container}>
@@ -71,7 +77,7 @@ export default function OrderStatusPage() {
                   ID-000001
                 </b>
               </p>
-              <SharedBadge text='Pembayaran Selesai' />
+              <SharedBadge text='Menunggu Pembayaran' />
             </div>
             <div>
               {MOCK_ORDERS?.map(item => {
@@ -96,7 +102,7 @@ export default function OrderStatusPage() {
                           <div>
                             <span className={styles.currentPrice}>{isPaid ? "Rp" : ""} {item.price.toLocaleString('id-ID')}</span>
                             {isPaid && (
-                              <SharedButton className={styles.payNow} type='primary' text='Bayar Sekarang' />
+                              <SharedButton onClick={handlePaymentDialog} className={styles.payNow} type='primary' text='Bayar Sekarang' />
                             )}
                           </div>
                         )}
@@ -109,6 +115,10 @@ export default function OrderStatusPage() {
           </Card>
         </div>
       )}
+      <MidtransModal 
+          openPayment={openPayment}
+          handleMidtransModal={handlePaymentDialog}
+      />
     </div>
   );
 }

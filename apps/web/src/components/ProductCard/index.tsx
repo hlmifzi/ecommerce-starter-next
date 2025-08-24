@@ -1,17 +1,22 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { MdOutlineShoppingCart } from 'react-icons/md';
+
 import { useRouter } from 'next/navigation';
 
 import SharedButton from '@/components/shared/SharedButton';
 import BadgeProduct from '@/components/BadgeProduct';
+
+import { useAuthStore } from '@/lib/hooks/useAuth';
 import { formatDate } from '@/lib/function/formatDate';
-import { MdOutlineShoppingCart } from 'react-icons/md';
 
 import styles from './productCard.module.scss';
 
 const ProductCard = ({product}:any) => {
     const router = useRouter()
     let price = product?.discounted_price || product?.price
+
+    const isLogin = useAuthStore((state:any) => state.isLogin)
     
     return (
     <div className={styles.productCardContainer}>
@@ -56,12 +61,12 @@ const ProductCard = ({product}:any) => {
                     <p>{product?.registered_qty} Terdaftar</p>
                 </div>
                 <div className={styles.btnAction}>
-                    <Link href={"/masuk"}>
+                    <Link href={"/pembayaran"}>
                         <SharedButton type='primary'>
                             Daftar Sekarang
                         </SharedButton>
                     </Link>
-                    <Link href={"/masuk"}>
+                    <Link href={isLogin ? "/keranjang" : "/masuk"}>
                         <SharedButton type='secondary'>
                             <MdOutlineShoppingCart size={20}  />
                         </SharedButton>

@@ -1,17 +1,16 @@
 "use client"
 
 import { useState, useCallback } from "react"
-import dynamic from "next/dynamic";
+import { FaLock, FaChevronDown, FaChevronUp, FaTrash } from 'react-icons/fa';
 import { usePathname, useRouter } from "next/navigation";
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaLock, FaChevronDown, FaChevronUp, FaTrash } from 'react-icons/fa';
 
+import { useAuthStore } from '@/lib/hooks/useAuth';
+
+import MidtransModal from "@/components/MidtransModal";
 import SharedButton from "@/components/shared/SharedButton";
 
-const SharedModal = dynamic(() => import("@/components/shared/SharedModal"), {
-  ssr: false, // kalau modal hanya untuk client
-});
 
 import styles from './orderSummaryBox.module.scss';
 
@@ -46,26 +45,29 @@ const OrderSummaryBox = ({
     }
   ],
 } : orderSummaryBoxType) => {
-  const [openPayment, setOpenPayment] = useState(false);
+	const router = useRouter()
+	const [openPayment, setOpenPayment] = useState(false);
   const [isOpenDetail, setIsOpenDetail] = useState(false)
+	const isLogin = useAuthStore((state:any) => state.isLogin)
 
   const pathname = usePathname()
-  const router = useRouter()
   
+  const subtotal = cartItems.reduce((sum:any, item:any) => {
+    return sum + (item?.discountedPrice || item.price) * item.quantity;
+  }, 0);
+
+  
+	
   const handlePaymentDialog = useCallback(
     () => {
       if(pathname === "/keranjang") {
-        router.push("pembayaran")
+        router.push("/pembayaran")
       } else {
-        setOpenPayment(prev => !prev);
+       isLogin ? setOpenPayment(prev => !prev) : router.push("/masuk");
       }
     },
     [pathname],
   );
-
-  const subtotal = cartItems.reduce((sum:any, item:any) => {
-    return sum + (item?.discountedPrice || item.price) * item.quantity;
-  }, 0);
 
   return (
       <div className={styles.orderSummaryContainer}>
@@ -133,32 +135,10 @@ const OrderSummaryBox = ({
             </>
           )}
         </div>
-
-        <SharedModal 
-          open={openPayment}
-          classNameContainer={styles.midtransModalContainer}
-          handleDialog={handlePaymentDialog}
-          title={"Pembayaran Online Midtrans"}
-          action={
-            <div className={styles.actionDialog}>
-              <Link href={"/status-pembayaran"}>
-                <SharedButton type="primary">
-                  Selesai Pembayaran
-                </SharedButton>
-              </Link>
-            </div>
-          }
-        >
-          <div className={styles.midtransDummyContainer}>
-            <Image 
-              src="/payment/midtrans-dummy.png" 
-              fill 
-              alt="midtrans"
-              style={{ objectFit: "contain" }}
-            />
-          </div>
-
-        </SharedModal>
+        <MidtransModal  
+          openPayment={openPayment}
+          handleMidtransModal={handlePaymentDialog}
+        />
     </div>
   )
 }

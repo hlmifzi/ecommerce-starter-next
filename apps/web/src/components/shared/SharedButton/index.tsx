@@ -3,9 +3,10 @@
 import Button from "@mui/material/Button";
 import styles from "./button.module.scss"
 
+type ButtonType = "text" | "primary" | "secondary" | "tertiary" | "Quaternary"
+type variantType = "text" | "contained" | "outlined"
+type ButtonHtmlType = "button" | "submit" | "reset" // Tambahkan type untuk HTML button type
 
-type ButtonType =  "text" | "primary" | "secondary" | "tertiary" | "Quaternary"
-type variantType =  "text" | "contained" | "outlined"
 type SharedButtonType = {
   text?: string
   children?: any
@@ -13,7 +14,7 @@ type SharedButtonType = {
   disabled?: boolean
   type?: ButtonType
   className?: string
-  onclick?: any
+  buttonType?: ButtonHtmlType // Ganti menjadi ButtonHtmlType
 }
 
 export default function SharedButton({
@@ -22,7 +23,8 @@ export default function SharedButton({
   type = "primary",
   text = "text",
   className,
-  onClick
+  onClick,
+  buttonType = "button" // Default value "button"
 }: SharedButtonType) {
 
   const getVariant = (type: ButtonType): variantType => {
@@ -37,6 +39,8 @@ export default function SharedButton({
         return "outlined"
       case "Quaternary":
         return "outlined"
+      default:
+        return "contained" // Tambahkan default case
     }
   }
 
@@ -47,6 +51,7 @@ export default function SharedButton({
         className={`shared-button-${type} ${className}`} 
         variant={getVariant(type)} 
         disabled={disabled}
+        type={buttonType} // Material UI Button menerima type prop untuk HTML button type
       >
         {children || text}
       </Button>

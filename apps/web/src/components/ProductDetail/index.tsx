@@ -1,7 +1,6 @@
 "use client"
 import Link from 'next/link';
-import { FaShoppingCart, FaChevronRight } from 'react-icons/fa';
-import { Product } from '@/types/product';
+import { useAuthStore } from '@/lib/hooks/useAuth';
 import Image from 'next/image';
 import Card from '../Card';
 import SharedBadge from '../shared/SharedBadge';
@@ -14,6 +13,8 @@ const ProductDetail = ({
 }: {
   product: any
 }) => {
+  const isLogin = useAuthStore((state:any) => state.isLogin)
+  
   return (
     <div className={styles.container}>
       <header>
@@ -40,10 +41,12 @@ const ProductDetail = ({
         <Card className={styles.boxContainer}>
           <h3>Anda akan mendapatkan</h3>
           <div className={styles.btnAction}>
-            <SharedButton type='secondary'>
-              + Keranjang
-            </SharedButton>
-            <Link href={"/masuk"}>
+            <Link href={isLogin ? "/keranjang" : "Masuk"}>
+              <SharedButton type='secondary'>
+                + Keranjang
+              </SharedButton>
+            </Link>
+            <Link href={"/pembayaran"}>
               <SharedButton type='primary'>
                 Beli Pelatihan
               </SharedButton>
