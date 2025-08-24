@@ -24,8 +24,10 @@
 .profileImage {
     width: size(16);
     height: size(16);
-    object-fit: cover;
-    color: $color-primary;
+    color: $color-primary !important;
+    font-size: size(20);
+    margin-left: size(-10);
+    margin-top: size(-4);
 }
 
 // Variasi ukuran

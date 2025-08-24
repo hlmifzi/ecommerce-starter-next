@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { FaUserAlt} from 'react-icons/fa';
 import { useAuthStore } from '@/lib/hooks/useAuth'
 import { useRouter } from 'next/navigation';
 import Popover from '@mui/material/Popover';
@@ -38,7 +37,9 @@ const ProfileButton = () => {
       {isLogin ? (
         <>
           <div onClick={handleClick} className={styles.profileContainer}>
-            <FaUserAlt className={styles.profileImage} />
+            <h2 className={styles.profileImage}>
+              JD
+            </h2>
           </div>
           <Popover
             id={id}
@@ -54,7 +55,9 @@ const ProfileButton = () => {
             <div className={styles.popoverContent}>
                 <div className={styles.profileInformationContainer}>
                   <div className={styles.profileContainer}>
-                    <FaUserAlt className={styles.profileImage} />
+                    <h2 className={styles.profileImage}>
+                      JD  
+                    </h2>
                   </div>
                   <div>
                     <h2>John Doe</h2>
