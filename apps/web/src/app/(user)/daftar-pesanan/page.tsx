@@ -4,6 +4,7 @@ import { useState, useCallback } from "react"
 import SharedTabs from '@/components/shared/SharedTabs';
 import Card from '@/components/Card';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import styles from './order.module.scss';
 import SharedBadge from '@/components/shared/SharedBadge';
@@ -96,33 +97,35 @@ export default function OrderStatusPage() {
               {MOCK_ORDERS?.map(item => {
                 const isPaid = item?.price !== "Gratis"
                 return (
-                  <div key={item.id} className={styles.cartItem}>
-                    <div className={styles.itemImage}>
-                      <Image width={50} height={50} src={item.image} alt={item.name} />
-                    </div>
-                    
-                    <div className={styles.itemDetails}>
-                      <BadgeProduct type={item?.type} />
-                      <h3 className={styles.itemName}>{item.name}</h3>
-                      <p className={styles.itemHospital}>{item.hospital}</p>
+                  <Link href="/pelatihan/product-121">
+                    <div key={item.id} className={styles.cartItem}>
+                      <div className={styles.itemImage}>
+                        <Image width={50} height={50} src={item.image} alt={item.name} />
+                      </div>
                       
-                      <div className={styles.priceContainer}>
-                        {item?.discountedPrice ? (
-                          <>
-                            <span className={styles.originalPrice}>Rp {item.price.toLocaleString('id-ID')}</span>
-                            <span className={styles.discountedPrice}>Rp {item?.discountedPrice.toLocaleString('id-ID')}</span>
-                          </>
-                        ) : (
-                          <div>
-                            <span className={styles.currentPrice}>{isPaid ? "Rp" : ""} {item.price.toLocaleString('id-ID')}</span>
-                            {isPaid && (
-                              <SharedButton onClick={handlePaymentDialog} className={styles.payNow} type='primary' text='Bayar Sekarang' />
-                            )}
-                          </div>
-                        )}
+                      <div className={styles.itemDetails}>
+                        <BadgeProduct type={item?.type} />
+                        <h3 className={styles.itemName}>{item.name}</h3>
+                        <p className={styles.itemHospital}>{item.hospital}</p>
+                        
+                        <div className={styles.priceContainer}>
+                          {item?.discountedPrice ? (
+                            <>
+                              <span className={styles.originalPrice}>Rp {item.price.toLocaleString('id-ID')}</span>
+                              <span className={styles.discountedPrice}>Rp {item?.discountedPrice.toLocaleString('id-ID')}</span>
+                            </>
+                          ) : (
+                            <div>
+                              <span className={styles.currentPrice}>{isPaid ? "Rp" : ""} {item.price.toLocaleString('id-ID')}</span>
+                              {isPaid && (
+                                <SharedButton onClick={handlePaymentDialog} className={styles.payNow} type='primary' text='Bayar Sekarang' />
+                              )}
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 )
               })}
             </div>

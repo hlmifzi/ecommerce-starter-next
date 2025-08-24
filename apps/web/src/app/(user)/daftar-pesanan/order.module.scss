@@ -54,6 +54,10 @@
     border-bottom: 1px solid #eee;
     position: relative;
 
+    &:hover {
+        opacity: .5;
+    }
+
     img {
         width: size(100);
         max-width: size(100);

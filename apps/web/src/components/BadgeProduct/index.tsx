@@ -1,7 +1,7 @@
 import SharedBadge from '../shared/SharedBadge';
 
 type BadgeProductType = {
- type:"training" | "workshop" | "webinar" | "open" | "closed" | "warning" | "paid" | "free",
+ type:"training" | "workshop" | "webinar" | "open" | "closed" | "warning" | "paid" | "free" | string,
  text?: string
 }
 
