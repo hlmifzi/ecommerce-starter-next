@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 import { FaLock, FaChevronDown, FaChevronUp, FaTrash } from 'react-icons/fa';
 import { usePathname, useRouter } from "next/navigation";
 import Link from 'next/link';
@@ -45,12 +45,12 @@ const OrderSummaryBox = ({
     }
   ],
 } : orderSummaryBoxType) => {
-	const router = useRouter()
+  const router = useRouter()
+  const pathname = usePathname()
 	const [openPayment, setOpenPayment] = useState(false);
   const [isOpenDetail, setIsOpenDetail] = useState(false)
 	const isLogin = useAuthStore((state:any) => state.isLogin)
 
-  const pathname = usePathname()
   
   const subtotal = cartItems.reduce((sum:any, item:any) => {
     return sum + (item?.discountedPrice || item.price) * item.quantity;
@@ -68,6 +68,13 @@ const OrderSummaryBox = ({
     },
     [pathname],
   );
+
+  useEffect(() => {
+    if(pathname === "/status-pembayaran") {
+      setIsOpenDetail(true)
+    }
+  }, [])
+  
 
   return (
       <div className={styles.orderSummaryContainer}>

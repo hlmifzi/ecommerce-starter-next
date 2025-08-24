@@ -9,6 +9,7 @@ import styles from './order.module.scss';
 import SharedBadge from '@/components/shared/SharedBadge';
 import SharedButton from '@/components/shared/SharedButton';
 import MidtransModal from '@/components/MidtransModal';
+import BadgeProduct from "@/components/BadgeProduct";
 
 const statusOrderMenu = [
   {
@@ -34,6 +35,7 @@ const MOCK_ORDERS = [
       discountedPrice: 0,
       image: "/nurse-training.png",
       quantity: 1,
+      type: "training",
       hospital: "authorized: RS pusat pertamina (RSPP)"
     },
     {
@@ -42,8 +44,19 @@ const MOCK_ORDERS = [
       price: "Gratis",
       image: "/vaksin.png",
       quantity: 2,
+      type: "workshop",
       hospital: "authorized: RS pusat pertamina (RSPP)"
-    }
+    },
+    {
+      id: 1,
+      name: "Training Kesehatan Dasar",
+      price: 80000,
+      discountedPrice: 0,
+      image: "/nurse-training.png",
+      quantity: 1,
+      type: "webinar",
+      hospital: "authorized: RS pusat pertamina (RSPP)"
+    },
   ]
 
 
@@ -89,6 +102,7 @@ export default function OrderStatusPage() {
                     </div>
                     
                     <div className={styles.itemDetails}>
+                      <BadgeProduct type={item?.type} />
                       <h3 className={styles.itemName}>{item.name}</h3>
                       <p className={styles.itemHospital}>{item.hospital}</p>
                       
