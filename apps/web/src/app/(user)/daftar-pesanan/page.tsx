@@ -97,8 +97,8 @@ export default function OrderStatusPage() {
               {MOCK_ORDERS?.map(item => {
                 const isPaid = item?.price !== "Gratis"
                 return (
-                  <Link href="/pelatihan/product-121">
-                    <div key={item.id} className={styles.cartItem}>
+                  <Link key={item.id} href="/pelatihan/product-121">
+                    <div className={styles.cartItem}>
                       <div className={styles.itemImage}>
                         <Image width={50} height={50} src={item.image} alt={item.name} />
                       </div>

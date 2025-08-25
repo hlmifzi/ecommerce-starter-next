@@ -185,7 +185,7 @@ export default async function HomePage() {
         <ScheduleTable />
       </section>
 
-      <section id="struktur organisasi" className={styles.ourTeam}>
+      <section id="struktur-organisasi" className={styles.ourTeam}>
         <h2 className={styles.title}>Tim Kami</h2>
         <Image src="/home/out-team.png" width={800} height={500} className={styles.ourTeamImage} alt="our team" />
       </section>

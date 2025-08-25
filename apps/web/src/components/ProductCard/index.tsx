@@ -66,7 +66,7 @@ const ProductCard = ({product}:any) => {
                             Daftar Sekarang
                         </SharedButton>
                     </Link>
-                    <Link href={isLogin ? "/keranjang" : "/masuk"}>
+                    <Link href={isLogin ? "/keranjang" : "/masuk?dari=keranjang"}>
                         <SharedButton type='secondary'>
                             <MdOutlineShoppingCart size={20}  />
                         </SharedButton>

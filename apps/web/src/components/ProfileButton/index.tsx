@@ -13,15 +13,18 @@ import styles from "./profileButton.module.scss"
 const ProfileButton = () => {
   const router = useRouter()
   const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setIsOpen] = useState(false);
   const isLogin = useAuthStore((state:any) => state.isLogin)
   const setIslogOut = useAuthStore((state:any) => state.logout)
 
   const handleClick = (event:any) => {
     setAnchorEl(event.currentTarget);
+    setIsOpen(true)
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+    setIsOpen(false)
   };
 
   const handleLogout = () => {
@@ -29,7 +32,6 @@ const ProfileButton = () => {
     router.push("/");
   }
 
-  const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
   return (

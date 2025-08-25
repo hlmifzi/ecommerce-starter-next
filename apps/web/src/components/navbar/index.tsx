@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { MdOutlineShoppingCart, MdOutlineClose } from 'react-icons/md';
 import SharedButton from '@/components/shared/SharedButton';
 import Link from 'next/link';
@@ -13,6 +14,8 @@ export default function Navbar() {
   const [scrollDirection, setScrollDirection] = useState('up');
   const [showInfo, setShowInfo] = useState(true);
   const lastScrollY = useRef(0);
+
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,13 +78,13 @@ export default function Navbar() {
           
           <div className={styles.navLinks}>
             <Link href="/" className={styles.navLink}>Beranda</Link>
-            <Link href="/pelatihan" className={styles.navLink}>Program Pelatihan</Link>
-            <Link href="/jadwal-pelatihan" className={styles.navLink}>Jadwal</Link>
-            <Link href="/struktur-organisasi" className={styles.navLink}>Struktur Organisasi</Link>
-            <Link href="/tentang-kami" className={styles.navLink}>Tentang Kami</Link>
-            <Link href="/visi-misi" className={styles.navLink}>Visi Misi</Link>
-            <Link href="/dokumentasi" className={styles.navLink}>Dokumentasi</Link>
-            <Link href="/artikel" className={styles.navLink}>Artikel</Link>
+            <Link href={pathname === "/" ? "#pelatihan" : "/pelatihan" } className={styles.navLink}>Program Pelatihan</Link>
+            <Link href={pathname === "/" ? "#jadwal-pelatihan" : "/jadwal-pelatihan"} className={styles.navLink}>Jadwal</Link>
+            <Link href={pathname === "/" ? "#struktur-organisasi" :"/struktur-organisasi"} className={styles.navLink}>Struktur Organisasi</Link>
+            <Link href={pathname === "/" ? "#tentang-kami" :"/tentang-kami"} className={styles.navLink}>Tentang Kami</Link>
+            <Link href={pathname === "/" ? "#visi-misi" :"/visi-misi"} className={styles.navLink}>Visi Misi</Link>
+            <Link href={pathname === "/" ? "#dokumentasi" :"/dokumentasi" }className={styles.navLink}>Dokumentasi</Link>
+            <Link href={pathname === "/" ? "#artikel" :"/artikel" }className={styles.navLink}>Artikel</Link>
           </div>
           
           <div className={styles.actions}>
