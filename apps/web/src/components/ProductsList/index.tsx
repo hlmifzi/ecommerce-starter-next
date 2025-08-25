@@ -19,6 +19,7 @@ import ProductCard from "../ProductCard"
 
 import styles from './productsList.module.scss';
 import SharedModal from "../shared/SharedModal";
+import { FaChevronRight } from "react-icons/fa";
 
 export default function ProductsList({ products }: any) {
   
@@ -62,7 +63,21 @@ export default function ProductsList({ products }: any) {
             <ProductCard key={index} product={product} />
         ))}
       </div>
-
+      <div className={styles.paginationContainer}>
+        <SharedButton type="text" className={styles.buttonPagination}>
+          1
+        </SharedButton>
+        <SharedButton type="text" className={styles.buttonPagination}>
+          2
+        </SharedButton>
+        <SharedButton type="text" className={styles.buttonPagination}>
+          3
+        </SharedButton>
+        <SharedButton type="text" className={styles.buttonPagination}>
+          <FaChevronRight />
+          <FaChevronRight />
+        </SharedButton>
+      </div>
 
       <SharedModal
         title="Filter"

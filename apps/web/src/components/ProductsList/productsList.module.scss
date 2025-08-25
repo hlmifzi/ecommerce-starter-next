@@ -178,8 +178,32 @@
             width: $w-full;
         }
     }
-
 }
+
+.paginationContainer {
+    @include grid(4, 12);
+    grid-template-columns: size(35) size(35) size(35) size(35);
+    width: fit-content;
+    margin: size(37) 0 0 auto;
+
+    button {
+        box-shadow: $box-shadow;
+        background: $color-white !important;
+        color: $color-primary !important;
+        min-width: $w-full;
+        width: $w-full;
+        max-width: $w-full;
+        min-height: $w-full;
+        height: $w-full;
+        max-height: $w-full;
+
+        &:hover {
+            box-shadow: 0px 4px 30px 0px #00000040;
+        }
+    }
+}
+
+.buttonPagination {}
 
 .filterRadioContainer {
     margin-bottom: size(15);
