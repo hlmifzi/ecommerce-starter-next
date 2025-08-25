@@ -123,10 +123,7 @@
 
     @media (max-width: 768px) {
         padding: 30px;
-    }
-
-    @media (max-width: 480px) {
-        padding: 20px;
+        min-height: $w-full;
     }
 }
 
@@ -137,8 +134,9 @@
     max-width: 90%;
 
     @media (max-width: 768px) {
-        margin: 4rem auto auto;
+        margin: 1rem auto auto;
         max-width: 80%;
+        min-height: 100%;
     }
 }
 
