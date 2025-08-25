@@ -1,0 +1,46 @@
+@import "../../lib/styles/index.scss";
+
+.container {
+    margin-top: size(42);
+}
+
+.productInner {
+    display: grid;
+    grid-template-columns: auto size(347);
+    grid-gap: size(41);
+}
+
+.coverImage {
+    min-height: size(400);
+}
+
+
+.imageContainer {
+    position: relative;
+    width: $w-full;
+    aspect-ratio: 16 / 9;
+    margin-bottom: size(19);
+
+    img {
+        border-radius: size(5);
+    }
+}
+
+.boxContainer {
+    padding: size(20);
+}
+
+.btnAction {
+    @include grid(2, 7);
+}
+
+@media (max-width: 768px) {
+    .productInner {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: size(16);
+    }
+
+}

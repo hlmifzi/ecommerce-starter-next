@@ -46,7 +46,7 @@ const Login = () => {
           {...register("email", { required: true })}
           id="outlined-required"
           label="NIK"
-          type={"email"}
+          type={"text"}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
