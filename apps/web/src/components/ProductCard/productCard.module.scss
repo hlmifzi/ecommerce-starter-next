@@ -133,14 +133,12 @@
 
 
 @media (max-width: 768px) {
+
     .productCardContainer {
         max-width: $w-full;
     }
 
     .btnAction {
-        @include flex(column, center, center);
-        grid-template-columns: 1fr;
-
         a {
             width: $w-full;
 
