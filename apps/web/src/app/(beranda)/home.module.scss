@@ -14,12 +14,17 @@
 .scheduleDateSection {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(13, 77, 139, 0.1) 100%);
     padding: size(40) size(120);
-    min-width: $w-screen;
-    width: $w-screen;
-    max-width: calc($w-screen - size(32));
+    min-width: size(1300);
+    width: size(1300);
+    max-width: size(1300);
     margin-left: size(-65);
     border-top: $half solid $color-border-neutral;
     margin-top: size(40);
+
+    @media (max-width: 768px) {
+        max-width: calc($w-screen - size(32));
+
+    }
 }
 
 .bannerHomeContainer {
@@ -80,9 +85,11 @@
     width: $w-screen;
     margin-left: size(-68);
     padding: size(40);
-
+    width: size(1300);
+    max-width: size(1300);
 
     @media (max-width: 768px) {
+        max-width: calc($w-screen);
         margin-left: size(-16);
         padding: size(16);
     }
@@ -186,6 +193,7 @@
     padding: size(40) size(120);
     width: $w-screen;
     margin-left: size(-68);
+    max-width: size(1300);
 
     @media (max-width: 768px) {
         margin-left: size(-16);

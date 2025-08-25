@@ -14,6 +14,8 @@
     .productGrid {
         @include grid(2);
         grid-gap: size(8);
-        gap: size(8);
+        row-gap: size(24);
+        column-gap: size(8);
+
     }
 }

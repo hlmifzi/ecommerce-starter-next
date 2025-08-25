@@ -104,7 +104,7 @@ const Footer = () => {
                         <CertifiedKemenkes menu={menu}/>
                       )
                       : (
-                        <Link key={index} href={menu.url}>
+                        <Link key={index} className={menu?.text.replace(" ", "")} href={menu.url}>
                           {menu?.icon}
                           {menu?.text}
                         </Link>

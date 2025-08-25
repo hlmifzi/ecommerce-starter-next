@@ -173,6 +173,18 @@
 
     .listMenuInner {
         width: $w-screen;
+
+        &:not(:first-child) {
+            margin-bottom: size(8);
+        }
+    }
+
+    .listItem {
+        margin-bottom: size(0);
+
+        [class*='KebijakanPengembalian'] {
+            max-width: 80%;
+        }
     }
 
     .listMenuContainer {

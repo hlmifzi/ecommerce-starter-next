@@ -123,3 +123,23 @@
     font-weight: $medium;
     font-size: size(10);
 }
+
+
+@media (max-width: 768px) {
+    .productCardContainer {
+        max-width: $w-full;
+    }
+
+    .btnAction {
+        @include flex(column, center, center);
+        grid-template-columns: 1fr;
+
+        a {
+            width: $w-full;
+
+            &:first-child {
+                margin-bottom: size(8);
+            }
+        }
+    }
+}
