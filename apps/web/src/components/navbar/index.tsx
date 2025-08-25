@@ -1,21 +1,55 @@
 "use client";
 import { useState, useEffect, useRef } from 'react';
-import { usePathname } from 'next/navigation';
 import { MdOutlineShoppingCart, MdOutlineClose } from 'react-icons/md';
 import SharedButton from '@/components/shared/SharedButton';
 import Link from 'next/link';
 import Image from 'next/image';
+import ProfileButton from '../ProfileButton';
 
 import styles from './navbar.module.scss';
-import ProfileButton from '../ProfileButton';
+
+export const menus = [
+  {
+    "text": "Beranda",
+    "url": "/"
+  },
+  {
+    "text": "Program Pelatihan",
+    "url": "/#pelatihan"
+  },
+  {
+    "text": "Jadwal",
+    "url": "/#jadwal-pelatihan"
+  },
+  {
+    "text": "Struktur Organisasi",
+    "url": "/#struktur-organisasi"
+  },
+  {
+    "text": "Tentang Kami",
+    "url": "/#tentang-kami"
+  },
+  {
+    "text": "Visi Misi",
+    "url": "/#visi-misi"
+  },
+  {
+    "text": "Dokumentasi",
+    "url": "/#dokumentasi"
+  },
+  {
+    "text": "Artikel",
+    "url": "/#artikel"
+  }
+]
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollDirection, setScrollDirection] = useState('up');
   const [showInfo, setShowInfo] = useState(true);
   const lastScrollY = useRef(0);
-
-  const pathname = usePathname()
+  
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,14 +111,12 @@ export default function Navbar() {
           </Link>
           
           <div className={styles.navLinks}>
-            <Link href="/" className={styles.navLink}>Beranda</Link>
-            <Link href={pathname === "/" ? "#pelatihan" : "/pelatihan" } className={styles.navLink}>Program Pelatihan</Link>
-            <Link href={pathname === "/" ? "#jadwal-pelatihan" : "/jadwal-pelatihan"} className={styles.navLink}>Jadwal</Link>
-            <Link href={pathname === "/" ? "#struktur-organisasi" :"/struktur-organisasi"} className={styles.navLink}>Struktur Organisasi</Link>
-            <Link href={pathname === "/" ? "#tentang-kami" :"/tentang-kami"} className={styles.navLink}>Tentang Kami</Link>
-            <Link href={pathname === "/" ? "#visi-misi" :"/visi-misi"} className={styles.navLink}>Visi Misi</Link>
-            <Link href={pathname === "/" ? "#dokumentasi" :"/dokumentasi" }className={styles.navLink}>Dokumentasi</Link>
-            <Link href={pathname === "/" ? "#artikel" :"/artikel" }className={styles.navLink}>Artikel</Link>
+
+            {menus?.map((menu:any) => {
+              return (
+                <Link href={menu?.url} className={styles.navLink}>{menu?.text}</Link>
+              )
+            })}
           </div>
           
           <div className={styles.actions}>

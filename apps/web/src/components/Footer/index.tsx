@@ -1,35 +1,15 @@
+"use client";
 import Image from "next/image"
 import Link from "next/link"
 import { FaInstagram, FaFacebook, FaYoutube   } from "react-icons/fa";
 import CertifiedKemenkes from "../CertifiedKemenkes";
-
+import  { menus } from "../navbar"
 import styles from "./footer.module.scss"
 
 const menuLists = [
   {
     title: "Menu",
-    menus: [
-      {
-        text: "Struktur Organisasi",
-        url: "#StrukturOrganisasi",
-      },
-      {
-        text: "Tentang Kami",
-        url: "#TentangKami",
-      },
-      {
-        text: "Visi Misi",
-        url: "#VisiMisi",
-      },
-      {
-        text: "Artikel",
-        url: "#Artikel",
-      },
-      {
-        text: "FAQ",
-        url: "Rawat Jalan",
-      },
-    ]
+    menus: menus
   },
   {
     title: "Informasi",
