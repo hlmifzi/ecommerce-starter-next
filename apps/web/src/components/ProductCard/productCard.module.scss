@@ -5,7 +5,14 @@
     border: 1px solid #e1e1e1;
     overflow: hidden;
     border-radius: size(8);
+    min-height: size(412);
+    height: size(412);
+    max-height: size(412);
 
+}
+
+.headline {
+    min-height: size(68);
 }
 
 .content {
