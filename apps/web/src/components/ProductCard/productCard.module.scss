@@ -22,7 +22,7 @@
 .btnAction {
     @include grid(2, 4);
     max-width: calc($w-full - size(4));
-    grid-template-columns: 75% 15%;
+    grid-template-columns: calc(80% - size(20)) 8%;
 }
 
 .countdownFreePaidContainer {
@@ -134,13 +134,19 @@
 
 @media (max-width: 768px) {
 
+    .card {
+        height: fit-content;
+        max-height: fit-content;
+    }
+
     .productCardContainer {
         max-width: $w-full;
     }
 
     .btnAction {
+        grid-template-columns: 1fr;
+
         a {
-            width: $w-full;
 
             &:first-child {
                 margin-bottom: size(8);

@@ -112,9 +112,9 @@ export default function Navbar() {
           
           <div className={styles.navLinks}>
 
-            {menus?.map((menu:any) => {
+            {menus?.map((menu:any, index:number) => {
               return (
-                <Link href={menu?.url} className={styles.navLink}>{menu?.text}</Link>
+                <Link key={index} href={menu?.url} className={styles.navLink}>{menu?.text}</Link>
               )
             })}
           </div>

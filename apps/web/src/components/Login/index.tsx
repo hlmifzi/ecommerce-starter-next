@@ -4,10 +4,9 @@ import { useState } from "react"
 import { useAuthStore } from '@/lib/hooks/useAuth';
 import { useForm } from "react-hook-form"
 import { useRouter, useSearchParams  } from "next/navigation"
+import Link from 'next/link';
 import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
-
-import Link from 'next/link';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import SharedButton from "@/components/shared/SharedButton"
