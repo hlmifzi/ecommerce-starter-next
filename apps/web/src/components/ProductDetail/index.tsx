@@ -41,7 +41,7 @@ const ProductDetail = ({
         <Card className={styles.boxContainer}>
           <h3>Anda akan mendapatkan</h3>
           <div className={styles.btnAction}>
-            <Link href={isLogin ? "/keranjang" : "Masuk"}>
+            <Link href={isLogin ? "/keranjang" : "/masuk"}>
               <SharedButton type='secondary'>
                 + Keranjang
               </SharedButton>
