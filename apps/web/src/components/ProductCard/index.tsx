@@ -45,10 +45,10 @@ const ProductCard = ({product}:any) => {
                 <div className={styles.headline}>
                     <h2 className={styles.title}>{product?.title}</h2>
                     <p className={styles.hospital}>Oleh: {product?.hospital_name}</p>
-                    <div className={styles.countdownFreePaidContainer}>
-                        <BadgeProduct type={product?.registrationClosedStatus} text={"12 hari lagi"} />
-                        <BadgeProduct type={price ? "paid" : "free" } />
-                    </div>
+                </div>
+                <div className={styles.countdownFreePaidContainer}>
+                    <BadgeProduct type={product?.registrationClosedStatus} text={"12 hari lagi"} />
+                    <BadgeProduct type={price ? "paid" : "free" } />
                 </div>
                 <div className={styles.priceContainer}>
                     {product?.discounted_price && (
