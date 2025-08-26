@@ -70,7 +70,7 @@ const OrderSummaryBox = ({
   );
 
   useEffect(() => {
-    if(pathname === "/status-pembayaran") {
+    if(pathname === "/status-pembayaran" || pathname === "/pembayaran") {
       setIsOpenDetail(true)
     }
   }, [])
