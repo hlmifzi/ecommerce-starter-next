@@ -6,11 +6,12 @@ import Card from '@/components/Card';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import styles from './order.module.scss';
 import SharedBadge from '@/components/shared/SharedBadge';
 import SharedButton from '@/components/shared/SharedButton';
 import MidtransModal from '@/components/MidtransModal';
 import BadgeProduct from "@/components/BadgeProduct";
+
+import styles from './order.module.scss';
 
 const statusOrderMenu = [
   {
@@ -104,9 +105,14 @@ export default function OrderStatusPage() {
                       
                       <div className={styles.itemDetails}>
                         <Link className={styles.itemDetailsLink} href="/pelatihan/product-121">
+                        <div className={styles.badgeContainer}>
                           <BadgeProduct type={item?.type} />
+                          <BadgeProduct type="warning" />
+                        </div>
                           <h3 className={styles.itemName}>{item.name}</h3>
                           <p className={styles.itemHospital}>{item.hospital}</p>
+                          <p className={styles.dateTraining}>Sabtu, 20 Oktober 2025</p>
+                          <p className={styles.dateTraining}>Waktu: Pukul 08:00 WIB</p>
                         </Link>
 
                         <div className={styles.priceContainer}>

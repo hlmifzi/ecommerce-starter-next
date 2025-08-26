@@ -78,11 +78,22 @@
     }
 }
 
+.badgeContainer {
+    @include flex(row, center, flex-start);
+    gap: size(4);
+}
+
 .itemHospital {
     font-size: size(10);
-    color: $color-border-neutral;
-    margin-bottom: size(12);
+    color: $text-soft-gray;
+    margin-bottom: size(4);
     text-align: left;
+}
+
+.dateTraining {
+    font-size: size(12);
+    color: $text-soft-gray;
+    font-weight: $medium;
 }
 
 .payNow {
