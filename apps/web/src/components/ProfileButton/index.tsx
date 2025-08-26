@@ -68,6 +68,11 @@ const ProfileButton = () => {
                 </div>
                 <div className={styles.containerMenu}>
                   <ul>
+                    <Link href={"/profil"}>
+                      <li className={styles.itemMenu}>
+                        Profil Saya
+                      </li>
+                    </Link>
                     <Link href={"/daftar-pesanan"}>
                       <li className={styles.itemMenu}>
                         Daftar Transaksi

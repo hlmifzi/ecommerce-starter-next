@@ -1,0 +1,122 @@
+@use "../../../lib/styles/_index.scss" as *;
+
+.container {
+    padding: size(36) 0 size(80);
+}
+
+.pageTitle {
+    margin-bottom: size(30) !important;
+    font-weight: 600 !important;
+    color: $color-black;
+}
+
+.profileContainer {
+    @include grid(2);
+    grid-gap: size(16);
+    grid-template-columns: 25% auto;
+    background: $color-white;
+    border-radius: size(8);
+    padding: size(30);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.profileSidebar {
+    border-right: size(1) solid $color-border-neutral;
+    padding-right: size(30) !important;
+
+    @media (max-width: 768px) {
+        border-right: none;
+        border-bottom: 1px solid $color-border-neutral;
+        padding-right: 0 !important;
+        padding-bottom: size(30);
+        margin-bottom: size(30);
+    }
+}
+
+.avatarSection {
+    text-align: center;
+    margin-bottom: size(30);
+}
+
+.avatarContainer {
+    position: relative;
+    display: inline-block;
+    margin-bottom: size(20);
+}
+
+.avatar {
+    width: size(150) !important;
+    height: size(150) !important;
+    border: 4px solid #e0e0e0;
+}
+
+.avatarInput {
+    display: none;
+}
+
+.avatarButton {
+    position: absolute !important;
+    bottom: size(5);
+    right: size(5);
+    background-color: $color-primary !important;
+    color: $color-white !important;
+
+    &:hover {
+        background-color: darken($color-primary, 10%) !important;
+    }
+}
+
+.userName {
+    margin-bottom: size(5) !important;
+    font-weight: 600 !important;
+}
+
+.editButton {
+    margin-top: size(20) !important;
+    padding: size(10) !important;
+}
+
+.profileForm {
+
+    .Mui-disabled {
+        background-color: $color-border-neutral;
+    }
+}
+
+.profileFormInner {
+    @include grid(2);
+}
+
+.actionButtons {
+    margin-top: size(30);
+    display: flex;
+    gap: size(15);
+    justify-content: flex-end;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+}
+
+.cancelButton {
+    padding: size(10) size(20) !important;
+}
+
+.saveButton {
+    padding: size(10) size(20) !important;
+    margin-bottom: size(8) !important;
+}
+
+// Helper classes untuk responsivitas
+@media (max-width: 768px) {
+    .profileContainer {
+        @include grid(1);
+        padding: size(20);
+
+    }
+
+    .avatar {
+        width: size(120) !important;
+        height: size(120) !important;
+    }
+}
