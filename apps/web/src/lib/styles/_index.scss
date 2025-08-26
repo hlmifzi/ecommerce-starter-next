@@ -1,8 +1,8 @@
-@import "./color.scss";
-@import "./size.scss";
-@import "./flex.scss";
-@import "./truncate.scss";
-@import "./_scrollbar.scss";
-@import "./_position.scss";
-@import "./_typography.scss";
-@import "./_grid.scss";
+@forward "./color";
+@forward "./size";
+@forward "./flex";
+@forward "./truncate";
+@forward "./scrollbar";
+@forward "./position";
+@forward "./typography";
+@forward "./grid";

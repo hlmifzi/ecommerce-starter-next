@@ -1,5 +1,5 @@
 // Variables
-@import '../../lib/styles/index.scss';
+@use "../../lib/styles" as *;
 
 .cartContainer {
     margin: 0 auto 1rem;

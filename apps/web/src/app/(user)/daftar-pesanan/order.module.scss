@@ -1,4 +1,4 @@
-@import "../../../lib/styles/index.scss";
+@use "../../../lib/styles/_index.scss" as *;
 
 .container {
     padding: size(36) 0 size(189);

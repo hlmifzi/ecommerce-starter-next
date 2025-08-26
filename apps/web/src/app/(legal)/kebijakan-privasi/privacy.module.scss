@@ -1,4 +1,4 @@
-@import '../../../lib/styles';
+@use "../../../lib/styles/_index.scss" as *;
 
 .container {
     @include grid(1, 32); // 32px gap = 2rem
