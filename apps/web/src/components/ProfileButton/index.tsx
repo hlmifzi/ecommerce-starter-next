@@ -32,7 +32,7 @@ const ProfileButton = () => {
     router.push("/");
   }
 
-  const id = open ? 'simple-popover' : undefined;
+  const id = open ? 'simple-popover' : "";
 
   return (
     <>
