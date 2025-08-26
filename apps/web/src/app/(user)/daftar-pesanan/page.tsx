@@ -97,17 +97,18 @@ export default function OrderStatusPage() {
               {MOCK_ORDERS?.map(item => {
                 const isPaid = item?.price !== "Gratis"
                 return (
-                  <Link key={item.id} href="/pelatihan/product-121">
-                    <div className={styles.cartItem}>
+                    <div key={item.id} className={styles.cartItem}>
                       <div className={styles.itemImage}>
                         <Image width={50} height={50} src={item.image} alt={item.name} />
                       </div>
                       
                       <div className={styles.itemDetails}>
-                        <BadgeProduct type={item?.type} />
-                        <h3 className={styles.itemName}>{item.name}</h3>
-                        <p className={styles.itemHospital}>{item.hospital}</p>
-                        
+                        <Link className={styles.itemDetailsLink} href="/pelatihan/product-121">
+                          <BadgeProduct type={item?.type} />
+                          <h3 className={styles.itemName}>{item.name}</h3>
+                          <p className={styles.itemHospital}>{item.hospital}</p>
+                        </Link>
+
                         <div className={styles.priceContainer}>
                           {item?.discountedPrice ? (
                             <>
@@ -125,7 +126,6 @@ export default function OrderStatusPage() {
                         </div>
                       </div>
                     </div>
-                  </Link>
                 )
               })}
             </div>

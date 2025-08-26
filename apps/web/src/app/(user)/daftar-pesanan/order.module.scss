@@ -36,6 +36,14 @@
 
 .itemDetails {
     position: relative;
+
+}
+
+.itemDetailsLink {
+    &:hover {
+        opacity: .5;
+    }
+
 }
 
 .priceContainer {
@@ -53,10 +61,6 @@
     padding: 1rem 0;
     border-bottom: 1px solid #eee;
     position: relative;
-
-    &:hover {
-        opacity: .5;
-    }
 
     img {
         width: size(100);
