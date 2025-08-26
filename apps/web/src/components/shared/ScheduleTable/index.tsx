@@ -1,9 +1,11 @@
 
 "use client"
+import Link from 'next/link';
 import { useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import BadgeProduct from '@/components/BadgeProduct';
 import SharedButton from '../SharedButton';
+
 
 import styles from './scheduleTable.module.scss';
 
@@ -107,8 +109,13 @@ const ScheduleTable = () => {
             {trainingData.map((training:any, rowIndex:any) => (
               <tr key={training.id}>
                 <td className={`${styles.activityCell} ${styles.fadeInUp}`} style={{ animationDelay: `${0.1 * rowIndex}s` }}>
-                  <BadgeProduct type={training?.type} />
-                  {" "}{training.name}
+                  <Link href="/pelatihan/pelatiha-123">
+                    <BadgeProduct type={training?.type} />
+                    {" "}
+                    <p>
+                      {training.name}
+                    </p>
+                  </Link>
                 </td>
                 {displayedMonths.map((month, colIndex) => {
                   const monthIndex = months.indexOf(month);
@@ -121,9 +128,11 @@ const ScheduleTable = () => {
                       style={{ animationDelay: `${0.1 * (rowIndex + colIndex)}s` }}
                     >
                       {scheduleItem ? (
-                        <span className={`${styles.dateBox} ${styles[training.type]}`}>
-                          {scheduleItem.date}
-                        </span>
+                        <Link href="/pelatihan/pelatiha-123">
+                          <span className={`${styles.dateBox} ${styles[training.type]}`}>
+                            {scheduleItem.date}
+                          </span>
+                        </Link>
                       ) : ''}
                     </td>
                   );

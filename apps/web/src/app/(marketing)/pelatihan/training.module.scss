@@ -49,7 +49,7 @@
 // Responsive adjustments
 @media (max-width: 768px) {
     .container {
-        padding: size(8);
+        padding: size(8) 0;
         max-width: calc($w-screen - size(16));
 
     }

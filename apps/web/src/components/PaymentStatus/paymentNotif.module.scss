@@ -161,7 +161,7 @@
 }
 
 // Responsive design
-@media (max-width: 768) {
+@media (max-width: 768px) {
 
     .notificationContainer {
 
@@ -170,15 +170,16 @@
             margin-top: size(16);
             width: $w-full;
             background: $color-border-neutral-alt;
+            margin-bottom: size(16);
         }
     }
 
     .containerPaymentStatus {
-        @include grid(1);
+        @include grid(1, size(0));
     }
 
     .notificationCard {
-        padding: 2rem 1.5rem;
+        padding: 0;
     }
 
     .title {

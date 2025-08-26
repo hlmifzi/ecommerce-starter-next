@@ -185,6 +185,12 @@
         border-right: 1px solid #e0e0e0;
         opacity: 0;
 
+        a {
+            &:hover {
+                color: $color-secondary;
+            }
+        }
+
         // Animasi untuk sel aktivitas (baris)
         &:nth-child(1) {
             animation: fadeInUp 0.6s ease-out 0.8s forwards;
@@ -294,6 +300,13 @@
             background-color: #f2e6ff;
             color: #6600cc;
         }
+
+
+        &:hover {
+            color: $color-white;
+            background-color: $color-secondary;
+        }
+
     }
 
     tr:last-child {

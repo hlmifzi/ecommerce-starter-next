@@ -9,6 +9,7 @@ import OrderSummaryBox from '@/components/OrderSummaryBox';
 // import midtransClient from 'midtrans-client';
 
 import styles from './checkout.module.scss';
+import useWindowSize from '@/lib/hooks/useWindowSize';
 
 type FormData = {
   name: string;
@@ -27,6 +28,8 @@ type CartItem = {
 
 export default function CheckoutPage() {
   const isLogin = useAuthStore((state:any) => state.isLogin)
+
+  const { isMobile } = useWindowSize()
   
   const router = useRouter();
   
@@ -109,79 +112,96 @@ export default function CheckoutPage() {
       // Handle error (tampilkan notifikasi ke user)
     }
   };
+
+  const PaymentMethod = () => {
+    return (
+      <div className={styles.paymentMethods}>
+        <h3 className={styles.paymentTitle}>Metode Pembayaran</h3>
+        <div className={styles.paymentOptions}>
+          <label className={styles.paymentOption} style={{
+            borderColor: selectedPayment === 'midtrans' ? styles.primaryColor : '#eee'
+          }}>
+            <input
+              type="radio"
+              value="midtrans"
+              {...register('paymentMethod')}
+            />
+            <span>Pembayaran Online</span>
+            <Image width={50} height={50} src="/payment-methods/midtrans.png" alt="Midtrans" />
+          </label>
+          
+          <label className={styles.paymentOption} style={{
+            borderColor: selectedPayment === 'transfer' ? styles.primaryColor : '#eee'
+          }}>
+            <input
+              type="radio"
+              value="transfer"
+              {...register('paymentMethod')}
+            />
+            <span>Transfer Bank</span>
+            <Image width={50} height={50} src="/payment-methods/bank-transfer.png" alt="Bank Transfer" />
+          </label>
+        </div>
+      </div>
+    )
+  }
+
+  const BuyerInformation = () => {
+    return (
+       <div className={styles.buyerInformationContainer}> 
+          <div className={styles.header}>
+            <h1 className={styles.title}>Informasi Pembeli</h1>
+          </div>
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Nama Lengkap</label>
+            <p>helmi fauzi</p>
+          </div>
+          
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Nomor WhatsApp</label>
+            <p>0819 0920 0921</p>
+          </div>
+          
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Email</label>
+            <p>helmi.fauzi@ihc.id</p>
+          </div>
+
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Profesi</label>
+            <p>Dokter Ahli Penyakit Dalam</p>
+          </div>
+        </div>
+    )
+  }
   
   return (
     <div className={styles.container}>
-      <div>
-        {isLogin && (
-          <div className={styles.buyerInformationContainer}> 
-            <div className={styles.header}>
-              <h1 className={styles.title}>Informasi Pembeli</h1>
-            </div>
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Nama Lengkap</label>
-              <p>helmi fauzi</p>
-            </div>
-            
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Nomor WhatsApp</label>
-              <p>0819 0920 0921</p>
-            </div>
-            
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Email</label>
-              <p>helmi.fauzi@ihc.id</p>
-            </div>
-
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Profesi</label>
-              <p>Dokter Ahli Penyakit Dalam</p>
-            </div>
-          </div>
-        )}   
-        <div className={styles.paymentMethods}>
-          <h3 className={styles.paymentTitle}>Metode Pembayaran</h3>
-          <div className={styles.paymentOptions}>
-            <label className={styles.paymentOption} style={{
-              borderColor: selectedPayment === 'midtrans' ? styles.primaryColor : '#eee'
-            }}>
-              <input
-                type="radio"
-                value="midtrans"
-                {...register('paymentMethod')}
-              />
-              <span>Pembayaran Online</span>
-              <Image width={50} height={50} src="/payment-methods/midtrans.png" alt="Midtrans" />
-            </label>
-            
-            <label className={styles.paymentOption} style={{
-              borderColor: selectedPayment === 'transfer' ? styles.primaryColor : '#eee'
-            }}>
-              <input
-                type="radio"
-                value="transfer"
-                {...register('paymentMethod')}
-              />
-              <span>Transfer Bank</span>
-              <Image width={50} height={50} src="/payment-methods/bank-transfer.png" alt="Bank Transfer" />
-            </label>
-          </div>
+      {isLogin && !isMobile ? (
+        <div>
+          <BuyerInformation />
+          <PaymentMethod />
         </div>
-      </div>
-      <div>
+      ) : (
+        <>
+          {isLogin && (
+            <BuyerInformation />
+          )}
+          <PaymentMethod />
+        </>
+      )}
         <OrderSummaryBox 
           withCartDetail
-          withPaymentButton={{
-            text: (
-              <div className={styles.buttonPay}>
-                {isSubmitting ? 'Memproses...' : (<>
-                  <p>Bayar</p><FaArrowRight/>
-                </>)}
-              </div>
-            )
-          }} 
-        />
-      </div>
+        withPaymentButton={{
+          text: (
+            <div className={styles.buttonPay}>
+              {isSubmitting ? 'Memproses...' : (<>
+                <p>Bayar</p><FaArrowRight/>
+              </>)}
+            </div>
+          )
+        }} 
+      />
     </div>
   );
 }
