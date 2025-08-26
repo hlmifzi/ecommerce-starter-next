@@ -2,7 +2,8 @@
 
 
 .productGrid {
-    @include grid(4, 16, 42);
+    @include grid(4, size(16), size(42));
+
 }
 
 .productImage {

@@ -23,6 +23,7 @@
     @include grid(2, 4);
     max-width: calc($w-full - size(4));
     grid-template-columns: calc(80% - size(20)) 8%;
+    grid-gap: size(8);
 }
 
 .countdownFreePaidContainer {

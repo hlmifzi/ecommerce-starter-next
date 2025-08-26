@@ -4,10 +4,10 @@
     grid-gap: $gap-col;
 
     @if $gap-col !=null {
-        column-gap: size($gap-col);
+        column-gap: $gap-col;
     }
 
     @if $gap-row !=null {
-        row-gap: size($gap-row);
+        row-gap: $gap-row;
     }
 }
