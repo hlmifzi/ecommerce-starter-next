@@ -48,7 +48,7 @@ const OrderSummaryBox = ({
   const router = useRouter()
   const pathname = usePathname()
 	const [openPayment, setOpenPayment] = useState(false);
-  const [isOpenDetail, setIsOpenDetail] = useState(false)
+  const [isOpenDetail, setIsOpenDetail] = useState(true)
 	const isLogin = useAuthStore((state:any) => state.isLogin)
 
   
@@ -68,12 +68,6 @@ const OrderSummaryBox = ({
     },
     [pathname],
   );
-
-  useEffect(() => {
-    if(pathname === "/status-pembayaran" || pathname === "/pembayaran") {
-      setIsOpenDetail(true)
-    }
-  }, [])
   
 
   return (
