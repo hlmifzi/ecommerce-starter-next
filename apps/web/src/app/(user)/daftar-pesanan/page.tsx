@@ -83,20 +83,20 @@ export default function OrderStatusPage() {
       />
       {[0, 1, 2, 3].includes(statusOrder) && (
         <div className={styles.myOrderItemContainer}>
-          <Card className={styles.cardContainer}>
-            <div className={styles.orderIdHeader}>
-              <p>
-                ID Pesanan:{" "}
-                <b>
-                  ID-000001
-                </b>
-              </p>
-              <SharedBadge text='Menunggu Pembayaran' />
-            </div>
-            <div>
-              {MOCK_ORDERS?.map(item => {
-                const isPaid = item?.price !== "Gratis"
-                return (
+          {MOCK_ORDERS?.map(item => {
+            const isPaid = item?.price !== "Gratis"
+            return (
+              <Card className={styles.cardContainer}>
+                <div className={styles.orderIdHeader}>
+                  <p>
+                    ID Pesanan:{" "}
+                  </p>
+                  <b>
+                    ID-000001
+                  </b>
+                  <SharedBadge className={styles.statusPayment} text='Menunggu Pembayaran' />
+                </div>
+                <div>
                     <div key={item.id} className={styles.cartItem}>
                       <div className={styles.itemImage}>
                         <Image width={50} height={50} src={item.image} alt={item.name} />
@@ -126,10 +126,10 @@ export default function OrderStatusPage() {
                         </div>
                       </div>
                     </div>
-                )
-              })}
-            </div>
-          </Card>
+                  </div>
+              </Card>
+            )
+          })}
         </div>
       )}
       <MidtransModal 

@@ -9,11 +9,14 @@
 
     [class*="sharedCardContainer"] {
         padding: size(10);
+        margin-bottom: size(16);
+
     }
 }
 
 .orderIdHeader {
-    @include flex(row, center, space-between);
+    @include flex(row, center, flex-start);
+    position: relative;
     padding: size(12) 0 size(20) 0 !important;
     border-bottom: $half solid $color-border-neutral;
 
@@ -84,4 +87,26 @@
 
 .payNow {
     margin-top: size(20) !important;
+}
+
+.statusPayment {
+    @include position(absolute, size(0), size(0), auto, auto, true);
+}
+
+
+
+@media (max-width: 768px) {
+    .statusPayment {
+        @include position(absolute, size(0), size(0), auto, auto, true);
+    }
+
+    .priceContainer {
+        @include position(relative, auto, 0, 0);
+    }
+
+    .orderIdHeader {
+        @include flex(column, flex-start, center);
+        position: relative;
+    }
+
 }
