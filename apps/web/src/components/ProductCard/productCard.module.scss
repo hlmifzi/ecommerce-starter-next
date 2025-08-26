@@ -146,6 +146,7 @@
 
     .btnAction {
         grid-template-columns: 1fr;
+        gap: size(0);
 
         a {
 
