@@ -3,6 +3,7 @@
 .footerSection {
     @include flex(row, flex-start, center);
     width: $w-screen;
+    box-shadow: $box-shadow;
 }
 
 .copyRight {

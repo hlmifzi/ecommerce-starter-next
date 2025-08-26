@@ -7,7 +7,11 @@ module.exports = {
         port: '1337',
         pathname: '/uploads/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
     ],
-    domains: ['localhost', 'images.unsplash.com'],
   },
 }
