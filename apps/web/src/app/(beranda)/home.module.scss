@@ -112,7 +112,7 @@
 }
 
 .aboutUsContainer {
-    @include grid(2, 16);
+    @include grid(2, size(16));
 
     h2 {
         width: $w-full;

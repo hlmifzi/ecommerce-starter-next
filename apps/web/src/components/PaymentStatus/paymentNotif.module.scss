@@ -32,7 +32,7 @@
 }
 
 .containerPaymentStatus {
-    @include grid(2, 232);
+    @include grid(2, size(232));
     margin-top: size(16);
 }
 

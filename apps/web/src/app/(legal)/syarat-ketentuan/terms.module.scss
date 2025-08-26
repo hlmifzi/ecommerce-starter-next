@@ -1,7 +1,7 @@
 @use "../../../lib/styles/_index.scss" as *;
 
 .container {
-    @include grid(1, 32); // 32px gap = 2rem
+    @include grid(1, size(32)); // 32px gap = 2rem
     max-width: size(800); // 800px = 50rem
     margin: 0 auto;
     padding: size(40) size(20); // 40px = 2.5rem, 20px = 1.25rem
@@ -25,7 +25,7 @@
 }
 
 .content {
-    @include grid(1, 40); // 40px gap = 2.5rem
+    @include grid(1, size(40)); // 40px gap = 2.5rem
     padding-top: size(30); // 30px = 1.875rem
 }
 

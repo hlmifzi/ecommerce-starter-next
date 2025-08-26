@@ -48,7 +48,7 @@
 }
 
 .cartItem {
-    @include grid(2, 14);
+    @include grid(2, size(14));
     grid-template-columns: size(100) auto;
     padding: 1rem 0;
     border-bottom: 1px solid #eee;

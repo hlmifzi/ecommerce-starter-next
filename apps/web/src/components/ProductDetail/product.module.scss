@@ -31,7 +31,7 @@
 }
 
 .btnAction {
-    @include grid(2, 7);
+    @include grid(2, size(7));
 }
 
 @media (max-width: 768px) {

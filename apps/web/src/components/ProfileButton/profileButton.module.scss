@@ -95,7 +95,7 @@
 }
 
 .profileInformationContainer {
-    @include grid(2, 29);
+    @include grid(2, size(29));
     grid-template-columns: size(40) auto;
     padding-bottom: size(16);
     border-bottom: size(1) solid $color-border-neutral;

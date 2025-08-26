@@ -1,7 +1,7 @@
 @use "../../../lib/styles/_index.scss" as *;
 
 .container {
-    @include grid(1, 2rem);
+    @include grid(1, size(32));
     max-width: size(800);
     margin-top: size(32);
     margin: 0 auto;

@@ -129,10 +129,10 @@
 }
 
 .gridSortContainer {
-    @include grid(2, 16);
+    @include grid(2, size(16));
 
     @media (max-width: 768px) {
-        @include grid(1, 16);
+        @include grid(1, size(16));
         grid-template-columns: 1fr;
     }
 }
@@ -182,7 +182,7 @@
 }
 
 .paginationContainer {
-    @include grid(4, 12);
+    @include grid(4, size(12));
     grid-template-columns: size(35) size(35) size(35) size(35);
     width: fit-content;
     margin: size(37) 0 0 auto;
