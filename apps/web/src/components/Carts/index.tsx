@@ -28,11 +28,11 @@ const Cart = ({
             {isEmpty ? cartItems.map((item:any) => (
               <div key={item.id} className={styles.cartItem}>
                 <div className={styles.itemImage}>
-                  <Image width={50} height={50} src={item.image} alt={item.name} />
+                  <Image width={50} height={50} src={item?.image?.[0]?.url} alt={item.name} />
                 </div>
                 
                 <div className={styles.itemDetails}>
-                  <h3 className={styles.itemName}>{item.name}</h3>
+                  <h3 className={styles.itemName}>{item.title}</h3>
                   <p className={styles.itemHospital}>{item.hospital}</p>
                   
                   <div className={styles.priceContainer}>

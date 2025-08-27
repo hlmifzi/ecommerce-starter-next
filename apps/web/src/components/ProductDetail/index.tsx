@@ -1,19 +1,32 @@
 'use client';
 import Link from 'next/link';
 import { useAuthStore } from '@/lib/hooks/useAuth';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import Card from '../Card';
-import SharedBadge from '../shared/SharedBadge';
-import SharedButton from '../shared/SharedButton';
+import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import LocationPinIcon from '@mui/icons-material/LocationPin';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import StarsIcon from '@mui/icons-material/Stars';
 
-import styles from './product.module.scss';
-import { MdCheckBox, MdStars } from 'react-icons/md';
+import Card from '../Card';
+import SharedBadge from '@/components/shared/SharedBadge';
+import SharedButton from '@/components/shared/SharedButton';
+import AddToCartModal from '@/components/AddToCartModal';
+
 import useWindowSize from '@/lib/hooks/useWindowSize';
+import { formatPriceRupiah } from '@/lib/function/formatPriceRupiah';
+import { useCartStore } from '@/lib/hooks/useCart';
+
+
+import styles from './productDetail.module.scss';
 
 const ProductDetail = ({ product }: { product: any }) => {
   const isLogin = useAuthStore((state: any) => state.isLogin);
   const { isMobile } = useWindowSize();
-  console.log('this:', product);
+
   return (
     <div className={styles.container}>
       <header>
@@ -40,13 +53,13 @@ const ProductDetail = ({ product }: { product: any }) => {
             <h2>Audiens</h2>
             <ul>
               <li>
-                <MdStars size={24} color="#8FC640" />
+                <StarsIcon />
                 <p>
                   Tenaga Vokasi Farmasi <span>(15 SKP)</span>
                 </p>
               </li>
               <li>
-                <MdStars size={24} color="#8FC640" />
+                <StarsIcon />
                 <p>
                   Tenaga Teknologi Laboratorium Medik <span>(10 SKP)</span>
                 </p>
@@ -80,7 +93,9 @@ const ProductDetail = ({ product }: { product: any }) => {
 export default ProductDetail;
 
 const CheckoutBox = ({ isLogin, product }: any) => {
-  console.log('this:', product);
+  const router = useRouter()
+  const showAddToCartModal = useCartStore((state:any) => state.showAddToCartModal);
+  
   return (
     <Card className={styles.boxContainer}>
       <section className={styles.boxContainerInner}>
@@ -89,12 +104,16 @@ const CheckoutBox = ({ isLogin, product }: any) => {
           <h3>Anda akan mendapatkan</h3>
           <div className={styles.benefitList}>
             <p>
-              <MdCheckBox size={24} />
+              <CheckBoxOutlinedIcon  />
               <span>Satuan Kredit Profesi (SKP)</span>
             </p>
             <p>
-              <MdCheckBox size={24} />
-              <span>Satuan Kredit Profesi (SKP)</span>
+              <AccessTimeOutlinedIcon />
+              <span>Sertifikat kelulusan</span>
+            </p>
+            <p>
+              <WorkspacePremiumIcon  />
+              <span>Sertifikat kelulusan</span>
             </p>
           </div>
         </div>
@@ -103,16 +122,16 @@ const CheckoutBox = ({ isLogin, product }: any) => {
           <h3>Detail Pelaksanaan</h3>
           <div className={styles.benefitList}>
             <p>
-              <MdCheckBox size={24} />
-              <span>Satuan Kredit Profesi (SKP)</span>
+              <CalendarMonthIcon />
+              <span>28 April 2025 - 30 April 2025 </span>
             </p>
             <p>
-              <MdCheckBox size={24} />
-              <span>Satuan Kredit Profesi (SKP)</span>
+              <AccessTimeOutlinedIcon />
+              <span>08.00 - 23.00 WIB</span>
             </p>
             <p>
-              <MdCheckBox size={24} />
-              <span>Satuan Kredit Profesi (SKP)</span>
+              <LocationPinIcon />
+              <span>Hybrid (Luring & Daring)</span>
             </p>
           </div>
         </div>
@@ -120,18 +139,26 @@ const CheckoutBox = ({ isLogin, product }: any) => {
 
       <section className={styles.benefitList}>
         <p>
-          <MdCheckBox />
+          <PersonOutlineOutlinedIcon />
           <span>10000 total terdaftar</span>
         </p>
       </section>
 
       {/* Harga */}
-      <h3 className={styles.price}>Rp.{product?.price}</h3>
+      <h3 className={styles.price}>{formatPriceRupiah(product?.price)}</h3>
 
       <div className={styles.btnAction}>
-        <Link href={isLogin ? '/keranjang' : '/masuk'}>
-          <SharedButton type="secondary">+ Keranjang</SharedButton>
-        </Link>
+        <SharedButton onClick={() => isLogin ? showAddToCartModal({
+              id: 12122,
+              title: "Training Kesehatan Dasar",
+              price: 1200000,
+              discountedPrice: 0,
+              image: [{
+                url: "/nurse-training.png"
+              }],
+              quantity: 1,
+              hospital: "Penyedia: RS pusat pertamina (RSPP)",
+            }) : router.push("/masuk")} type="secondary">+ Keranjang</SharedButton>
         <Link href={'/pembayaran'}>
           <SharedButton type="primary">Beli Pelatihan</SharedButton>
         </Link>

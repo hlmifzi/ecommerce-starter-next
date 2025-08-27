@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 
 import SharedButton from '@/components/shared/SharedButton';
 import BadgeProduct from '@/components/BadgeProduct';
+import AddToCartModal from '@/components/AddToCartModal';
 
 import { useAuthStore } from '@/lib/hooks/useAuth';
 import { useCartStore } from '@/lib/hooks/useCart';
@@ -19,8 +20,9 @@ const ProductCard = ({product}:any) => {
 
     const isLogin = useAuthStore((state:any) => state.isLogin)
     const cartItems = useCartStore((state:any) => state.cartItems)
-    const addToCart = useCartStore((state: any) => state.removeFromCart);
-    
+    const showAddToCartModal = useCartStore((state:any) => state.showAddToCartModal);
+    const addToCartFromPayNow = useCartStore((state:any) => state.addToCartFromPayNow);
+
     return (
     <div className={styles.productCardContainer}>
         <div className={styles.badgeProduct}>
@@ -66,24 +68,30 @@ const ProductCard = ({product}:any) => {
                 <p>{product?.registered_qty} Terdaftar</p>
               </div>
               <div className={styles.btnAction}>
-                <SharedButton onClick={(e:any) => {
-                  e.preventDefault();
-                  addToCart(cartItems[0]);
-                  router.push("/pembayaran")
-                }} type='primary'>
+                <SharedButton 
+                  type='primary'
+                  onClick={(e:any) => {
+                    e.preventDefault();
+                    addToCartFromPayNow(cartItems[0]);
+                    router.push("/pembayaran")
+                  }}
+                >
                   Daftar Sekarang
                 </SharedButton>
-                <SharedButton  onClick={(e:any) => {
-                  e.preventDefault();
-                  addToCart(cartItems[0]);
-                  isLogin ? router.push("/keranjang") : router.push("/masuk?dari=keranjang")  
-                }} type='secondary'>
+                <SharedButton 
+                  type='secondary'
+                  onClick={(e:any) => {
+                    e.preventDefault();
+                    isLogin ? showAddToCartModal(product): router.push("/masuk?dari=keranjang")  
+                  }}
+                >
                   <MdOutlineShoppingCart size={20}  />
                 </SharedButton>
               </div>
             </div>
-        </div>
+          </div>
         </Link>
+
     </div>
   )
 }

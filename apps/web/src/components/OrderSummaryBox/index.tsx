@@ -73,20 +73,20 @@ const OrderSummaryBox = ({
                 {cartItems.map((item:any, index: number) => (
                   <div key={item.id} className={styles.cartItem}>
                     <div className={styles.itemImage}>
-                      <Image width={60} height={0} src={item.image} alt={item.name} />
+                      <Image width={60} height={0} src={item.image?.[0]?.url} alt={item.name} />
                     </div>
                     <Link key={index} href={"/pelatihan/1212"}>
                       <div className={styles.itemDetails}>
-                        <h3 className={styles.itemName}>{item.name}</h3>
+                        <h3 className={styles.itemName}>{item.title}</h3>
                         <p className={styles.itemHospital}>{item.hospital}</p>
                         <div className={styles.priceContainer}>
                           {item?.discountedPrice ? (
                             <>
-                              <span className={styles.originalPrice}>Rp {item.price.toLocaleString('id-ID')}</span>
-                              <span className={styles.discountedPrice}>Rp {item?.discountedPrice.toLocaleString('id-ID')}</span>
+                              <span className={styles.originalPrice}>Rp 900,000</span>
+                              <span className={styles.discountedPrice}>Rp 900,000</span>
                             </>
                           ) : (
-                            <span className={styles.currentPrice}>Rp {item.price.toLocaleString('id-ID')}</span>
+                            <span className={styles.currentPrice}>Rp 900,000</span>
                           )}
                         </div>
                       </div>

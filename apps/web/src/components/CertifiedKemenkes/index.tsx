@@ -11,6 +11,7 @@ const SharedModal = dynamic(() => import("@/components/shared/SharedModal"), {
 });
 
 import styles from "../Footer/footer.module.scss"
+import AddToCartModal from "../AddToCartModal";
 
 const CertifiedKemenkes = ({ menu } : any) => {
   const [openCertified, setOpenCertified] = useState(false)
@@ -28,20 +29,20 @@ const CertifiedKemenkes = ({ menu } : any) => {
         </SharedButton>
       </div>
              
-        <SharedModal 
-          open={openCertified}
-          classNameContainer={styles.midtransModalContainer}
-          handleDialog={handleOpenCertified}
-        >
-          <div className={styles.midtransDummyContainer}>
-            <Image 
-              src="/footer/certified-image.png" 
-              alt="midtrans"
-              width={390}
-              height={200}
-            />
-          </div>
-        </SharedModal>
+      <SharedModal 
+        open={openCertified}
+        classNameContainer={styles.midtransModalContainer}
+        handleDialog={handleOpenCertified}
+      >
+        <div className={styles.midtransDummyContainer}>
+          <Image 
+            src="/footer/certified-image.png" 
+            alt="midtrans"
+            width={390}
+            height={200}
+          />
+        </div>
+      </SharedModal>
     </>
   )
 }

@@ -2,8 +2,9 @@
 import Link from 'next/link';
 import { useRef, useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import ProductCard from "../ProductCard"
-import SharedButton from '../shared/SharedButton';
+import ProductCard from "@/components/ProductCard"
+import SharedButton from '@/components/shared/SharedButton';
+import AddToCartModal from '@/components/AddToCartModal';
 
 import styles from './ProductCarousel.module.scss';
 
@@ -105,6 +106,7 @@ export default function ProductCarousel({ products }: any) {
       >
         <FaChevronRight />
       </SharedButton>
+
     </div>
   );
 }

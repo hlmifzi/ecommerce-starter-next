@@ -3,7 +3,9 @@ import { useState, useEffect, useRef } from 'react';
 import { MdOutlineShoppingCart, MdOutlineClose } from 'react-icons/md';
 import Link from 'next/link';
 import Image from 'next/image';
-import ProfileButton from '../ProfileButton';
+
+import ProfileButton from '@/components/ProfileButton';
+import { useCartStore } from '@/lib/hooks/useCart';
 
 import styles from './navbar.module.scss';
 
@@ -47,6 +49,8 @@ export default function Navbar() {
   const [scrollDirection, setScrollDirection] = useState('up');
   const [showInfo, setShowInfo] = useState(true);
   const lastScrollY = useRef(0);
+  const cartItems = useCartStore((state:any) => state.cartItems)
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -113,7 +117,7 @@ export default function Navbar() {
           <div className={styles.actions}>
             <Link href="/keranjang" className={styles.cartButton} aria-label="Cart">
               <MdOutlineShoppingCart size={20} />
-              <span className={styles.cartCount}>0</span>
+              <span className={styles.cartCount}>{cartItems?.length}</span>
             </Link>
             <ProfileButton />
           </div>

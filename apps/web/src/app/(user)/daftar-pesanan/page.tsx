@@ -1,17 +1,24 @@
 'use client';
 
 import { useState, useCallback } from "react"
-import SharedTabs from '@/components/shared/SharedTabs';
-import Card from '@/components/Card';
+import dynamic from "next/dynamic"
 import Image from 'next/image';
 import Link from 'next/link';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { MdCalendarToday, MdCalendarViewDay, MdCalendarViewMonth, MdOutlineCalendarMonth } from "react-icons/md";
 
+import SharedTabs from '@/components/shared/SharedTabs';
+import Card from '@/components/Card';
 import SharedBadge from '@/components/shared/SharedBadge';
 import SharedButton from '@/components/shared/SharedButton';
-import MidtransModal from '@/components/MidtransModal';
 import BadgeProduct from "@/components/BadgeProduct";
+
+const MidtransModal = dynamic(() => import("@/components/MidtransModal"), {
+  ssr: false, 
+});
+const SharedModal = dynamic(() => import("@/components/shared/SharedModal"), {
+  ssr: false, 
+});
 
 import styles from './order.module.scss';
 
@@ -128,6 +135,7 @@ const GoogleCalendarButton = ({ event }:any) => {
 };
 
 export default function OrderStatusPage() {
+  const [openCertified, setOpenCertified] = useState(false)
   const [statusOrder, setStatusOrder] = useState(0);
   const [openPayment, setOpenPayment] = useState(false);
 
@@ -137,6 +145,10 @@ export default function OrderStatusPage() {
 
   const handlePaymentDialog = () => {
     setOpenPayment((prev:boolean) => !prev)
+  }
+
+  const handleOpenCertified = () => {
+    setOpenCertified((prev) => !prev)
   }
 
   return (
@@ -216,7 +228,7 @@ export default function OrderStatusPage() {
                               {item?.status === "done" && (
                                 <SharedButton 
                                   type='text'
-                                  onClick={handlePaymentDialog} 
+                                  onClick={handleOpenCertified} 
                                   className={styles.showCertificate}
                                 >
                                   <WorkspacePremiumIcon />
@@ -224,6 +236,8 @@ export default function OrderStatusPage() {
                                 </SharedButton>
                               )}
                             </div>
+
+
                           </div>
                         )}
 
@@ -239,6 +253,18 @@ export default function OrderStatusPage() {
           openPayment={openPayment}
           handleMidtransModal={handlePaymentDialog}
       />
+
+        <SharedModal 
+          open={openCertified}
+          handleDialog={handleOpenCertified}
+        >
+          <Image 
+            src="/footer/certified-image.png" 
+            alt="midtrans"
+            width={390}
+            height={200}
+          />
+        </SharedModal>
     </div>
   );
 }

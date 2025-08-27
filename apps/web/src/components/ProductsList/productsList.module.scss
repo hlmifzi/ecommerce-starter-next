@@ -4,6 +4,13 @@
 .productGrid {
     @include grid(4, size(16), size(42));
 
+    [class*='productCardContainer'],
+    [class*='card'] {
+        min-width: $w-full;
+        width: $w-full;
+        max-width: $w-full;
+    }
+
 }
 
 .productImage {

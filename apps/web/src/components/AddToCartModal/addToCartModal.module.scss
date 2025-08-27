@@ -1,0 +1,46 @@
+@use "../../lib/styles" as *;
+
+.addToCartModalContainer {
+
+    [class*='MuiDialogContent-root'] {
+        @include grid(2);
+        grid-template-columns: size(126) auto;
+        gap: size(14);
+        padding-top: 0;
+
+        h2 {
+            font-size: size(12);
+            font-weight: $semiBold;
+        }
+    }
+}
+
+.cartDescContainer {
+    width: size(330);
+    min-width: size(330);
+    max-width: size(330);
+}
+
+.buttonActionContainer {
+    margin-top: size(7);
+}
+
+.buttonSeeTraining {
+    font-size: size(12) !important;
+    color: $color-secondary !important;
+    border: $half solid $color-secondary !important;
+    height: size(28);
+    max-height: size(28);
+
+    &:hover {
+        transform: translateY(-.5px);
+        box-shadow: $box-shadow;
+    }
+}
+
+.buttonAddToCart {
+    font-size: size(12) !important;
+    min-height: size(28) !important;
+    height: size(28) !important;
+    max-height: size(28) !important;
+}

@@ -1,0 +1,128 @@
+@use "../../lib/styles" as *;
+
+
+.contentDescription {
+    @include flex(column, start, start);
+    gap: size(25);
+
+    svg {
+        color: $color-secondary;
+    }
+
+    h2 {
+        font-size: size(24);
+        font-weight: $semiBold;
+    }
+
+    ol {
+        list-style-position: inside;
+    }
+
+    ul {
+        list-style-type: none;
+
+        li {
+            display: flex;
+            align-items: center;
+            gap: size(15);
+            margin-bottom: size(5);
+
+            span {
+                font-weight: $semiBold;
+            }
+        }
+    }
+}
+
+.benefitList {
+    @include flex(column, start, start);
+    gap: size(5);
+
+    p {
+        color: #7e7e7e;
+        @include flex(row, center, row);
+        gap: size(10);
+
+        span {
+            font-size: size(16);
+            font-weight: $normalRegular;
+        }
+    }
+}
+
+.productDescription {
+    @include flex(column, start, start);
+    gap: size(20);
+
+    [class*="sharedCardContainer"] {
+        min-width: $w-full;
+        width: $w-full;
+        max-width: $w-full;
+    }
+}
+
+.container {
+    margin-top: size(42);
+}
+
+.productInner {
+    display: grid;
+    grid-template-columns: auto size(347);
+    grid-gap: size(41);
+}
+
+.coverImage {
+    min-height: size(400);
+}
+
+
+.imageContainer {
+    position: relative;
+    width: $w-full;
+    aspect-ratio: 16 / 9;
+
+    img {
+        border-radius: size(5);
+    }
+}
+
+.boxContainer {
+    @include flex(column, start, start);
+    padding: size(20);
+    gap: 15;
+}
+
+.boxContainerInner {
+    @include flex(column, start, start);
+    gap: size(15);
+    width: $w-full;
+    padding-bottom: size(15);
+    border-bottom: 1px solid $color-border-neutral;
+
+
+    h3 {
+        font-weight: $medium;
+        font-size: size(16);
+    }
+}
+
+.btnAction {
+    @include grid(2, size(7));
+    width: $w-full;
+}
+
+.price {
+    font-size: size(24);
+    font-weight: $semiBold;
+}
+
+@media (max-width: 768px) {
+    .productInner {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: size(16);
+    }
+
+}
