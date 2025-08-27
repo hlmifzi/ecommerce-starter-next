@@ -1,0 +1,25 @@
+@use "../../lib/styles/_index.scss" as *;
+
+.emptySection {
+    @include flex(column, center, center);
+    min-height: size(200);
+    height: size(200);
+    gap: size(16);
+
+    svg {
+        color: $text-soft-gray;
+        font-size: size(48);
+    }
+
+    p {
+        color: $text-soft-gray;
+    }
+
+    a {
+        color: $color-primary;
+
+        &:hover {
+            opacity: .7;
+        }
+    }
+}

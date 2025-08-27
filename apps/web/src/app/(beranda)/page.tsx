@@ -167,7 +167,7 @@ export default async function HomePage() {
       </section>
       <section id="pelatihan" className={styles.popularProduct}>
         <div className={styles.header}>
-          <h1 className={styles.title}>Pelatihan Kesehatan Terdekat</h1>
+          <h1 className={styles.title}>PELATIHAN TERDEKAT</h1>
         </div>
         <div className={styles.productGrid}>
           <ProductCarousel 
@@ -186,12 +186,12 @@ export default async function HomePage() {
       </section>
 
       <section id="struktur-organisasi" className={styles.ourTeam}>
-        <h2 className={styles.title}>Tim Kami</h2>
+        <h2 className={styles.title}>TIM KAMI</h2>
         <Image src="/home/out-team.png" width={800} height={500} className={styles.ourTeamImage} alt="our team" />
       </section>
 
       <section id="tentang-kami" className={styles.aboutUs}>
-        <h2>Tentang Kami</h2>
+        <h2 className={styles.title}>TENTANG KAMI</h2>
         <div className={styles.aboutUsContainer}>
           <Image src="/logo-rspp.svg" className={styles.aboutUsImage} width={500} height={200} alt="our team" />
           <article className={styles.aboutUsArticle}>
@@ -201,11 +201,11 @@ export default async function HomePage() {
       </section>
       <section id="visi-misi" className={styles.visiMisiSection}>
         <div className={styles.visiMisiContainer}>
-          <h2 className={styles.title}>Visi</h2>
+          <h2 className={styles.title}>VISI</h2>
           <article>
             {visiMisiMock?.visi}
           </article>
-          <h2 className={styles.misiTitle}>Misi</h2>
+          <h2 className={styles.misiTitle}>MISI</h2>
           <article>
             <ul>
               {visiMisiMock?.misi?.map((misi: string, index: number)=>{
@@ -222,13 +222,13 @@ export default async function HomePage() {
       </section>
       <section id="dokumentasi" className={styles.documentationSection}>
         <div className={styles.documentation}>
-          <h2 className={styles.title}>Dokumentasi Kegiatan</h2>
+          <h2 className={styles.title}>DOKUMENTASI KEGIATAN</h2>
           <DocumentationCarousel documentations={documentationData} />
         </div>
       </section>
 
       <section id="artikel" className={styles.articleSection}>
-          <h2 className={styles.titleArticle}>Artikel Terbaru</h2>
+          <h2 className={styles.titleArticle}>ARTIKEL</h2>
           <p>Kumpulan berita terkini mengenai perkembangan RSPP</p>
           <ArticleCarousel articles={articleData} />
       </section>

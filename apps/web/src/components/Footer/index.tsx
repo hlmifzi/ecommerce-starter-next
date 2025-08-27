@@ -1,9 +1,11 @@
 "use client";
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation";
 import { FaInstagram, FaFacebook, FaYoutube   } from "react-icons/fa";
+import { menus } from "../navbar"
+
 import CertifiedKemenkes from "../CertifiedKemenkes";
-import  { menus } from "../navbar"
 import styles from "./footer.module.scss"
 
 const menuLists = [
@@ -61,47 +63,54 @@ const menuLists = [
 ]
 
 const Footer = () => {
+  const pathname = usePathname();
+  const showFooterPath = ["/artikel", "/masuk", "/daftar"];
+  const isShowFooter = pathname === "/" || showFooterPath.some((path:string) => pathname.startsWith(path));
+
+
 
   return (
     <>
-      <footer>
-        <section className={styles.footerSection}>
-          <div className={styles.footerContainer}>
-            <div className={styles.information}>
-                <Image src={'/logo-rspp.svg'} fill alt="logo-tarining-kesehatan-rspp"/>
-                <p>Jl. Kyai Maja No. 43, Kebayoran Baru Jakarta Selatan 12120</p>
-                <p>Layanan Pelanggan IHC : 150442</p>
-                <p>Email : rspusatpertamina@ihc.id</p>
-            </div>
-            <div className={styles.listMenuContainer}>
-              {menuLists?.map((list, index) => (
-                <div key={index} className={styles.listMenuInner}>
-                  <h3>{list?.title}</h3>
-                  <div className={list?.title !== "Ikuti Kami" ? styles.listItem : styles.flex}>
-                    {list?.menus?.map(((menu:any, index: number) => (
-                      <div key={index}>
-                      {menu?.imgUrl ? (
-                        <CertifiedKemenkes menu={menu}/>
-                      )
-                      : (
-                        <Link key={index} className={menu?.text.replace(" ", "")} href={menu.url}>
-                          {menu?.icon}
-                          {menu?.text}
-                        </Link>
-                      )}
-                      </div>
-                    )))}
+      {isShowFooter && (
+        <footer>
+          <section className={styles.footerSection}>
+            <div className={styles.footerContainer}>
+              <div className={styles.information}>
+                  <Image src={'/logo-rspp.svg'} fill alt="logo-tarining-kesehatan-rspp"/>
+                  <p>Jl. Kyai Maja No. 43, Kebayoran Baru Jakarta Selatan 12120</p>
+                  <p>Layanan Pelanggan IHC : 150442</p>
+                  <p>Email : rspusatpertamina@ihc.id</p>
+              </div>
+              <div className={styles.listMenuContainer}>
+                {menuLists?.map((list, index) => (
+                  <div key={index} className={styles.listMenuInner}>
+                    <h3>{list?.title}</h3>
+                    <div className={list?.title !== "Ikuti Kami" ? styles.listItem : styles.flex}>
+                      {list?.menus?.map(((menu:any, index: number) => (
+                        <div key={index}>
+                        {menu?.imgUrl ? (
+                          <CertifiedKemenkes menu={menu}/>
+                        )
+                        : (
+                          <Link key={index} className={menu?.text.replace(" ", "")} href={menu.url}>
+                            {menu?.icon}
+                            {menu?.text}
+                          </Link>
+                        )}
+                        </div>
+                      )))}
 
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+          </section>
+          <div className={styles.copyRight}>
+            <p>&copy; 2025 LNTC Rumah Sakit Pusat Pertamina. All rights reserved.</p>
           </div>
-        </section>
-        <div className={styles.copyRight}>
-          <p>&copy; 2025 LNTC Rumah Sakit Pusat Pertamina. All rights reserved.</p>
-        </div>
-      </footer>
+        </footer>
+      )}
     </>
   )
 }

@@ -8,6 +8,7 @@ import SharedButton from '@/components/shared/SharedButton';
 import BadgeProduct from '@/components/BadgeProduct';
 
 import { useAuthStore } from '@/lib/hooks/useAuth';
+import { useCartStore } from '@/lib/hooks/useCart';
 import { formatDate } from '@/lib/function/formatDate';
 
 import styles from './productCard.module.scss';
@@ -17,6 +18,8 @@ const ProductCard = ({product}:any) => {
     let price = product?.discounted_price || product?.price
 
     const isLogin = useAuthStore((state:any) => state.isLogin)
+    const cartItems = useCartStore((state:any) => state.cartItems)
+    const addToCart = useCartStore((state: any) => state.removeFromCart);
     
     return (
     <div className={styles.productCardContainer}>
@@ -29,53 +32,57 @@ const ProductCard = ({product}:any) => {
             className={styles.productLink}
         >
             <div className={styles.card}>
-                <div className={styles.badgeStatusProduct}>
-                    <BadgeProduct type={product?.status} />
-                </div>
-                <div className={styles.imageContainer}>
-                    <Image 
-                        src={`${product?.image?.[0]?.url}`} 
-                        alt={product?.title}
-                        fill
-                        sizes={"(max-width: 768px) 100vw, 600px"}
-                        className={styles.productImage}
-                    />
-                </div>
-                <div className={styles.content}>
-                <div className={styles.headline}>
-                    <h2 className={styles.title}>{product?.title}</h2>
-                    <p className={styles.hospital}>Oleh: {product?.hospital_name}</p>
-                </div>
-                <div className={styles.countdownFreePaidContainer}>
-                    <BadgeProduct type={product?.registrationClosedStatus} text={"12 hari lagi"} />
-                    <BadgeProduct type={price ? "paid" : "free" } />
-                </div>
-                <div className={styles.priceContainer}>
-                    {product?.discounted_price && (
-                        <span className={styles.originalPrice}>Rp {product?.price.toLocaleString()}</span>
-                    )}
-                    <span className={styles.currentPrice}>
-                    Rp {price.toLocaleString()}
-                    </span>
-                </div>
-                <div className={styles.dateRegisterdContainer}>
-                    <p>{formatDate(product?.scheduled_date)}</p>
-                    <p>{product?.registered_qty} Terdaftar</p>
-                </div>
-                <div className={styles.btnAction}>
-                    <Link href={"/pembayaran"}>
-                        <SharedButton type='primary'>
-                            Daftar Sekarang
-                        </SharedButton>
-                    </Link>
-                    <Link href={isLogin ? "/keranjang" : "/masuk?dari=keranjang"}>
-                        <SharedButton type='secondary'>
-                            <MdOutlineShoppingCart size={20}  />
-                        </SharedButton>
-                    </Link>
-                </div>
-                </div>
+              <div className={styles.badgeStatusProduct}>
+                  <BadgeProduct type={product?.status} />
+              </div>
+              <div className={styles.imageContainer}>
+                <Image 
+                  src={`${product?.image?.[0]?.url}`} 
+                  alt={product?.title}
+                  fill
+                  sizes={"(max-width: 768px) 100vw, 120px"}
+                  className={styles.productImage}
+                />
+              </div>
+              <div className={styles.content}>
+              <div className={styles.headline}>
+                  <h2 className={styles.title}>{product?.title}</h2>
+                  <p className={styles.hospital}>Oleh: {product?.hospital_name}</p>
+              </div>
+              <div className={styles.countdownFreePaidContainer}>
+                  <BadgeProduct type={product?.registrationClosedStatus} text={"12 hari lagi"} />
+                  <BadgeProduct type={price ? "paid" : "free" } />
+              </div>
+              <div className={styles.priceContainer}>
+                  {product?.discounted_price && (
+                      <span className={styles.originalPrice}>Rp {product?.price.toLocaleString()}</span>
+                  )}
+                  <span className={styles.currentPrice}>
+                  Rp {price.toLocaleString()}
+                  </span>
+              </div>
+              <div className={styles.dateRegisterdContainer}>
+                <p>{formatDate(product?.scheduled_date)}</p>
+                <p>{product?.registered_qty} Terdaftar</p>
+              </div>
+              <div className={styles.btnAction}>
+                <SharedButton onClick={(e:any) => {
+                  e.preventDefault();
+                  addToCart(cartItems[0]);
+                  router.push("/pembayaran")
+                }} type='primary'>
+                  Daftar Sekarang
+                </SharedButton>
+                <SharedButton  onClick={(e:any) => {
+                  e.preventDefault();
+                  addToCart(cartItems[0]);
+                  isLogin ? router.push("/keranjang") : router.push("/masuk?dari=keranjang")  
+                }} type='secondary'>
+                  <MdOutlineShoppingCart size={20}  />
+                </SharedButton>
+              </div>
             </div>
+        </div>
         </Link>
     </div>
   )

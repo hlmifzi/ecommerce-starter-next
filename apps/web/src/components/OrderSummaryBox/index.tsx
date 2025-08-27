@@ -1,12 +1,13 @@
 "use client"
 
-import { useState, useCallback, useEffect } from "react"
+import { useState, useMemo, useCallback, useEffect } from "react"
 import { FaLock, FaChevronDown, FaChevronUp, FaTrash } from 'react-icons/fa';
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, redirect } from "next/navigation";
 import Link from 'next/link';
 import Image from 'next/image';
 
 import { useAuthStore } from '@/lib/hooks/useAuth';
+import { useCartStore } from '@/lib/hooks/useCart';
 
 import MidtransModal from "@/components/MidtransModal";
 import SharedButton from "@/components/shared/SharedButton";
@@ -25,31 +26,14 @@ type orderSummaryBoxType ={
 const OrderSummaryBox = ({
   withPaymentButton,
   withCartDetail = false,
-  cartItems =  [
-    {
-      id: 1,
-      name: "Training Kesehatan Dasar",
-      price: 1200000,
-      discountedPrice: 0,
-      image: "/nurse-training.png",
-      quantity: 1,
-      hospital: "authorized: RS pusat pertamina (RSPP)"
-    },
-    {
-      id: 2,
-      name: "Advanced Medical Training",
-      price: 2500000,
-      image: "/vaksin.png",
-      quantity: 2,
-      hospital: "authorized: RS pusat pertamina (RSPP)"
-    }
-  ],
 } : orderSummaryBoxType) => {
   const router = useRouter()
   const pathname = usePathname()
 	const [openPayment, setOpenPayment] = useState(false);
   const [isOpenDetail, setIsOpenDetail] = useState(true)
 	const isLogin = useAuthStore((state:any) => state.isLogin)
+  const cartItems = useCartStore((state:any) => state.cartItems)
+  const removeFromCart = useCartStore((state: any) => state.removeFromCart);
 
   
   const subtotal = cartItems.reduce((sum:any, item:any) => {
@@ -68,6 +52,12 @@ const OrderSummaryBox = ({
     },
     [pathname],
   );
+
+  const isEmpty = useMemo(() => !cartItems?.length, [cartItems])
+  
+  useEffect(() => {
+    if(isEmpty && pathname !== "/keranjang") redirect("/pelatihan");
+  }, [isEmpty])
   
 
   return (
@@ -81,12 +71,11 @@ const OrderSummaryBox = ({
             {isOpenDetail && (
               <div className={styles.cartItems}>
                 {cartItems.map((item:any, index: number) => (
-                  <Link key={index} href={"/pelatihan/1212"}>
-                    <div key={item.id} className={styles.cartItem}>
-                      <div className={styles.itemImage}>
-                        <Image width={60} height={0} src={item.image} alt={item.name} />
-                      </div>
-                      
+                  <div key={item.id} className={styles.cartItem}>
+                    <div className={styles.itemImage}>
+                      <Image width={60} height={0} src={item.image} alt={item.name} />
+                    </div>
+                    <Link key={index} href={"/pelatihan/1212"}>
                       <div className={styles.itemDetails}>
                         <h3 className={styles.itemName}>{item.name}</h3>
                         <p className={styles.itemHospital}>{item.hospital}</p>
@@ -101,13 +90,13 @@ const OrderSummaryBox = ({
                           )}
                         </div>
                       </div>
-                      {pathname !== "/status-pembayaran" &&
-                        <button className={styles.removeButton}>
-                          <FaTrash />
-                        </button>
-                      }
-                    </div>
-                  </Link>
+                    </Link>
+                    {pathname !== "/status-pembayaran" &&
+                      <button onClick={() => removeFromCart(item?.id)} className={styles.removeButton}>
+                        <FaTrash />
+                      </button>
+                    }
+                  </div>
                 ))}
               </div>
             )}
@@ -121,9 +110,10 @@ const OrderSummaryBox = ({
           {withPaymentButton && (
             <>
               <SharedButton 
-                type="primary" 
+                type="primary"
                 onClick={handlePaymentDialog} 
                 className={styles.checkoutButton}
+                disabled={isEmpty}
               >
                 {withPaymentButton?.text}
               </SharedButton>

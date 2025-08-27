@@ -1,41 +1,31 @@
 'use client';
 
+import { useEffect } from "react"
 import { FaTrash } from 'react-icons/fa';
 import Image from 'next/image';
+import Link from 'next/link';
+
+import Empty from "@/components/Empty";
+
+import { useCartStore } from '@/lib/hooks/useCart';
 
 import styles from './cart.module.scss';
 
 const Cart = ({
-  cartItems =  [
-    {
-      id: 1,
-      name: "Training Kesehatan Dasar",
-      price: 1200000,
-      discountedPrice: 0,
-      image: "/nurse-training.png",
-      quantity: 1,
-      hospital: "authorized: RS pusat pertamina (RSPP)"
-    },
-    {
-      id: 2,
-      name: "Advanced Medical Training",
-      price: 2500000,
-      image: "/vaksin.png",
-      quantity: 2,
-      hospital: "authorized: RS pusat pertamina (RSPP)"
-    }
-  ],
   title= "Keranjang Belanja"
 }) => {
 
-
+  const cartItems = useCartStore((state:any) => state.cartItems)
+  const removeFromCart = useCartStore((state: any) => state.removeFromCart);
+  const isEmpty = cartItems.length > 0
+  
   return (
     <>
       <div className={styles.cartContainer}>
         <div>
           <h2 className={styles.cartTitle}>{title}</h2>   
           <div className={styles.cartItems}>
-            {cartItems.map((item) => (
+            {isEmpty ? cartItems.map((item:any) => (
               <div key={item.id} className={styles.cartItem}>
                 <div className={styles.itemImage}>
                   <Image width={50} height={50} src={item.image} alt={item.name} />
@@ -57,11 +47,23 @@ const Cart = ({
                   </div>
                 </div>
                 
-                <button className={styles.removeButton}>
+                <button 
+                  onClick={() => removeFromCart(item.id)}
+                  className={styles.removeButton}
+                >
                   <FaTrash />
                 </button>
               </div>
-            ))}
+            )) : (
+              <Empty>
+                <p> Belum ada pelatihan,{" "}
+                  <Link href="/pelatihan">
+                    Beli pelatihan 
+                  </Link>{" "}
+                  sekarang
+                </p>
+              </Empty>
+            )}
           </div>
         </div>
       </div>

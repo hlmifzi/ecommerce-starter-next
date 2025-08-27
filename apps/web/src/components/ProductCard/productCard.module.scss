@@ -5,15 +5,17 @@
     border: 1px solid #e1e1e1;
     overflow: hidden;
     border-radius: size(8);
-    min-height: size(412);
-    height: size(412);
-    max-height: size(412);
 
+    min-width: size(270);
+    max-width: size(270);
+    width: size(270);
+    height: fit-content;
 }
 
 .headline {
     min-height: size(68);
 }
+
 
 .content {
     padding: size(10);
@@ -24,6 +26,12 @@
     max-width: calc($w-full - size(4));
     grid-template-columns: calc(80% - size(20)) 8%;
     grid-gap: size(8);
+
+
+    button,
+    [class*='buttonContainer'] {
+        width: $w-full !important;
+    }
 }
 
 .countdownFreePaidContainer {
@@ -60,7 +68,7 @@
 
 .title {
     @include truncate(2);
-    font-size: size(18);
+    font-size: size(16);
     text-transform: capitalize;
     font-weight: $semiBold;
     color: $color-black-soft;
@@ -134,11 +142,50 @@
 
 
 @media (max-width: 768px) {
+    .title {
+        font-size: size(14);
+        font-weight: $bold;
+    }
+
+    .currentPrice {
+        font-size: size(14);
+        font-weight: $bold;
+    }
+
+    .badgeStatusProduct {
+        @include position(absolute, size(82), auto, auto, size(-4));
+    }
 
     .card {
         height: fit-content;
         max-height: fit-content;
+        min-width: calc($w-screen-half - size(24));
+        width: calc($w-screen-half - size(24));
+        max-width: calc($w-screen-half - size(24));
     }
+
+    .countdownFreePaidContainer {
+        @include flex(column, flex-start, center);
+        gap: size(4);
+    }
+
+    .imageContainer {
+        height: size(100);
+    }
+
+    .productCardContainer {
+        min-width: calc($w-screen-half - size(24));
+        width: calc($w-screen-half - size(24));
+        max-width: calc($w-screen-half - size(24));
+
+        a {
+            min-width: calc($w-screen-half - size(24));
+            width: calc($w-screen-half - size(24));
+            max-width: calc($w-screen-half - size(24));
+        }
+    }
+
+
 
     .productCardContainer {
         max-width: $w-full;
@@ -147,6 +194,7 @@
     .btnAction {
         grid-template-columns: 1fr;
         gap: size(0);
+        display: none;
 
         a {
 

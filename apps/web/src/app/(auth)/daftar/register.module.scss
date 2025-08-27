@@ -66,6 +66,10 @@
 }
 
 .registerSubmitForm {
+    width: size(600);
+    max-width: $w-screen;
+    margin: 0 auto;
+
     button {
         min-height: size(60);
         height: size(60);

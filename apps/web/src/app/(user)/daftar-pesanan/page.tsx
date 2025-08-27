@@ -5,6 +5,8 @@ import SharedTabs from '@/components/shared/SharedTabs';
 import Card from '@/components/Card';
 import Image from 'next/image';
 import Link from 'next/link';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import { MdCalendarToday, MdCalendarViewDay, MdCalendarViewMonth, MdOutlineCalendarMonth } from "react-icons/md";
 
 import SharedBadge from '@/components/shared/SharedBadge';
 import SharedButton from '@/components/shared/SharedButton';
@@ -12,12 +14,8 @@ import MidtransModal from '@/components/MidtransModal';
 import BadgeProduct from "@/components/BadgeProduct";
 
 import styles from './order.module.scss';
-import { MdCalendarToday, MdCalendarViewDay, MdCalendarViewMonth, MdOutlineCalendarMonth } from "react-icons/md";
 
 const statusOrderMenu = [
-  {
-    label: "Semua",
-  },
   {
     label: "Menunggu Pembayaran",
   },
@@ -25,11 +23,25 @@ const statusOrderMenu = [
     label: "Pembayaran Selesai",
   },
   {
-    label: "Dibatalkan",
-  }
+    label: "Selesai",
+  },
 ]
 
 const MOCK_ORDERS = [
+   {
+      id: 2,
+      name: "Advanced Medical Training",
+      price: "Gratis",
+      image: "/vaksin.png",
+      quantity: 2,
+      type: "workshop",
+      hospital: "Penyedia: RS pusat pertamina (RSPP)",
+      date: "2025-10-22",
+      startTime: "09:00",
+      endTime: "15:00",
+      location: "Auditorium Utama, RS Pusat Pertamina",
+      status: "done"
+    },
     {
       id: 1,
       name: "Training Kesehatan Dasar",
@@ -38,7 +50,7 @@ const MOCK_ORDERS = [
       image: "/nurse-training.png",
       quantity: 1,
       type: "training",
-      hospital: "authorized: RS pusat pertamina (RSPP)",
+      hospital: "Penyedia: RS pusat pertamina (RSPP)",
       date: "2025-10-20",
       startTime: "08:00",
       endTime: "12:00",
@@ -51,7 +63,7 @@ const MOCK_ORDERS = [
       image: "/vaksin.png",
       quantity: 2,
       type: "workshop",
-      hospital: "authorized: RS pusat pertamina (RSPP)",
+      hospital: "Penyedia: RS pusat pertamina (RSPP)",
       date: "2025-10-22",
       startTime: "09:00",
       endTime: "15:00",
@@ -65,7 +77,7 @@ const MOCK_ORDERS = [
       image: "/nurse-training.png",
       quantity: 1,
       type: "webinar",
-      hospital: "authorized: RS pusat pertamina (RSPP)",
+      hospital: "Penyedia: RS pusat pertamina (RSPP)",
       date: "2025-10-25",
       startTime: "14:00",
       endTime: "16:30",
@@ -73,14 +85,11 @@ const MOCK_ORDERS = [
     },
   ]
 
-// Komponen untuk Google Calendar Button
 const GoogleCalendarButton = ({ event }:any) => {
   const createGoogleCalendarURL = () => {
-    // Format tanggal dan waktu untuk Google Calendar
     const startDate = new Date(`${event.date}T${event.startTime}`);
     const endDate = new Date(`${event.date}T${event.endTime}`);
     
-    // Format untuk URL Google Calendar (YYYYMMDDTHHmmssZ)
     const formatToGoogleDate = (date:any) => {
       return date.toISOString().replace(/-|:|\.\d+/g, '');
     };
@@ -164,9 +173,11 @@ export default function OrderStatusPage() {
                 </div>
                 <div>
                     <div key={item.id} className={styles.cartItem}>
-                      <div className={styles.itemImage}>
-                        <Image width={50} height={50} src={item.image} alt={item.name} />
-                      </div>
+                      <Link className={styles.itemDetailsLink} href="/pelatihan/product-121">
+                        <div className={styles.itemImage}>
+                          <Image width={50} height={50} src={item.image} alt={item.name} />
+                        </div>
+                      </Link>
                       
                       <div className={styles.itemDetails}>
                         <Link className={styles.itemDetailsLink} href="/pelatihan/product-121">
@@ -176,31 +187,46 @@ export default function OrderStatusPage() {
                         </div>
                           <h3 className={styles.itemName}>{item.name}</h3>
                           <p className={styles.itemHospital}>{item.hospital}</p>
+                          <p className={styles.dateTraining}>Lokasi: {item.location}</p>
                           <p className={styles.dateTraining}>{formattedDate}</p>
                           <p className={styles.dateTraining}>Waktu: Pukul {item.startTime} - {item.endTime} WIB</p>
-                          <p className={styles.location}>Lokasi: {item.location}</p>
                         </Link>
 
                         <div className={styles.priceContainer}>
-                          {item?.discountedPrice ? (
+                          {Boolean(item?.discountedPrice) && (
                             <>
                               <span className={styles.originalPrice}>Rp {item.price.toLocaleString('id-ID')}</span>
-                              <span className={styles.discountedPrice}>Rp {item?.discountedPrice.toLocaleString('id-ID')}</span>
+                              <span className={styles.discountedPrice}>Rp {item?.discountedPrice?.toLocaleString('id-ID')}</span>
                             </>
-                          ) : (
-                            <div className={styles.priceActionContainer}>
-                              <span className={styles.currentPrice}>{isPaid ? "Rp" : ""} {item.price.toLocaleString('id-ID')}</span>
-                              <div className={styles.actionButtons}>
-                                {isPaid && (
-                                  <SharedButton onClick={handlePaymentDialog} className={styles.payNow} type='primary' text='Bayar Sekarang' />
-                                )}
-                                {!isPaid &&
-                                  <GoogleCalendarButton event={item} />
-                                }
-                              </div>
-                            </div>
                           )}
+                          <span className={styles.currentPrice}>{isPaid ? "Rp" : ""} {item.price.toLocaleString('id-ID')}</span>
                         </div>
+
+                      </div>
+                      <div className={styles.btnAction}>
+                        {Boolean(!item?.discountedPrice) && (
+                          <div className={styles.actionButtons}>
+                            <div className={styles.actionButtonsInner}>
+                              {isPaid && (
+                                <SharedButton onClick={handlePaymentDialog} className={styles.payNow} type='primary' text='Bayar Sekarang' />
+                              )}
+                              {!isPaid && item?.status !== "done" &&
+                                <GoogleCalendarButton event={item} />
+                              }
+                              {item?.status === "done" && (
+                                <SharedButton 
+                                  type='text'
+                                  onClick={handlePaymentDialog} 
+                                  className={styles.showCertificate}
+                                >
+                                  <WorkspacePremiumIcon />
+                                  Lihat Sertifikat
+                                </SharedButton>
+                              )}
+                            </div>
+                          </div>
+                        )}
+
                       </div>
                     </div>
                   </div>

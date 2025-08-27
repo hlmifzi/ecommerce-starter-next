@@ -1,6 +1,8 @@
 @use "../../../lib/styles/_index.scss" as *;
 
 .buttonContainer {
+    width: $w-full;
+
     [class*='MuiButton-root'] {
         font-weight: $medium !important;
         text-transform: capitalize;

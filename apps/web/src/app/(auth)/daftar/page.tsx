@@ -24,6 +24,7 @@ import {
   Visibility as VisibilityIcon,
   VisibilityOff as VisibilityOffIcon
 } from "@mui/icons-material";
+import SharedButton from "@/components/shared/SharedButton"
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
@@ -109,19 +110,103 @@ const RegisterPage = () => {
                   label="Nama Lengkap"
                   error={!!errors.fullName}
                   helperText={errors.fullName?.message}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <PersonOutlineIcon />
-                      </InputAdornment>
-                    ),
-                  }}
                   size="medium"
                 />
               )}
             />
           </Grid>
+
+            
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Controller
+              name="nik"
+              control={control}
+              rules={{ 
+                required: "NIK harus diisi",
+                pattern: {
+                  value: /^[0-9]+$/,
+                  message: "NIK harus berupa angka"
+                },
+                minLength: {
+                  value: 16,
+                  message: "NIK harus 16 digit"
+                },
+                maxLength: {
+                  value: 16,
+                  message: "NIK harus 16 digit"
+                }
+              }}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  fullWidth
+                  label="NIK"
+                  error={!!errors.nik}
+                  helperText={errors.nik?.message}
+                  size="medium"
+                />
+              )}
+            />
+          </Grid>
+
+                   
           
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Controller
+              name="email"
+              control={control}
+              rules={{ 
+                required: "Email harus diisi",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Format email tidak valid"
+                }
+              }}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  fullWidth
+                  label="Email"
+                  type="email"
+                  error={!!errors.email}
+                  helperText={errors.email?.message}
+                  size="medium"
+                />
+              )}
+            />
+          </Grid>
+
+          
+          {/* Baris 3 */}
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Controller
+              name="phone"
+              control={control}
+              rules={{ 
+                required: "Nomor ponsel harus diisi",
+                pattern: {
+                  value: /^[0-9]+$/,
+                  message: "Nomor ponsel harus berupa angka"
+                },
+                minLength: {
+                  value: 10,
+                  message: "Nomor ponsel minimal 10 digit"
+                }
+              }}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  fullWidth
+                  label="Nomor ponsel"
+                  type="tel"
+                  error={!!errors.phone}
+                  helperText={errors.phone?.message}
+                  size="medium"
+                />
+              )}
+            />
+          </Grid>
+
           <Grid size={{ xs: 12, md: 6 }}>
             <Controller
               name="gender"
@@ -144,6 +229,31 @@ const RegisterPage = () => {
               )}
             />
           </Grid>
+
+                    {/* Baris 4 */}
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Controller
+              name="birthDate"
+              control={control}
+              rules={{ required: "Tanggal lahir harus diisi" }}
+              render={({ field }) => (
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    {...field}
+                    label="Tanggal Lahir"
+                    slotProps={{
+                      textField: {
+                        fullWidth: true,
+                        error: !!errors.birthDate,
+                        helperText: errors.birthDate?.message,
+                      },
+                    }}
+                  />
+                </LocalizationProvider>
+              )}
+            />
+          </Grid>
+
 
           {/* Baris 2 */}
           <Grid size={{ xs: 12, md: 6 }}>
@@ -197,100 +307,8 @@ const RegisterPage = () => {
             />
           </Grid>
 
-          {/* Baris 3 */}
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Controller
-              name="phone"
-              control={control}
-              rules={{ 
-                required: "Nomor telepon harus diisi",
-                pattern: {
-                  value: /^[0-9]+$/,
-                  message: "Nomor telepon harus berupa angka"
-                },
-                minLength: {
-                  value: 10,
-                  message: "Nomor telepon minimal 10 digit"
-                }
-              }}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  fullWidth
-                  label="Nomor Telepon Genggam"
-                  type="tel"
-                  error={!!errors.phone}
-                  helperText={errors.phone?.message}
-                  size="medium"
-                />
-              )}
-            />
-          </Grid>
-          
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Controller
-              name="nik"
-              control={control}
-              rules={{ 
-                required: "NIK harus diisi",
-                pattern: {
-                  value: /^[0-9]+$/,
-                  message: "NIK harus berupa angka"
-                },
-                minLength: {
-                  value: 16,
-                  message: "NIK harus 16 digit"
-                },
-                maxLength: {
-                  value: 16,
-                  message: "NIK harus 16 digit"
-                }
-              }}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  fullWidth
-                  label="NIK"
-                  error={!!errors.nik}
-                  helperText={errors.nik?.message}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <PersonOutlineIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                  size="medium"
-                />
-              )}
-            />
-          </Grid>
 
-          {/* Baris 4 */}
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Controller
-              name="birthDate"
-              control={control}
-              rules={{ required: "Tanggal lahir harus diisi" }}
-              render={({ field }) => (
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker
-                    {...field}
-                    label="Tanggal Lahir"
-                    slotProps={{
-                      textField: {
-                        fullWidth: true,
-                        error: !!errors.birthDate,
-                        helperText: errors.birthDate?.message,
-                      },
-                    }}
-                  />
-                </LocalizationProvider>
-              )}
-            />
-          </Grid>
-
-              {/* Baris 5 */}
+          {/* Baris 5 */}
           <Grid size={{ xs: 12, md: 6 }}>
             <Controller
               name="password"
@@ -328,32 +346,7 @@ const RegisterPage = () => {
               )}
             />
           </Grid>
-          
-          
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Controller
-              name="email"
-              control={control}
-              rules={{ 
-                required: "Email harus diisi",
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Format email tidak valid"
-                }
-              }}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  fullWidth
-                  label="Email"
-                  type="email"
-                  error={!!errors.email}
-                  helperText={errors.email?.message}
-                  size="medium"
-                />
-              )}
-            />
-          </Grid>
+ 
           <Grid size={{ xs: 12, md: 6 }}>
             <Controller
               name="confirmPassword"
@@ -423,16 +416,12 @@ const RegisterPage = () => {
           </Typography>
         </Box>
         
-        <Box className={styles.actionButton}>
-          <Button 
-            type="submit" 
-            variant="contained" 
-            color="primary" 
-            className={styles.registerSubmitForm}
-            fullWidth
+        <Box className={styles.registerSubmitForm}>
+          <SharedButton 
+            type="secondary" 
           >
             Registrasi
-          </Button>
+          </SharedButton>
         </Box>
       </Box>
     </Box>

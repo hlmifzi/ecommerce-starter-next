@@ -81,10 +81,6 @@
     position: relative;
     cursor: pointer;
 
-    &:hover {
-        opacity: .6;
-    }
-
     img {
         max-width: $w-full;
         max-height: $w-full;
@@ -99,6 +95,10 @@
 
 .itemDetails {
     width: 90%;
+
+    &:hover {
+        opacity: .7;
+    }
 }
 
 .itemImage {

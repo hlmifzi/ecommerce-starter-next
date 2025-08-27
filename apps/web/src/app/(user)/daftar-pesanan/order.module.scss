@@ -44,9 +44,27 @@
 
 .itemDetailsLink {
     &:hover {
-        opacity: .5;
+        opacity: .7;
     }
+}
 
+.btnAction {
+    @include flex(row, center, flex-end);
+    margin: 0 0 0 auto;
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 0;
+    padding: size(16) size(0) size(0) size(0);
+    border-top: $half solid $color-border-neutral-alt;
+    width: $w-full;
+}
+
+.actionButtonsInner {
+    @include flex(row, center, flex-end);
+}
+
+.showCertificate {
+    border: $half solid $color-primary !important
 }
 
 .priceContainer {
@@ -61,9 +79,10 @@
 .cartItem {
     @include grid(2, size(14));
     grid-template-columns: size(100) auto;
-    padding: 1rem 0;
+    padding: 0 0;
     border-bottom: 1px solid #eee;
     position: relative;
+    margin-top: size(16);
 
     img {
         width: size(100);
@@ -94,10 +113,6 @@
     font-size: size(12);
     color: $text-soft-gray;
     font-weight: $medium;
-}
-
-.payNow {
-    margin-top: size(20) !important;
 }
 
 .statusPayment {

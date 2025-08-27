@@ -5,6 +5,7 @@
     margin: 0 auto;
     min-height: 100vh;
     margin-left: size(-8);
+
 }
 
 .popularProduct {
@@ -36,15 +37,14 @@
 
 .header {
     text-align: center;
-    padding-bottom: size(6);
     position: relative;
 }
 
 .title {
-    color: $color-black; // RSPP blue
+    color: $color-black;
     margin-bottom: size(40);
+    text-transform: capitalize;
     font-size: size(32);
-    font-weight: 600;
 }
 
 .btnAll {
@@ -78,6 +78,7 @@
 
 
 .aboutUs {
+    @include flex(column, center, flex-start);
     background: $color-border-neutral-white;
     width: $w-screen;
     margin-left: size(-68);
@@ -89,13 +90,6 @@
         max-width: calc($w-screen);
         margin-left: size(-16);
         padding: size(16);
-    }
-
-    h2 {
-        font-size: size(32);
-        color: $color-black-soft;
-        text-align: center;
-        margin-bottom: size(40);
     }
 }
 
@@ -140,7 +134,6 @@
 
 .misiTitle {
     margin: size(40) 0;
-    font-weight: $medium;
 }
 
 .sectionTitle {
@@ -233,6 +226,10 @@
         padding-bottom: 0;
     }
 
+    .aboutUs {
+        padding: size(40) 0;
+    }
+
     .visiMisiContainer {
         max-width: $w-screen;
         padding: size(40) size(16);
@@ -248,9 +245,10 @@
     }
 
     .btnAll {
-        width: calc($w-screen);
-        min-width: calc($w-screen - size(52));
-        max-width: calc($w-screen - size(52));
+        width: calc($w-full);
+        min-width: calc($w-full);
+        max-width: calc($w-full);
+        margin: 0 0 !important;
     }
 
     .bannerHomeContainer {
@@ -258,8 +256,15 @@
         font-size: .5rem;
     }
 
-    .title {
+    .title,
+    .misiTitle {
         font-size: size(20);
+    }
+
+
+    .titleArticle {
+        font-size: size(20);
+        margin-bottom: size(8);
     }
 
     .subtitle {

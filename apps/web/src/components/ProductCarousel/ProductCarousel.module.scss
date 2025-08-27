@@ -10,11 +10,8 @@
     overflow: auto;
     padding: size(16) size(0) size(6);
 
-    [class*='card'] {
-        min-width: size(270);
-        max-width: size(270);
-        width: size(270);
-        height: fit-content;
+    [class*='buttonContainer'] {
+        width: fit-content;
     }
 }
 

@@ -75,7 +75,7 @@ const ProfileButton = () => {
                     </Link>
                     <Link href={"/daftar-pesanan"}>
                       <li className={styles.itemMenu}>
-                        Daftar Transaksi
+                        Daftar Pelatihan
                       </li>
                     </Link>
                     <li onClick={handleLogout} className={styles.logout}>
