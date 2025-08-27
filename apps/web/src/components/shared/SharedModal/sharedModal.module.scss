@@ -1,5 +1,11 @@
 @use "../../../lib/styles/_index.scss" as *;
 
+.dialogContainer {
+    [class*='MuiDialogContent-root'] {
+        overflow-x: hidden
+    }
+}
+
 .dialogHeader {
     @include flex(row, center, space-between);
     min-width: 80% !important;

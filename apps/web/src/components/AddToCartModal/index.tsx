@@ -1,7 +1,6 @@
 "use client"
 
 import dynamic from "next/dynamic"
-import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Grid } from "@mui/material";
@@ -33,8 +32,8 @@ const AddToCartModal = () => {
       
       <Grid className={styles.cartDescContainer}>
         <h2>{modalItem?.title}</h2>
-        <Grid container spacing={2} className={styles.buttonActionContainer}>
-          <Grid size={{ xs: 6 }} >
+        <Grid container spacing={{ xs: 1, sm: 2 }}  className={styles.buttonActionContainer}>
+          <Grid size={{ xs: 12, sm: 6 }} >
             <SharedButton onClick={()=>{
               hideAddToCartModal();
               router.push("/pelatihan");
@@ -42,7 +41,7 @@ const AddToCartModal = () => {
               Cari Pelatihan Lainnya
             </SharedButton>
           </Grid>
-          <Grid size={{ xs: 6 }} >
+          <Grid size={{ xs: 12, sm: 6 }} >
             <SharedButton onClick={()=>{
               hideAddToCartModal();
               router.push("/keranjang");
