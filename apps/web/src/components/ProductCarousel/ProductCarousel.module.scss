@@ -19,6 +19,12 @@
     @include flex(row, center, center);
     height: $w-full;
     height: $w-full;
+    background: $color-primary-neutral;
+    color: $color-primary;
+    font-weight: $semiBold;
+    min-width: size(150);
+    width: size(150);
+    border-radius: size(5);
 }
 
 // Tombol navigasi
@@ -80,6 +86,11 @@
 
     .productNavButton {
         display: none !important;
+    }
+
+    .linkToAll {
+        min-width: size(170);
+        width: size(170);
     }
 
     .productNavButtonLeft {

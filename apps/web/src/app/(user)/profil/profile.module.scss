@@ -2,6 +2,10 @@
 
 .container {
     padding: size(36) 0 size(80);
+
+    h1 {
+        font-size: size(32);
+    }
 }
 
 .pageTitle {
@@ -109,10 +113,18 @@
 
 // Helper classes untuk responsivitas
 @media (max-width: 768px) {
+
+    .container {
+        padding: size(36) 0 size(80);
+
+        h1 {
+            font-size: size(20);
+        }
+    }
+
     .profileContainer {
         @include grid(1);
         padding: size(20);
-
     }
 
     .avatar {

@@ -12,6 +12,11 @@
     margin-bottom: 3rem;
     padding-bottom: 1.5rem;
     position: relative;
+    padding-top: size(40);
+
+    h1 {
+        font-size: size(32);
+    }
 
     &::after {
         content: '';
@@ -51,11 +56,10 @@
     .container {
         padding: size(8) 0;
         max-width: calc($w-screen - size(16));
-
     }
 
     .title {
-        font-size: 2rem;
+        font-size: size(20);
     }
 
     .subtitle {

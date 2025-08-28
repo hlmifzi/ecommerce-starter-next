@@ -91,9 +91,7 @@ export default function ProductCarousel({ products }: any) {
           <ProductCard key={index} product={product} />
         ))}
           <Link className={styles.linkToAll} href="/pelatihan">
-            <SharedButton  type='primary'>
               Lihat Semua
-            </SharedButton>
           </Link>
       </div>
       
