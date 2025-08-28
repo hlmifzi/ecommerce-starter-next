@@ -4,7 +4,7 @@ import { getProducts } from '@/services/api/product';
 import ProductCarousel from '@/components/ProductCarousel';
 import Carousel from '@/components/Banner/banner';
 import SharedButton from '@/components/shared/SharedButton';
-import ScheduleTable from '@/components/shared/ScheduleTable';
+import ScheduleTable from '@/components/ScheduleTable'
 import DocumentationCarousel from '@/components/DocumentationCarousel';
 import ArticleCarousel from "@/components/ArticleCarousel"
 import styles from './home.module.scss';

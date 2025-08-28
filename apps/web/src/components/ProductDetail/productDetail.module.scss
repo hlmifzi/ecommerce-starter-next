@@ -92,6 +92,7 @@
     @include flex(column, start, start);
     padding: size(20);
     gap: 15;
+    background: $color-white;
 }
 
 .boxContainerInner {
@@ -104,7 +105,25 @@
     h3 {
         font-weight: $medium;
         font-size: size(16);
+        margin-bottom: size(4);
     }
+}
+
+.boxContainerItem {
+    margin-bottom: size(8);
+}
+
+.boxStickyContainer {
+    @extend .boxContainer;
+    position: fixed
+}
+
+.sticky {
+    @include position(fixed, size(90), size(69), auto, auto);
+    min-width: size(345);
+    width: size(345);
+    min-width: size(345);
+    z-index: 2;
 }
 
 .btnAction {
@@ -182,8 +201,8 @@
 }
 
 .trainingItemInner {
-    @include grid(3);
-    grid-template-columns: 80% size(50);
+    @include grid(2);
+    grid-template-columns: calc($w-full - size(110)) size(50);
     position: relative;
     border-radius: size(5);
     padding: size(28);
@@ -191,9 +210,74 @@
     background: $color-primary-neutral;
 }
 
+.materiItemContainer {
+    @include grid(2);
+    grid-template-columns: calc($w-full - size(110)) auto;
+    padding: size(32) size(28);
+    cursor: pointer;
+
+
+    &:hover {
+        transform: translateY(-1px);
+        opacity: .8;
+    }
+}
+
+.materiItemDesContainer {
+    @include flex(row, center, flex-start);
+}
+
+.lessonDurationItem {
+    color: $text-soft-gray;
+    text-align: right;
+}
+
+.lessonDesc {
+    font-weight: $semiBold;
+}
+
+.lockIconContainer {
+    @include flex(row, center, center);
+    background: $color-secondary;
+    border-radius: size(4);
+    min-width: size(24) !important;
+    width: size(24);
+    min-height: size(24);
+    height: size(24);
+    margin-right: size(16);
+
+    svg {
+        color: $color-white;
+        font-size: size(14);
+    }
+}
+
+
+
 @media (max-width: 768px) {
     .productInner {
         grid-template-columns: 1fr;
+    }
+
+    .materiItemContainer {
+        @include grid(1)
+    }
+
+    .materiItemContainer {
+        padding: size(8) size(8);
+    }
+
+    .expandIconContainer {
+        @include position(absolute, size(10), size(10), auto, auto);
+    }
+
+    .badgeLesson {
+        margin: auto 0 auto auto;
+    }
+
+    .lessonDurationItem {
+        text-align: left;
+        margin-left: size(38);
     }
 
     .trainingItemInner {
@@ -201,7 +285,10 @@
     }
 
     .infoExpandContainer {
-        @include flex(row, center, flex-end);
+        @include flex(row, flex-start, flex-start);
+        height: fit-content;
+        width: $w-full;
+
     }
 
     .btnAction {

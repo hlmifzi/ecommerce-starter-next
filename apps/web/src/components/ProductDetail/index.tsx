@@ -18,19 +18,21 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
+import LockIcon from '@mui/icons-material/Lock';
 
 import Card from '../Card';
 import SharedBadge from '@/components/shared/SharedBadge';
 import SharedButton from '@/components/shared/SharedButton';
 
 import useWindowSize from '@/lib/hooks/useWindowSize';
+import useWindowScroll from "@/lib/hooks/useWindowScroll"
 import { formatPriceRupiah } from '@/lib/function/formatPriceRupiah';
 import { useCartStore } from '@/lib/hooks/useCart';
-
 import styles from './productDetail.module.scss';
 
 const trainingLessonItems = [
   {
+    id: "1",
     title: "PRE TEST",
     presented_by: "CATUR ANITA SARI, S.ST",
     location: "Poltekkes Kemenkes Sorong",
@@ -42,6 +44,7 @@ const trainingLessonItems = [
     durationLesson: "60 menit"
   },
   {
+    id: "2",
     title: "PRE TEST",
     presented_by: "CATUR ANITA SARI, S.ST",
     location: "Poltekkes Kemenkes Sorong",
@@ -55,9 +58,19 @@ const trainingLessonItems = [
 ]
 
 const ProductDetail = ({ product }: { product: any }) => {
-  const [isOpen, setIsOpen] = useState({})
-  const isLogin = useAuthStore((state: any) => state.isLogin);
+  const [isOpen, setIsOpen] = useState<any>({})
   const { isMobile } = useWindowSize();
+  const { isSticky } = useWindowScroll()
+
+  const isLogin = useAuthStore((state: any) => state.isLogin);
+
+  const handleOpenTrainingLesson = (id: string) => {
+    setIsOpen((prev: any) => {
+      const temp = { ...prev };
+      temp[id] = !prev[id];
+      return temp;
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -75,7 +88,9 @@ const ProductDetail = ({ product }: { product: any }) => {
             <SharedBadge />
           </div>
 
-          {isMobile && <CheckoutBox isLogin={isLogin} product={product} />}
+          {isMobile && (
+              <CheckoutBox isLogin={isLogin} product={product} />
+          )}
 
           <div className={`${styles.contentDescription}`}>
             <h2>Tentang Pelatihan</h2>
@@ -145,17 +160,33 @@ const ProductDetail = ({ product }: { product: any }) => {
                     
                     
                     <Grid className={styles.infoExpandContainer}>
-                      <SharedBadge text='Blended' />
+                      <SharedBadge className={styles.badgeLesson} text='Blended' />
                       <Grid 
-                        onClick={() => handleOpenTraining()}
+                        onClick={() => handleOpenTrainingLesson(training.id)}
                         className={styles.expandIconContainer}
                       >
-                        {isOpen ?
+                        {isOpen[training?.id]  ?
                           <ExpandMoreIcon /> : <ExpandLessIcon />
                         }
                       </Grid>
                     </Grid>
+
                   </Grid>
+                    {isOpen[training?.id] && (
+                      <Grid className={styles.materiItemContainer}>
+                        <Grid className={styles.materiItemDesContainer}>
+                          <Grid className={styles.lockIconContainer}>
+                            <LockIcon />
+                          </Grid>
+                          <Grid className={styles.lessonDesc}>
+                            <p>
+                              Dampak Konsumsi Rokok Elektronik Bagi Kesehatan
+                            </p>
+                          </Grid>
+                        </Grid>
+                        <Grid className={styles.lessonDurationItem}>30 menit</Grid>
+                      </Grid>
+                    )}
                 </Grid>
               )
             })
@@ -164,7 +195,11 @@ const ProductDetail = ({ product }: { product: any }) => {
           </div>
         </div>
 
-        {!isMobile && <CheckoutBox isLogin={isLogin} product={product} />}
+        {!isMobile && (
+            <Grid className={isSticky ? styles.sticky : ""}>
+              <CheckoutBox isLogin={isLogin} product={product} />
+            </Grid>
+        )}
       </div>
     </div>
   );
@@ -181,7 +216,7 @@ const CheckoutBox = ({ isLogin, product }: any) => {
     <Card className={styles.boxContainer}>
       <section className={styles.boxContainerInner}>
         {/* box 1 */}
-        <div>
+        <div className={styles.boxContainerItem}>
           <h3>Anda akan mendapatkan</h3>
           <div className={styles.benefitList}>
             <p>
