@@ -5,7 +5,7 @@ const STRAPI_API_URL = 'http://localhost:1337/api';
 export async function getProducts() {
   const mocky =  [
     {
-        "id": 8,
+        "id": 212121212,
         "documentId": "iawr5ih4hgnlfe1b5iv0o47y",
         "slug": "12",
         "type": "training",

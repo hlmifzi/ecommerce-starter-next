@@ -28,7 +28,7 @@ const Cart = ({
             {isEmpty ? cartItems.map((item:any) => (
               <div key={item.id} className={styles.cartItem}>
                 <div className={styles.itemImage}>
-                  <Image width={50} height={50} src={item?.image?.[0]?.url} alt={item.name} />
+                  <Image width={50} height={50} src={item?.image?.[0]?.url} alt={item.name || "image"} />
                 </div>
                 
                 <div className={styles.itemDetails}>

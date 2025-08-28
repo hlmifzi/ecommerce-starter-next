@@ -7,9 +7,10 @@ import { MdPayment } from 'react-icons/md';
 import Link from 'next/link';
 import ProductCarousel from '@/components/ProductCarousel';
 
-import styles from './paymentNotif.module.scss';
 import SharedButton from '../shared/SharedButton';
 import OrderSummaryBox from '../OrderSummaryBox';
+
+import styles from './paymentNotif.module.scss';
 
 export default function PaymenStatus({products}:any) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -139,7 +140,7 @@ export default function PaymenStatus({products}:any) {
   
       </div>
       <div>
-        <h3>Rekomendasi pelatihan lainnya</h3>
+        <h3 className={styles.recomendationTitle}>Rekomendasi pelatihan lainnya</h3>
         <ProductCarousel products={products} />
       </div>
     </div>

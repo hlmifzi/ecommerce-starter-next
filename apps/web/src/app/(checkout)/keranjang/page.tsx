@@ -17,7 +17,7 @@ export default async function CheckoutPage() {
          }} />
       </div>
       <div>
-         <h2>Rekomendasi Pelatihan Lainnya</h2>
+         <h2 className={styles.recomendationTitle}>Rekomendasi Pelatihan Lainnya</h2>
         <ProductCarousel products={products} />
       </div>
     </div>

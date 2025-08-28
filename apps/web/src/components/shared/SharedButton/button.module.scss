@@ -33,6 +33,10 @@
         width: $w-full;
         transition: all 0.4s ease-in-out;
 
+        &:disabled {
+            border: none;
+        }
+
 
         &:hover {
             background: $color-primary !important;

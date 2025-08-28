@@ -104,8 +104,8 @@ const OrderSummaryBox = ({
         )}
         <div className={styles.cartSummary}>
           <div className={styles.summaryRow}>
-            <span>Total (2)</span>
-            <span className={styles.totalPrice}>Rp {(subtotal + 5000).toLocaleString('id-ID')}</span>
+            <span>Total ({cartItems.length})</span>
+            <span className={styles.totalPrice}>Rp 900,000</span>
           </div>
           {withPaymentButton && (
             <>
