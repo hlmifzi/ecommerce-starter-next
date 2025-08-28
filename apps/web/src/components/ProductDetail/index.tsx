@@ -10,6 +10,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LocationPinIcon from '@mui/icons-material/LocationPin';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import StarsIcon from '@mui/icons-material/Stars';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 import Card from '../Card';
 import SharedBadge from '@/components/shared/SharedBadge';
@@ -22,6 +23,8 @@ import { useCartStore } from '@/lib/hooks/useCart';
 
 
 import styles from './productDetail.module.scss';
+import { AddShoppingCartOutlined } from '@mui/icons-material';
+import { Grid } from '@mui/material';
 
 const ProductDetail = ({ product }: { product: any }) => {
   const isLogin = useAuthStore((state: any) => state.isLogin);
@@ -78,9 +81,21 @@ const ProductDetail = ({ product }: { product: any }) => {
               <li>Melakukan Bantuan Hidup Dasar (BHD)</li>
             </ol>
           </div>
-          <div className={styles.contentDescription}>
+          <div className={styles.picContainer}>
             <h2>Nomor Kontak PIC</h2>
-            <SharedButton type="secondary">Heri Sugiarto (+6282299789937)</SharedButton>
+            <SharedButton type="secondary">
+              <WhatsAppIcon />
+              <span className={styles.waPicName}>
+                Heri Sugiarto (+6282299789937)
+              </span>
+            </SharedButton>
+          </div>
+
+           <div className={styles.trainingContent}>
+            <h2>Konten Pelatihan</h2>
+            <Grid>
+              kontent
+            </Grid>
           </div>
         </div>
 
@@ -95,7 +110,8 @@ export default ProductDetail;
 const CheckoutBox = ({ isLogin, product }: any) => {
   const router = useRouter()
   const showAddToCartModal = useCartStore((state:any) => state.showAddToCartModal);
-  
+  const { isMobile } = useWindowSize();
+
   return (
     <Card className={styles.boxContainer}>
       <section className={styles.boxContainerInner}>
@@ -148,19 +164,32 @@ const CheckoutBox = ({ isLogin, product }: any) => {
       <h3 className={styles.price}>{formatPriceRupiah(product?.price)}</h3>
 
       <div className={styles.btnAction}>
-        <SharedButton onClick={() => isLogin ? showAddToCartModal({
-              id: 12122,
-              title: "Training Kesehatan Dasar",
-              price: 1200000,
-              discountedPrice: 0,
-              image: [{
-                url: "/nurse-training.png"
-              }],
-              quantity: 1,
-              hospital: "Penyedia: RS pusat pertamina (RSPP)",
-            }) : router.push("/masuk")} type="secondary">+ Keranjang</SharedButton>
+        {isMobile && (
+          <SharedButton type='text'>
+            <WhatsAppIcon />
+          </SharedButton>
+        )}
+        <SharedButton 
+         type={isMobile ? "text" : "secondary"}
+          className={styles.addToCartButton} 
+          onClick={() => isLogin ? showAddToCartModal({
+          id: 12122,
+          title: "Training Kesehatan Dasar",
+          price: 1200000,
+          discountedPrice: 0,
+          image: [{
+            url: "/nurse-training.png"
+          }],
+          quantity: 1,
+          hospital: "Penyedia: RS pusat pertamina (RSPP)",
+        }) : router.push("/masuk")}>
+          <span>
+            {isMobile ? <AddShoppingCartOutlined /> :  "+"}
+          </span> 
+          <p>Keranjang</p>
+        </SharedButton>
         <Link href={'/pembayaran'}>
-          <SharedButton type="primary">Beli Pelatihan</SharedButton>
+          <SharedButton type="primary">Daftar Pelatihan</SharedButton>
         </Link>
       </div>
     </Card>
