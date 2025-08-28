@@ -128,11 +128,11 @@ const ProductDetail = ({ product }: { product: any }) => {
               return (
                 <Grid className={styles.trainingItemContainer}>
                   <Grid className={styles.trainingItemInner}>
-                    <Grid className={styles.numberLessonItem}>
-                      {index+1}.
-                    </Grid>
                     <Grid className={styles.lessonInfoContainer}>
-                      <h2>{training?.title}</h2>
+                      <h2>
+                        <span>{index+1}.</span>{" "}
+                        <span>{training?.title}</span>
+                      </h2>
                       <p>Oleh: {training?.presented_by}</p>
                       <p className={styles.lessonInfoItem}>
                         <LocationPinIcon /> 

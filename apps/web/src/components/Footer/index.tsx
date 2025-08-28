@@ -67,8 +67,6 @@ const Footer = () => {
   const showFooterPath = ["/artikel", "/masuk", "/daftar", "/pelatihan"];
   const isShowFooter = pathname === "/" || showFooterPath.some((path:string) => pathname.startsWith(path));
 
-
-
   return (
     <>
       {isShowFooter && (
