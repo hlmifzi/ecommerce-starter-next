@@ -64,7 +64,7 @@ const menuLists = [
 
 const Footer = () => {
   const pathname = usePathname();
-  const showFooterPath = ["/artikel", "/masuk", "/daftar"];
+  const showFooterPath = ["/artikel", "/masuk", "/daftar", "/pelatihan"];
   const isShowFooter = pathname === "/" || showFooterPath.some((path:string) => pathname.startsWith(path));
 
 

@@ -1,7 +1,11 @@
 'use client';
+
+import { useState } from "react"
 import Link from 'next/link';
 import { useAuthStore } from '@/lib/hooks/useAuth';
 import { useRouter } from 'next/navigation';
+import { AddShoppingCartOutlined } from '@mui/icons-material';
+import { Grid } from '@mui/material';
 import Image from 'next/image';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
@@ -11,22 +15,47 @@ import LocationPinIcon from '@mui/icons-material/LocationPin';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import StarsIcon from '@mui/icons-material/Stars';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 
 import Card from '../Card';
 import SharedBadge from '@/components/shared/SharedBadge';
 import SharedButton from '@/components/shared/SharedButton';
-import AddToCartModal from '@/components/AddToCartModal';
 
 import useWindowSize from '@/lib/hooks/useWindowSize';
 import { formatPriceRupiah } from '@/lib/function/formatPriceRupiah';
 import { useCartStore } from '@/lib/hooks/useCart';
 
-
 import styles from './productDetail.module.scss';
-import { AddShoppingCartOutlined } from '@mui/icons-material';
-import { Grid } from '@mui/material';
+
+const trainingLessonItems = [
+  {
+    title: "PRE TEST",
+    presented_by: "CATUR ANITA SARI, S.ST",
+    location: "Poltekkes Kemenkes Sorong",
+    dateTimeStart: "Kamis, 28 Agustus 2025 pukul 04.00",
+    dateTimeEnd: "Minggu, 31 Agustus 2025 pukul 21.00",
+    status: "Blended",
+    isLock: true,
+    lessonTitle: "Membangun Komitmen Belajar (Building Learning Commitment/BLC)",
+    durationLesson: "60 menit"
+  },
+  {
+    title: "PRE TEST",
+    presented_by: "CATUR ANITA SARI, S.ST",
+    location: "Poltekkes Kemenkes Sorong",
+    dateTimeStart: "Kamis, 28 Agustus 2025 pukul 04.00",
+    dateTimeEnd: "Minggu, 31 Agustus 2025 pukul 21.00",
+    status: "Blended",
+    isLock: false,
+    lessonTitle: "Membangun Komitmen Belajar (Building Learning Commitment/BLC)",
+    durationLesson: "60 menit"
+  },
+]
 
 const ProductDetail = ({ product }: { product: any }) => {
+  const [isOpen, setIsOpen] = useState({})
   const isLogin = useAuthStore((state: any) => state.isLogin);
   const { isMobile } = useWindowSize();
 
@@ -93,9 +122,45 @@ const ProductDetail = ({ product }: { product: any }) => {
 
            <div className={styles.trainingContent}>
             <h2>Konten Pelatihan</h2>
-            <Grid>
-              kontent
-            </Grid>
+            <p>Konten yang akan diajarkan dalam Pelatihan ini antara lain:</p>
+            
+            {trainingLessonItems?.map((training:any, index:number) => {
+              return (
+                <Grid className={styles.trainingItemContainer}>
+                  <Grid className={styles.trainingItemInner}>
+                    <Grid className={styles.numberLessonItem}>
+                      {index+1}.
+                    </Grid>
+                    <Grid className={styles.lessonInfoContainer}>
+                      <h2>{training?.title}</h2>
+                      <p>Oleh: {training?.presented_by}</p>
+                      <p className={styles.lessonInfoItem}>
+                        <LocationPinIcon /> 
+                        <span>{training?.location}</span></p>
+                      <p className={styles.lessonInfoItem}>
+                        <CalendarTodayOutlinedIcon /> 
+                        <span>{training?.dateTimeStart} - {training?.dateTimeEnd}</span>  
+                      </p>
+                    </Grid>
+                    
+                    
+                    <Grid className={styles.infoExpandContainer}>
+                      <SharedBadge text='Blended' />
+                      <Grid 
+                        onClick={() => handleOpenTraining()}
+                        className={styles.expandIconContainer}
+                      >
+                        {isOpen ?
+                          <ExpandMoreIcon /> : <ExpandLessIcon />
+                        }
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              )
+            })
+
+            }
           </div>
         </div>
 

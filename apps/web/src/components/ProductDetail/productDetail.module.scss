@@ -95,7 +95,6 @@
 }
 
 .boxContainerInner {
-    @include flex(column, start, start);
     gap: size(15);
     width: $w-full;
     padding-bottom: size(15);
@@ -130,10 +129,67 @@
     }
 }
 
+.infoExpandContainer {
+    @include flex(row, center, center);
+    height: $w-full;
+    gap: size(10);
+    margin: auto;
+}
+
+.numberLessonItem {
+    font-size: size(24);
+    font-weight: $semiBold
+}
+
+.expandIconContainer {
+    @include flex(row, center, center);
+    border-radius: $w-full;
+    background: $color-white;
+    min-width: size(32) !important;
+    max-width: size(32) !important;
+    width: size(32) !important;
+    min-height: size(32) !important;
+    max-height: size(32) !important;
+    height: size(32) !important;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-1px);
+        box-shadow: $box-shadow;
+    }
+}
+
+.lessonInfoContainer {
+    @include flex(column, flex-start, center);
+    gap: size(10);
+}
+
+.lessonInfoItem {
+    @include flex(row, center, flex-start);
+    gap: size(16);
+    font-size: size(14)
+}
+
 .trainingContent {
     @extend .contentDescription;
 }
 
+.trainingItemContainer {
+    padding: size(20);
+    box-shadow: $box-shadow;
+    width: $w-full;
+    border-radius: size(5);
+}
+
+.trainingItemInner {
+    @include grid(3);
+    grid-template-columns: size(20) 74% size(50);
+    position: relative;
+    border-radius: size(5);
+    padding: size(28);
+    gap: size(16);
+    background: $color-primary-neutral;
+}
 
 @media (max-width: 768px) {
     .productInner {
