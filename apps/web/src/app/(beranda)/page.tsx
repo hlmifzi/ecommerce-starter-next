@@ -229,7 +229,6 @@ export default async function HomePage() {
 
       <section id="artikel" className={styles.articleSection}>
           <h2 className={styles.titleArticle}>ARTIKEL</h2>
-          <p>Kumpulan berita terkini mengenai perkembangan RSPP</p>
           <ArticleCarousel articles={articleData} />
       </section>
     </div>
