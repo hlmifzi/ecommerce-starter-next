@@ -187,7 +187,7 @@ export default async function HomePage() {
 
       <section id="struktur-organisasi" className={styles.ourTeam}>
         <h2 className={styles.title}>TIM KAMI</h2>
-        <Image src="/home/out-team.png" width={800} height={500} className={styles.ourTeamImage} alt="our team" />
+        <Image src="/home/SO-LnTC-2.png" width={800} height={500} className={styles.ourTeamImage} alt="our team" />
       </section>
 
       <section id="tentang-kami" className={styles.aboutUs}>
@@ -229,7 +229,6 @@ export default async function HomePage() {
 
       <section id="artikel" className={styles.articleSection}>
           <h2 className={styles.titleArticle}>ARTIKEL</h2>
-          <p>Kumpulan berita terkini mengenai perkembangan RSPP</p>
           <ArticleCarousel articles={articleData} />
       </section>
     </div>
