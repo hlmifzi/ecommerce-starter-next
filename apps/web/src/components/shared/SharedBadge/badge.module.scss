@@ -5,6 +5,7 @@
         @include flex(row, center, center);
         min-height: size(21) !important;
         padding: 0 size(10) !important;
+        font-size: size(10);
         font-weight: 500 !important;
         box-shadow: none !important;
         border-radius: size(5) !important;

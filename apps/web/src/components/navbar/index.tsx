@@ -1,12 +1,11 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import { MdOutlineShoppingCart, MdOutlineClose } from 'react-icons/md';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import Link from 'next/link';
 import Image from 'next/image';
-
 import ProfileButton from '@/components/ProfileButton';
 import { useCartStore } from '@/lib/hooks/useCart';
-
 import styles from './navbar.module.scss';
 
 export const menus = [
@@ -44,13 +43,19 @@ export const menus = [
   },
 ];
 
-export default function Navbar() {
+type navbarType = {
+  promotion?: string
+}
+
+export default function Navbar({
+  promotion
+}: navbarType) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollDirection, setScrollDirection] = useState('up');
   const [showInfo, setShowInfo] = useState(true);
   const lastScrollY = useRef(0);
-  const cartItems = useCartStore((state:any) => state.cartItems)
-  
+  const cartItems = useCartStore((state: any) => state.cartItems);
+  const [activeLink, setActiveLink] = useState<string>('/');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,14 +91,18 @@ export default function Navbar() {
     };
   }, []);
 
+  const handleLinkClick = (url: string) => {
+    setActiveLink(url);
+  };
+
   return (
     <nav className={`${styles.navbar} ${isScrolled ? styles.navbarFixed : ''}`}>
-      {showInfo && (
+      {promotion && showInfo && (
         <div className={styles.topBar}>
           <div className={styles.topBarContainer}>
-            <p>Diskon 50% Untuk 100 pembeli pertama training vaksin minigitis</p>
+            <p>{promotion}</p>
             <div className={styles.authLinks}>
-              <MdOutlineClose onClick={() => setShowInfo(false)} color="#fff" />
+              <CloseOutlinedIcon onClick={() => setShowInfo(false)} sx={{ fontSize: 16 }} />
             </div>
           </div>
         </div>
@@ -106,8 +115,16 @@ export default function Navbar() {
 
           <div className={styles.navLinks}>
             {menus?.map((menu: any, index: number) => {
+              const isActive = activeLink === menu?.url;
+              console.log(activeLink,"activeLink")
+              console.log(menu?.url,"<<< menu?.url")
               return (
-                <Link key={index} href={menu?.url} className={styles.navLink}>
+                <Link
+                  key={index}
+                  href={menu?.url}
+                  className={`${styles.navLink} ${isActive ? styles.active : ''}`}
+                  onClick={() => handleLinkClick(menu.url)}
+                >
                   {menu?.text}
                 </Link>
               );
@@ -116,7 +133,7 @@ export default function Navbar() {
 
           <div className={styles.actions}>
             <Link href="/keranjang" className={styles.cartButton} aria-label="Cart">
-              <MdOutlineShoppingCart size={20} />
+              <ShoppingCartOutlinedIcon fontSize="medium" />
               <span className={styles.cartCount}>{cartItems?.length}</span>
             </Link>
             <ProfileButton />

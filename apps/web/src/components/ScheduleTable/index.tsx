@@ -4,13 +4,20 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import BadgeProduct from '@/components/BadgeProduct';
+import useWindowSize from '@/lib/hooks/useWindowSize';
 import SharedButton from '../shared/SharedButton';
+import {
+  TextField,
+  Select,
+  MenuItem
+} from "@mui/material";
 
+const months = ['JAN', 'FEB', 'MAR', 'APR', 'MEI', 'JUN', 'JUL', 'AGU', 'SEP', 'OKT', 'NOV', 'DES'];
 
 import styles from './scheduleTable.module.scss';
 
 const ScheduleTable = () => {
-  const months = ['JAN', 'FEB', 'MAR', 'APR', 'MEI', 'JUN', 'JUL', 'AGU', 'SEP', 'OKT', 'NOV', 'DES'];
+    const { isMobile } = useWindowSize();
   
   // Data jadwal pelatihan
   const trainingData:any = [
@@ -37,9 +44,11 @@ const ScheduleTable = () => {
   // State untuk bulan yang sedang ditampilkan (3 bulan sekaligus)
   const [currentQuarter, setCurrentQuarter] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+
+  const monthQty = isMobile ? 3 :  6
   
   // Menghitung bulan yang akan ditampilkan berdasarkan quarter
-  const displayedMonths = months.slice(currentQuarter * 3, currentQuarter * 3 + 3);
+  const displayedMonths = months.slice(currentQuarter * monthQty, currentQuarter * monthQty + monthQty);
   
   // Handler untuk navigasi dengan animasi
   const handlePrev = () => {
@@ -70,24 +79,41 @@ const ScheduleTable = () => {
     <div className={styles.scheduleContainer}>
       <h2 className={`${styles.title} ${styles.fadeInUp}`}>JADWAL PELATIHAN</h2>
       
-      <div className={`${styles.navigation} ${styles.fadeInUp}`}>
-        <SharedButton
-          type='text' 
-          onClick={handlePrev} 
-          disabled={isPrevDisabled}
-          className={isPrevDisabled ? styles.disabled : ''}
-        >
-          <FaChevronLeft />
-        </SharedButton>
+      <div className={styles.searchTableContainer}>
+        <div className={styles.searchTableInner}>
+           <TextField
+              label="Cari Pelatihan"
+              size="medium"
+            />
+              <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              defaultValue={"satu"}
+            >
+              <MenuItem value="satu">{new Date().getFullYear()}</MenuItem>
+              <MenuItem value="dua">{new Date().getFullYear() + 1}</MenuItem>
+              <MenuItem value="tiga">{new Date().getFullYear() + 2}</MenuItem>
+            </Select>
+        </div>
+        <div className={`${styles.navigation} ${styles.fadeInUp}`}>
+          <SharedButton
+            type='text' 
+            onClick={handlePrev} 
+            disabled={isPrevDisabled}
+            className={isPrevDisabled ? styles.disabled : ''}
+          >
+            <FaChevronLeft />
+          </SharedButton>
 
-        <SharedButton
-          type='text' 
-          onClick={handleNext} 
-          disabled={isNextDisabled}
-          className={isNextDisabled ? styles.disabled : ''}
-        >
-          <FaChevronRight />
-        </SharedButton>
+          <SharedButton
+            type='text' 
+            onClick={handleNext} 
+            disabled={isNextDisabled}
+            className={isNextDisabled ? styles.disabled : ''}
+          >
+            <FaChevronRight />
+          </SharedButton>
+        </div>
       </div>
       <div className={styles.tableWrapper}>
         <table className={styles.scheduleTable}>
@@ -100,7 +126,7 @@ const ScheduleTable = () => {
                   className={styles.monthHeader}
                   style={{ animationDelay: `${0.1 * index}s` }}
                 >
-                  {month} {new Date().getFullYear()}
+                  {month}
                 </th>
               ))}
             </tr>

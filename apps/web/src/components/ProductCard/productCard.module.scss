@@ -6,14 +6,14 @@
     overflow: hidden;
     border-radius: size(8);
 
-    min-width: size(270);
-    max-width: size(270);
-    width: size(270);
+    min-width: size(240);
+    max-width: size(240);
+    width: size(240);
     height: fit-content;
 }
 
 .headline {
-    min-height: size(68);
+    min-height: size(60);
 }
 
 
@@ -31,6 +31,7 @@
     button,
     [class*='buttonContainer'] {
         width: $w-full !important;
+        font-size: size(12);
     }
 }
 
@@ -62,13 +63,13 @@
 .hospital {
     text-transform: capitalize;
     color: $text-soft-gray;
-    font-size: size(12);
-    margin: size(5) 0;
+    font-size: size(11);
+    margin: size(5) 0 0;
 }
 
 .title {
     @include truncate(2);
-    font-size: size(16);
+    font-size: size(14);
     text-transform: capitalize;
     font-weight: $semiBold;
     color: $color-black-soft;
@@ -84,13 +85,13 @@
 .originalPrice {
     text-decoration: line-through;
     color: #999;
-    font-size: 0.9rem;
+    font-size: size(12);
 }
 
 .currentPrice {
     font-weight: $bold;
     color: $color-black-soft;
-    font-size: 1.1rem;
+    font-size: size(14);
     margin-top: size(8);
 }
 
@@ -137,18 +138,18 @@
     color: $text-soft-gray;
     font-style: italic;
     font-weight: $medium;
-    font-size: size(10);
+    font-size: size(11);
 }
 
 
 @media (max-width: 768px) {
     .title {
-        font-size: size(14);
+        font-size: size(12);
         font-weight: $bold;
     }
 
     .currentPrice {
-        font-size: size(14);
+        font-size: size(12);
         font-weight: $bold;
     }
 

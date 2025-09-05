@@ -13,13 +13,13 @@
 }
 
 .scheduleDateSection {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(13, 77, 139, 0.1) 100%);
+    background: rgba(13, 77, 139, 0.15);
     padding: size(40) size(120);
     min-width: size(1300);
     width: size(1300);
     max-width: size(1300);
     margin-left: size(-65);
-    border-top: $half solid $color-border-neutral;
+    // border-top: $half solid $color-border-neutral;
     margin-top: size(40);
 
     @media (max-width: 768px) {
@@ -44,7 +44,7 @@
     color: $color-black;
     margin-bottom: size(40);
     text-transform: capitalize;
-    font-size: size(32);
+    font-size: size(28);
 }
 
 .btnAll {
@@ -59,9 +59,16 @@
 .visiMisiSection {
     @extend .scheduleDateSection;
     text-align: center;
-    background: linear-gradient(180deg, rgba(13, 77, 139, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%) !important;
+    background: rgba(13, 77, 139, 0.66);
     margin-top: 0;
     padding: size(40) auto;
+
+
+    h3,
+    p,
+    article {
+        color: $color-white;
+    }
 
     ul {
         list-style: none;
@@ -72,32 +79,21 @@
             list-style: none;
             text-align: left;
             gap: size(8);
+            color: $color-white
         }
     }
 }
 
-
-.aboutUs {
-    @include flex(column, center, flex-start);
-    background: $color-border-neutral-white;
-    width: $w-screen;
-    margin-left: size(-68);
-    padding: size(40);
-    width: size(1300);
-    max-width: size(1300);
-
-    @media (max-width: 768px) {
-        max-width: calc($w-screen);
-        margin-left: size(-16);
-        padding: size(16);
-    }
+.titleWhite {
+    @extend .title;
+    color: $color-white;
 }
 
 .aboutUsArticle {
     color: $color-black-soft;
+    text-align: justify;
 
     @media (max-width: 768px) {
-        text-align: center;
         max-width: calc($w-screen - size(32));
     }
 }
@@ -124,6 +120,7 @@
 }
 
 .ourTeamImage {
+
     @media (max-width: 768px) {
         width: calc($w-screen - size(32));
         max-width: calc($w-screen - size(32));
@@ -172,9 +169,6 @@
     padding: size(40) 0;
 }
 
-.documentationSection {
-    @extend .section;
-}
 
 .articleSection {
     @extend .section;
@@ -196,15 +190,41 @@
     }
 }
 
+.documentationSection {
+    @extend .articleSection;
+    background: rgba(13, 77, 139, 0.83);
+
+    h2 {
+        color: $color-white;
+    }
+}
+
+.ourTeam {
+    @extend .documentationSection;
+
+    background: rgba(13, 77, 139, 0.32);
+
+    h2 {
+        color: $color-black
+    }
+}
+
+.aboutUs {
+    @extend .articleSection;
+    background: rgba(13, 77, 139, 0.49);
+
+    article {
+        color: $color-white;
+    }
+
+}
+
+
 .titleArticle {
     font-size: size(32);
     margin-bottom: 0;
 }
 
-.ourTeam {
-    padding: size(40) 0;
-    text-align: center;
-}
 
 .btnSkeleton {
     display: flex;
@@ -217,6 +237,12 @@
         border-radius: 20px;
     }
 }
+
+.titleBlack {
+    @extend .title;
+    color: $color-black-soft;
+}
+
 
 
 @media (max-width: 768px) {
@@ -233,6 +259,10 @@
     .visiMisiContainer {
         max-width: $w-screen;
         padding: size(40) size(16);
+
+        p {
+            text-align: justify;
+        }
     }
 
     .scheduleDateSection {

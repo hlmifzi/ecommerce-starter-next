@@ -186,7 +186,7 @@ export default async function HomePage() {
       </section>
 
       <section id="struktur-organisasi" className={styles.ourTeam}>
-        <h2 className={styles.title}>TIM KAMI</h2>
+        <h2 className={styles.titleBlack}>TIM KAMI</h2>
         <Image src="/home/SO-LnTC-2.png" width={800} height={500} className={styles.ourTeamImage} alt="our team" />
       </section>
 
@@ -201,11 +201,12 @@ export default async function HomePage() {
       </section>
       <section id="visi-misi" className={styles.visiMisiSection}>
         <div className={styles.visiMisiContainer}>
-          <h2 className={styles.title}>VISI</h2>
+          <h2 className={styles.titleWhite}>VISI & MISI</h2>
+          <h3 className={styles.misiTitle}>VISI</h3>
           <article>
             {visiMisiMock?.visi}
           </article>
-          <h2 className={styles.misiTitle}>MISI</h2>
+          <h3 className={styles.misiTitle}>MISI</h3>
           <article>
             <ul>
               {visiMisiMock?.misi?.map((misi: string, index: number)=>{
@@ -220,6 +221,7 @@ export default async function HomePage() {
           </article>
         </div>
       </section>
+
       <section id="dokumentasi" className={styles.documentationSection}>
         <div className={styles.documentation}>
           <h2 className={styles.title}>DOKUMENTASI KEGIATAN</h2>

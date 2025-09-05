@@ -17,10 +17,28 @@
 .title {
     text-align: center;
     margin-bottom: size(16);
-    font-size: size(32);
+    font-size: size(28);
     font-weight: 600;
     opacity: 0;
     animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+.searchTableContainer {
+    @include flex(row, center, space-between);
+    margin-bottom: size(16);
+    gap: size(8);
+}
+
+.searchTableInner {
+    @include flex(row, center, flex-start);
+    gap: size(8);
+
+    input,
+    [class*='MuiSelect-select'] {
+        background: $color-white;
+        border-radius: size(8);
+        color: $text-soft-gray;
+    }
 }
 
 .navigation {
@@ -185,6 +203,10 @@
         border-right: 1px solid #e0e0e0;
         opacity: 0;
 
+        [class*='badgeContainer'] {
+            margin-bottom: size(6);
+        }
+
         a {
             &:hover {
                 color: $color-secondary;
@@ -213,6 +235,7 @@
         text-align: center;
         border-right: 1px solid #e0e0e0;
         opacity: 0;
+        padding: 0;
 
         // Animasi untuk sel tanggal (per baris dan kolom)
         &:nth-child(1) {
@@ -279,6 +302,7 @@
         border-radius: 4px;
         min-width: 50px;
         text-align: center;
+        font-size: size(12);
 
         // Variasi warna untuk event yang berbeda
         &.workshop {
@@ -361,7 +385,7 @@
     }
 
     .title {
-        font-size: 20px;
+        font-size: size(12);
     }
 
     .scheduleTable {
@@ -378,7 +402,7 @@
 
         .dateBox {
             padding: 4px 6px;
-            font-size: 12px;
+            font-size: size(10);
             min-width: 40px;
         }
     }

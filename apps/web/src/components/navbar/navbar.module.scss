@@ -29,7 +29,7 @@
 
 
 .topBar {
-    background: #0D4D8B;
+    background: $color-primary;
     padding: 8px 0;
     transition: all 0.4s ease;
     transform: translateY(0);
@@ -55,6 +55,9 @@
         margin-top: size(-8);
     }
 
+    p {
+        font-size: size(14);
+    }
 
     @media (max-width: 768px) {
         flex-direction: row;
@@ -153,6 +156,7 @@
 
 .navLink {
     color: $color-primary;
+    font-size: size(14);
     opacity: .7;
     text-decoration: none;
     font-weight: 400;
