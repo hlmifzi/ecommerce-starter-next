@@ -108,6 +108,9 @@
 
     @media (max-width: 768px) {
         @include grid(1);
+        max-width: calc($w-screen - size(32));
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
