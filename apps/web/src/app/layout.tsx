@@ -3,8 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/Footer";
 
-import styles from "./layout.module.scss"
 import "./globals.scss";
+import { MainContent } from "@/components/MainContent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -73,12 +73,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Navbar />
-          <div className={styles.page}>
-            <main className={styles.main}>
-              {children}
-            </main>
-          </div>
-          <Footer />
+          <MainContent>
+            {children}
+          </MainContent>
+        <Footer />
       </body>
     </html>
   );
