@@ -23,6 +23,10 @@
 
 .buttonActionContainer {
     margin-top: size(7);
+
+    [class*="MuiButton-root"] {
+        font-size: size(12) !important;
+    }
 }
 
 .buttonSeeTraining {
